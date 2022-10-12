@@ -50,7 +50,7 @@
                                         <div class="row g-4">
                                             <div class="col-sm-auto">
                                                 <div>
-                                                    <a href="apps-ecommerce-add-product.html" class="btn btn-success" id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add Product</a>
+                                                    <a href="details.php" class="btn btn-success" id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add Product</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -186,32 +186,15 @@
                         <!-- end col -->
                     </div>
                     <!-- end row -->
-
                 </div>
                 <!-- container-fluid -->
             </div>
             <!-- End Page-content -->
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <script>document.write(new Date().getFullYear())</script> © Velzon.
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by Themesbrand
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <?php include "../../layouts/footer.template.php" ?>
         </div>
         <!-- end main content-->
-
     </div>
     <!-- END layout-wrapper -->
-
     <!-- removeItemModal -->
     <div id="removeItemModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -236,9 +219,6 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
-
-
     <!--start back-to-top-->
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
         <i class="ri-arrow-up-line"></i>
