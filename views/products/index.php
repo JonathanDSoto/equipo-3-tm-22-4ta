@@ -29,17 +29,15 @@
 
                     <!-- start page title -->
                     <div class="row">
-                    <div class="col-12">
+                        <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                 <h4 class="mb-sm-0">Products</h4>
-
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
                                         <li class="breadcrumb-item active">Products</li>
                                     </ol>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -59,24 +57,121 @@
                                     </div>
                                     <!-- end card header -->
                                     <div class="card-body">
-
                                         <div class="tab-content text-muted">
                                             <div class="tab-pane active" id="productnav-all" role="tabpanel">
-                                                <div id="table-product-list-all" class="table-card gridjs-border-none"></div>
-                                            </div>
-                                            <!-- end tab pane -->
-
-                                            <div class="tab-pane" id="productnav-published" role="tabpanel">
-                                                <div id="table-product-list-published" class="table-card gridjs-border-none"></div>
-                                            </div>
-                                            <!-- end tab pane -->
-
-                                            <div class="tab-pane" id="productnav-draft" role="tabpanel">
-                                                <div class="py-4 text-center">
-                                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:72px;height:72px">
-                                                    </lord-icon>
-                                                    <h5 class="mt-4">Sorry! No Result Found</h5>
-                                                </div>
+                                                <!-- Tabla de productos -->
+                                                <table role="grid" class="gridjs-table" style="height: auto;">
+                                                    <thead class="gridjs-thead">
+                                                        <tr class="gridjs-tr">
+                                                            <th data-column-id="product" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Product</div>
+                                                            </th>
+                                                            <th data-column-id="stock" class="gridjs-th gridjs-th-sort text-muted" style="width: 94px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Stock</div>
+                                                            </th>
+                                                            <th data-column-id="price" class="gridjs-th gridjs-th-sort text-muted" style="width: 101px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Price</div>
+                                                            </th>
+                                                            <th data-column-id="orders" class="gridjs-th gridjs-th-sort text-muted" style="width: 84px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Orders</div>
+                                                            </th>
+                                                            <th data-column-id="rating" class="gridjs-th gridjs-th-sort text-muted" style="width: 105px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Rating</div>
+                                                            </th>
+                                                            <th data-column-id="published" class="gridjs-th gridjs-th-sort text-muted" style="width: 220px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Published</div>
+                                                            </th>
+                                                            <th data-column-id="action" class="gridjs-th text-muted" style="width: 80px;">
+                                                                <div class="gridjs-th-content">Action</div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="gridjs-tbody">
+                                                        <tr class="gridjs-tr">
+                                                            <td data-column-id="product" class="gridjs-td">
+                                                                <span>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-3">
+                                                                            <div class="avatar-sm bg-light rounded p-1">
+                                                                                <img src="assets/images/products/img-1.png" alt="" class="img-fluid d-block">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex-grow-1">
+                                                                            <h5 class="fs-14 mb-1">
+                                                                                <a href="apps-ecommerce-product-details.html" class="text-dark">
+                                                                                    Half Sleeve Round Neck T-Shirts
+                                                                                </a>
+                                                                            </h5>
+                                                                            <p class="text-muted mb-0">
+                                                                                Category : 
+                                                                                <span class="fw-medium">
+                                                                                    <a href="">Fashion</a>
+                                                                                </span>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </span>
+                                                            </td>
+                                                            <td data-column-id="stock" class="gridjs-td">
+                                                                12
+                                                            </td>
+                                                            <td data-column-id="price" class="gridjs-td">
+                                                                <span>
+                                                                    $215.00
+                                                                </span>
+                                                            </td>
+                                                            <td data-column-id="orders" class="gridjs-td">
+                                                                48
+                                                            </td>
+                                                            <td data-column-id="rating" class="gridjs-td">
+                                                                <span>
+                                                                    <span class="badge bg-light text-body fs-12 fw-medium">
+                                                                        <i class="mdi mdi-star text-warning me-1"></i>
+                                                                            4.2
+                                                                    </span>
+                                                                </span>
+                                                            </td>
+                                                            <td data-column-id="published" class="gridjs-td">
+                                                                <span>
+                                                                    12 Oct, 2021
+                                                                    <small class="text-muted ms-1">
+                                                                        10:05 AM
+                                                                    </small>
+                                                                </span>
+                                                            </td>
+                                                            <td data-column-id="action" class="gridjs-td">
+                                                                <span>
+                                                                    <div class="dropdown">
+                                                                        <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <i class="ri-more-fill"></i>
+                                                                        </button>
+                                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="apps-ecommerce-product-details.html">
+                                                                                    <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                                                                    View
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="dropdown-item edit-list" data-edit-id="1" href="apps-ecommerce-add-product.html">
+                                                                                    <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
+                                                                                    Edit
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="dropdown-divider"></li>
+                                                                            <li>
+                                                                                <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
+                                                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                                    Delete
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                             <!-- end tab pane -->
                                         </div>
