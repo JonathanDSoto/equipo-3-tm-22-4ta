@@ -13,6 +13,6 @@ RewriteRule ^me$ views/users/profile.php
 RewriteRule ^users$ views/users/index.php
 RewriteRule ^users/(.+)$ views/users/details.php?id=$1
 
-#Productos
+#Productos 
 RewriteRule ^products$ views/products/index.php
 RewriteRule ^products/details/(.+)/$ views/products/details.php?slug=$1
