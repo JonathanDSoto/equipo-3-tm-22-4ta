@@ -45,7 +45,7 @@ if (isset($_POST['action'])) {
 				$role = strip_tags($_POST['role']);
 				$password = strip_tags($_POST['password']);
 
-				$userController->create($id, $name, $lastname, $email, $phone_number, 
+				$userController->update($id, $name, $lastname, $email, $phone_number, 
                 $created_by, $role, $password);
 			break; 
             case 'delete':
@@ -58,6 +58,10 @@ if (isset($_POST['action'])) {
                 
             break;
 		}
+	}
+    else{
+		session_destroy();
+		header("Location:".BASE_PATH."?error=true");
 	}
 }
 
@@ -128,7 +132,7 @@ Class UserController{
 		if ( isset($response->code) && $response->code > 0) {
 			return $response->data;
 		}else{
-            return false;
+            return array();
 		}
     }
 
@@ -159,7 +163,7 @@ Class UserController{
 		if ( isset($response->code) && $response->code > 0) {
 			return $response->data;
 		}else{
-            return false;
+			return array();
 		}
     }
 
