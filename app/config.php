@@ -8,4 +8,9 @@
 	if (!defined('BASE_PATH')) {
 		define('BASE_PATH','http://localhost/equipo-3-tm-22-4ta/');
 	}
+
+	/*if(!isset($_SESSION['id'])) {
+		if("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] != BASE_PATH) 
+		header('Location:' . BASE_PATH);
+	}*/
 ?>
