@@ -65,7 +65,7 @@
 									<div class="dropdown-menu dropdown-menu-end">
 											<!-- item-->
 											<h6 class="dropdown-header">Welcome NOMBRE</h6>
-											<a class="dropdown-item" href="../users/details.php"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
+											<a class="dropdown-item" href="<?= BASE_PATH ?>views/users/details.php"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
 											<div class="dropdown-divider"></div>
 											<a class="dropdown-item" href="pages-profile-settings.html"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
 											<a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>

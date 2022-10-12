@@ -14,5 +14,5 @@ RewriteRule ^users$ views/users/index.php
 RewriteRule ^users/(.+)$ views/users/details.php?id=$1
 
 #Productos 
-RewriteRule ^products/$ views/products/index.php
+RewriteRule ^products$ views/products/index.php
 RewriteRule ^products/(.+)$ views/products/details.php?slug=$1
