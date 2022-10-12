@@ -6,6 +6,6 @@
 	}
 
 	if (!defined('BASE_PATH')) {
-		define('BASE_PATH','http://localhost:8888/programacionavanzadaIDSTM2022/');
+		define('BASE_PATH','http://localhost/equipo-3-tm-22-4ta/');
 	}
 ?>
