@@ -58,13 +58,13 @@
 											<span class="d-flex align-items-center">
 													<img src="<?= BASE_PATH ?>public/images/users/avatar-2.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
 													<span class="text-start ms-xl-2">									  <!-- Nombre -->
-															<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= /*NOMBRE*/ "Nombre" ?></span>
+															<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Nombre</span>
 													</span>
 											</span>
 									</button>
 									<div class="dropdown-menu dropdown-menu-end">
 											<!-- item-->
-											<h6 class="dropdown-header">Welcome <?= /*NOMBRE*/ "" ?></h6>
+											<h6 class="dropdown-header">Welcome NOMBRE</h6>
 											<a class="dropdown-item" href="../users/details.php"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
 											<div class="dropdown-divider"></div>
 											<a class="dropdown-item" href="pages-profile-settings.html"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>

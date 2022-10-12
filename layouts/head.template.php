@@ -5,7 +5,6 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= BASE_PATH ?>public/images/favicon.ico">
-
     <!-- Layout config Js -->
     <script src="<?= BASE_PATH ?>public/js/layout.js"></script>
     <!-- Bootstrap Css -->

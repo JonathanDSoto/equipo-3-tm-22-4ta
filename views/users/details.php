@@ -5,7 +5,7 @@
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 <head>
   <meta charset="utf-8" />
-  <title>Profile | Velzon - Admin & Dashboard Template</title>
+  <title>Detail user | Velzon - E-commerce</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -56,6 +56,7 @@
                         <div class="row g-4">
                             <div class="col-auto">
                                 <div class="avatar-lg">
+                                                <!-- IMAGEN DE USUARIO -->
                                     <img src="<?= BASE_PATH ?>public/images/users/avatar-1.jpg" alt="user-img" class="img-thumbnail rounded-circle" />
                                 </div>
                             </div>
@@ -80,24 +81,9 @@
                                                 <i class="ri-airplay-fill d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Overview</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link fs-14" data-bs-toggle="tab" href="#activities" role="tab">
-                                                <i class="ri-list-unordered d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Activities</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link fs-14" data-bs-toggle="tab" href="#projects" role="tab">
-                                                <i class="ri-price-tag-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Projects</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link fs-14" data-bs-toggle="tab" href="#documents" role="tab">
-                                                <i class="ri-folder-4-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Documents</span>
-                                            </a>
-                                        </li>
                                     </ul>
                                     <div class="flex-shrink-0">
-                                        <a href="pages-profile-settings.html" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
+                                        <a href="#" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
                                     </div>
                                 </div>
                                 <!-- Tab panes -->
@@ -107,41 +93,25 @@
                                             <div class="col-xxl-3">
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <h5 class="card-title mb-5">Complete Your Profile</h5>
-                                                        <div class="progress animated-progress custom-progress progress-label">
-                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                                                                <div class="label">30%</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="card">
-                                                    <div class="card-body">
                                                         <h5 class="card-title mb-3">Info</h5>
                                                         <div class="table-responsive">
                                                             <table class="table table-borderless mb-0">
                                                                 <tbody>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Full Name :</th>
-                                                                        <td class="text-muted">Anna Adame</td>
+                                                                        <td class="text-muted">Nombre</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Mobile :</th>
-                                                                        <td class="text-muted">+(1) 987 6543</td>
+                                                                        <td class="text-muted">Telefono</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">E-mail :</th>
-                                                                        <td class="text-muted">daveadame@velzon.com</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th class="ps-0" scope="row">Location :</th>
-                                                                        <td class="text-muted">California, United States
-                                                                        </td>
+                                                                        <td class="text-muted">Correo</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Joining Date</th>
-                                                                        <td class="text-muted">24 Nov 2021</td>
+                                                                        <td class="text-muted">Creado el</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
