@@ -101,10 +101,10 @@ Class AuthController{
 		if ( isset($response->code) && $response->code > 0) {
 
 			session_destroy();
-			header("Location:".BASE_PATH.'?success=true');
+			return true;
 		}else{
 			#var_dump($response);
-			header("Location:".BASE_PATH."products/?error=true");
+			return false;
 		}
 	}
 }
