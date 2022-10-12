@@ -68,7 +68,7 @@ Class AuthController{
 			$_SESSION['avatar']= $response->data->avatar;
 			$_SESSION['token']= $response->data->token;
 
-			header("Location:".BASE_PATH."index");
+			header("Location:".BASE_PATH."products/");
 		}else{
 			#var_dump($response);
 			header("Location:".BASE_PATH."?error=true");
@@ -104,7 +104,7 @@ Class AuthController{
 			header("Location:".BASE_PATH.'?success=true');
 		}else{
 			#var_dump($response);
-			header("Location:".BASE_PATH."index?error=true");
+			header("Location:".BASE_PATH."products/?error=true");
 		}
 	}
 }

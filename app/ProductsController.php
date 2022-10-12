@@ -146,11 +146,11 @@ Class ProductsController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header('Location:'.BASE_PATH.'index?success=true');
+			header('Location:'.BASE_PATH.'products/?success=true');
 		}else{ 
 
 			#var_dump($response);
-			header('Location:'.BASE_PATH.'index?error=true');
+			header('Location:'.BASE_PATH.'products/?error=true');
 		}
 
 	}
@@ -184,11 +184,11 @@ Class ProductsController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header('Location:'.BASE_PATH.'index?success=true');
+			header('Location:'.BASE_PATH.'products/?success=true');
 		}else{ 
 
 			#var_dump($response);
-			header('Location:'.BASE_PATH.'index?error=true');
+			header('Location:'.BASE_PATH.'products/?error=true');
 		}
 
 	}
