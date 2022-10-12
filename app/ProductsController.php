@@ -55,7 +55,7 @@ Class ProductsController
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
+		  CURLOPT_URL => 'http://crud.jonathansoto.mx/api/products',
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => '',
 		  CURLOPT_MAXREDIRS => 10,
@@ -86,7 +86,7 @@ Class ProductsController
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/slug/'.$slug,
+		  CURLOPT_URL => 'http://crud.jonathansoto.mx/api/products/slug/'.$slug,
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => '',
 		  CURLOPT_MAXREDIRS => 10,
@@ -119,7 +119,7 @@ Class ProductsController
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
+		  CURLOPT_URL => 'http://crud.jonathansoto.mx/api/products',
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => '',
 		  CURLOPT_MAXREDIRS => 10,
@@ -146,11 +146,11 @@ Class ProductsController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header("Location:../products?success=true");
+			header('Location:'.BASE_PATH.'index?success=true');
 		}else{ 
 
 			#var_dump($response);
-			header("Location:../products?error=true");
+			header('Location:'.BASE_PATH.'index?error=true');
 		}
 
 	}
@@ -162,7 +162,7 @@ Class ProductsController
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
+		  CURLOPT_URL => 'http://crud.jonathansoto.mx/api/products',
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => '',
 		  CURLOPT_MAXREDIRS => 10,
@@ -184,11 +184,11 @@ Class ProductsController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header("Location:../products?success=true");
+			header('Location:'.BASE_PATH.'index?success=true');
 		}else{ 
 
 			#var_dump($response);
-			header("Location:../products?error=true");
+			header('Location:'.BASE_PATH.'index?error=true');
 		}
 
 	}
@@ -198,7 +198,7 @@ Class ProductsController
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/'.$id,
+		  CURLOPT_URL => 'http://crud.jonathansoto.mx/api/products/'.$id,
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => '',
 		  CURLOPT_MAXREDIRS => 10,

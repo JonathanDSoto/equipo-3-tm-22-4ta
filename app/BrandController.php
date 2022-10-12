@@ -4,13 +4,12 @@ include_once "config.php";
 Class BrandController
 {
 
-
 	public function getBrands()
 	{
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/brands',
+		  CURLOPT_URL => 'http://crud.jonathansoto.mx/api/brands',
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => '',
 		  CURLOPT_MAXREDIRS => 10,
