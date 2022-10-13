@@ -14,40 +14,47 @@ if (isset($_POST['action'])) {
 				$description = strip_tags($_POST['description']);
 				$features = strip_tags($_POST['features']);
 				$brand_id = strip_tags($_POST['brand_id']);
+				$cover = $_FILES['cover']['tmp_name'];
 
-				$productController = new ProductsController();
+				$productController = new ProductController();
 
-				$productController->createProduct($name,$slug,$description,$features,$brand_id);
+				$productController->create($name,$slug,$description,$features,$brand_id, $cover);
 				 
 			break; 
 
 			case 'update':
 				
+				$id = strip_tags($_POST['id']);
 				$name = strip_tags($_POST['name']);
 				$slug = strip_tags($_POST['slug']);
 				$description = strip_tags($_POST['description']);
 				$features = strip_tags($_POST['features']);
 				$brand_id = strip_tags($_POST['brand_id']);
-				$id = strip_tags($_POST['id']);
 
-				$productController = new ProductsController();
+				$productController = new ProductController();
 
-				$productController->updateProduct($name,$slug,$description,$features,$brand_id,$id);
+				$productController->update($id, $name,$slug,$description,$features,$brand_id);
 				 
 			break;
 
 			case 'delete':
 
-				$productController = new ProductsController();
+				$productController = new ProductController();
+                
+				$id = strip_tags($_POST['id']);
 
-				echo json_encode($productController->remove($_POST['id']));
+				$productController->deleteProduct($_POST['id']);
 			break; 
 		}
 
 	}
+	else{
+		session_destroy();
+		header("Location:".BASE_PATH."?error=true");
+	}
 }
 
-Class ProductsController
+Class ProductController
 {
 	public function getProducts()
 	{
@@ -81,7 +88,40 @@ Class ProductsController
 		}
 	}
 
-	public function getProduct($slug)
+	public function getProductsByCategory($category)
+	{
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => 'http://crud.jonathansoto.mx/api/products/categories/'.$category,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'GET',
+		CURLOPT_HTTPHEADER => array(
+			'Authorization: Bearer '.$_SESSION['token']
+		),
+		));
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+
+		$response = json_decode($response);
+
+		if ( isset($response->code) && $response->code > 0) {
+			
+			return $response->data;
+		}else{
+
+			return array();
+		}
+	}
+
+	public function getProductBySlug($slug)
 	{
 		$curl = curl_init();
 
@@ -111,10 +151,9 @@ Class ProductsController
 			return array();
 		}
 	}
-
-	public function createProduct($name,$slug,$description,$features,$brand_id)
+	
+	public function create($name,$slug,$description,$features,$brand_id, $cover)
 	{
- 
 
 		$curl = curl_init();
 
@@ -133,7 +172,7 @@ Class ProductsController
 		  	'description' => $description,
 		  	'features' => $features,
 		  	'brand_id' => $brand_id,
-		  	'cover'=> new CURLFILE($_FILES['cover']['tmp_name'])
+		  	'cover'=> new CURLFILE($cover)
 		  ),
 		  CURLOPT_HTTPHEADER => array(
 		    'Authorization: Bearer '.$_SESSION['token']
@@ -155,7 +194,7 @@ Class ProductsController
 
 	}
 
-	public function updateProduct($name,$slug,$description,$features,$brand_id,$id)
+	public function update($id, $name,$slug,$description,$features,$brand_id)
 	{
  
 
@@ -193,7 +232,7 @@ Class ProductsController
 
 	}
 
-	public function remove($id)
+	public function deleteProduct($id)
 	{
 		$curl = curl_init();
 
