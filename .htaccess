@@ -3,6 +3,7 @@ RewriteEngine on
 
 #Rutas
 RewriteRule ^auth$ app/AuthController.php
+# RewriteRule ^product/auth$ app/Product.php
 #RewriteRule ^userCont$ app/UserController.php
 
 #Auth
