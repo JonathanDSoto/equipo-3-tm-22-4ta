@@ -15,7 +15,7 @@ if (isset($_POST['action'])) {
 				$password = strip_tags($_POST['password']);
                 $phone_number = strip_tags($_POST['phone_number']);
                 $is_suscribed = strip_tags($_POST['is_suscribed']);
-                $level_id = strip_tags($_POST['level_id']);
+                $level_id = strip_tags('1');
 
 				$clientController->create($name, $email, $password, $phone_number, $is_suscribed, $level_id);
 
@@ -30,7 +30,7 @@ if (isset($_POST['action'])) {
 				$password = strip_tags($_POST['password']);
                 $phone_number = strip_tags($_POST['phone_number']);
                 $is_suscribed = strip_tags($_POST['is_suscribed']);
-                $level_id = strip_tags($_POST['level_id']);
+                $level_id = strip_tags('1');
 
 				$clientController->update($id, $name, $email, $password, $phone_number, $is_suscribed, $level_id);
 
