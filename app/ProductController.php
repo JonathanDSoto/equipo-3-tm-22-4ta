@@ -43,7 +43,7 @@ if (isset($_POST['action'])) {
                 
 				$id = strip_tags($_POST['id']);
 
-				$productController->deleteProduct($_POST['id']);
+				$productController->deleteProduct($id);
 			break; 
 		}
 
