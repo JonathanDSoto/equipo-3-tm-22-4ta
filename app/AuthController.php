@@ -42,7 +42,7 @@ Class AuthController{
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/login',
+		  CURLOPT_URL => 'http://crud.jonathansoto.mx/api/login',
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => '',
 		  CURLOPT_MAXREDIRS => 10,
