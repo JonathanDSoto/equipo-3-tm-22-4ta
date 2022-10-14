@@ -214,10 +214,10 @@ Class BrandController
 
 		if ( isset($response->code) && $response->code > 0) {
 			
-			return true;
+			echo true;
 		}else{
 
-			return false;
+			echo false;
 		}
 	}
 }

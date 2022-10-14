@@ -102,9 +102,9 @@ Class AuthController{
 		if ( isset($response->code) && $response->code > 0) {
 
 			session_destroy();
-			return true;
+			echo true;
 		}else{
-			return false;
+			echo false;
 		}
 	}
 }
