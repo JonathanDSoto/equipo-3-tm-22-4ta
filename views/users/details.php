@@ -4,13 +4,7 @@
 <!doctype html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 <head>
-  <meta charset="utf-8" />
-  <title>Detail user | Velzon - E-commerce</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-  <meta content="Themesbrand" name="author" />
-  <!-- App favicon -->
-  <link rel="shortcut icon" href="<?= BASE_PATH ?>public/images/favicon.ico">
+    <?php include "../../layouts/head.template.php" ?>
   <!-- swiper css -->
   <link rel="stylesheet" href="<?= BASE_PATH ?>public/libs/swiper/swiper-bundle.min.css">
   <!-- Layout config Js -->
@@ -36,8 +30,6 @@
         </div>
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
-        <div class="vertical-overlay"></div>
-
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -100,12 +92,12 @@
                                                                         <td class="text-muted">Nombre</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th class="ps-0" scope="row">Mobile :</th>
-                                                                        <td class="text-muted">Telefono</td>
-                                                                    </tr>
-                                                                    <tr>
                                                                         <th class="ps-0" scope="row">E-mail :</th>
                                                                         <td class="text-muted">Correo</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th class="ps-0" scope="row">Mobile :</th>
+                                                                        <td class="text-muted">Telefono</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Joining Date</th>
@@ -134,7 +126,6 @@
 
                 </div><!-- container-fluid -->
             </div><!-- End Page-content -->
-
             <?php include "../../layouts/footer.template.php" ?>
         </div><!-- end main content-->
 

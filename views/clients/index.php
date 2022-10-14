@@ -30,16 +30,17 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Products</h4>
+                                <h4 class="mb-sm-0">Clients</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                        <li class="breadcrumb-item active">Products</li>
+                                        <li class="breadcrumb-item active">Clients</li>
                                     </ol>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- end page title -->
                     <div class="row">
                         <div class="col">
@@ -49,7 +50,7 @@
                                         <div class="row g-4">
                                             <div class="col-sm-auto">
                                                 <div>
-                                                    <a href="details.php" class="btn btn-success" id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add Product</a>
+                                                    <a href="details.php" class="btn btn-success" id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add Client</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -62,81 +63,48 @@
                                                 <table role="grid" class="gridjs-table" style="height: auto;">
                                                     <thead class="gridjs-thead">
                                                         <tr class="gridjs-tr">
-                                                            <th data-column-id="product" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Product</div>
+                                                            <th data-column-id="name" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Name</div>
                                                             </th>
-                                                            <th data-column-id="stock" class="gridjs-th gridjs-th-sort text-muted" style="width: 94px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Stock</div>
+                                                            <th data-column-id="email" class="gridjs-th gridjs-th-sort text-muted" style="width: 94px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Email</div>
                                                             </th>
-                                                            <th data-column-id="price" class="gridjs-th gridjs-th-sort text-muted" style="width: 101px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Price</div>
+                                                            <th data-column-id="phone" class="gridjs-th gridjs-th-sort text-muted" style="width: 101px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Phone</div>
                                                             </th>
-                                                            <th data-column-id="orders" class="gridjs-th gridjs-th-sort text-muted" style="width: 84px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Orders</div>
+                                                            <th data-column-id="role" class="gridjs-th gridjs-th-sort text-muted" style="width: 84px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Level</div>
                                                             </th>
-                                                            <th data-column-id="rating" class="gridjs-th gridjs-th-sort text-muted" style="width: 105px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Rating</div>
-                                                            </th>
-                                                            <th data-column-id="published" class="gridjs-th gridjs-th-sort text-muted" style="width: 220px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Published</div>
-                                                            </th>
-                                                            <th data-column-id="action" class="gridjs-th text-muted" style="width: 80px;">
+                                                            <th data-column-id="action" class="gridjs-th gridjs-th-sort text-muted" style="width: 84px;" tabindex="0">
                                                                 <div class="gridjs-th-content">Action</div>
                                                             </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody class="gridjs-tbody">
                                                         <tr class="gridjs-tr">
-                                                            <td data-column-id="product" class="gridjs-td">
+                                                            <td data-column-id="name" class="gridjs-td">
                                                                 <span>
                                                                     <div class="d-flex align-items-center">
-                                                                        <div class="flex-shrink-0 me-3">
-                                                                            <div class="avatar-sm bg-light rounded p-1">
-                                                                                <img src="assets/images/products/img-1.png" alt="" class="img-fluid d-block">
-                                                                            </div>
-                                                                        </div>
                                                                         <div class="flex-grow-1">
                                                                             <h5 class="fs-14 mb-1">
                                                                                 <a href="details.php" class="text-dark">
-                                                                                    NAME
+                                                                                    NOMBRE
                                                                                 </a>
                                                                             </h5>
-                                                                            <p class="text-muted mb-0">
-                                                                                Category : 
-                                                                                <span class="fw-medium">
-                                                                                    <a href="#">SEX</a>
-                                                                                </span>
-                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                 </span>
                                                             </td>
-                                                            <td data-column-id="stock" class="gridjs-td">
-                                                                0
+                                                            <td data-column-id="emial" class="gridjs-td">
+                                                                EMAIL
                                                             </td>
-                                                            <td data-column-id="price" class="gridjs-td">
+                                                            <td data-column-id="phone" class="gridjs-td">
                                                                 <span>
-                                                                    $0
+                                                                    PHONE
                                                                 </span>
                                                             </td>
-                                                            <td data-column-id="orders" class="gridjs-td">
-                                                                0
-                                                            </td>
-                                                            <td data-column-id="rating" class="gridjs-td">
-                                                                <span>
-                                                                    <span class="badge bg-light text-body fs-12 fw-medium">
-                                                                        <i class="mdi mdi-star text-warning me-1"></i>
-                                                                            0
-                                                                    </span>
-                                                                </span>
-                                                            </td>
-                                                            <td data-column-id="published" class="gridjs-td">
-                                                                <span>
-                                                                    DAY MOUNTH, YEAR
-                                                                    <small class="text-muted ms-1">
-                                                                        HOUR:MINUTE AM/PM
-                                                                    </small>
-                                                                </span>
+                                                            <td data-column-id="role" class="gridjs-td">
+                                                                LEVEL
                                                             </td>
                                                             <td data-column-id="action" class="gridjs-td">
                                                                 <span>
@@ -194,6 +162,7 @@
         <!-- end main content-->
     </div>
     <!-- END layout-wrapper -->
+    <!-- removeItemModal -->
     <?php include "../../layouts/modal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
     <!-- JAVASCRIPT -->
@@ -216,29 +185,6 @@
 
     <!-- App js -->
     <script src="<?= BASE_PATH ?>public/js/app.js"></script>
-
-    <script type="text/javascript">
-        function logout(id){
-            var bodyFormData = new FormData();
-            bodyFormData.append('id', id);
-            bodyFormData.append('action', 'logout');
-            bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
-            if(id == <?= $_SESSION['id'] ?>){
-                axios.post('<?= BASE_PATH ?>auth', bodyFormData)
-                .then(function (response){
-                    console.log(response.data);
-                    if(response.data==true){
-                        window.location = "<?= BASE_PATH ?>";
-                    }
-                })
-                .catch(function (error){
-                    console.log('error')
-                })
-            }else{
-                
-            }
-        }
-    </script>
     
 </body>
 

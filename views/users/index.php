@@ -18,7 +18,6 @@
             <?php include "../../layouts/sidebar.template.php" ?>
         </div>
         <!-- Vertical Overlay-->
-        <div class="vertical-overlay"></div>
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -92,8 +91,8 @@
                                                                         </div>
                                                                         <div class="flex-grow-1">
                                                                             <h5 class="fs-14 mb-1">
-                                                                                <a href="apps-ecommerce-product-details.html" class="text-dark">
-                                                                                    NOMBRE
+                                                                                <a href="details.php" class="text-dark">
+                                                                                    NAME
                                                                                 </a>
                                                                             </h5>
                                                                         </div>
@@ -105,7 +104,7 @@
                                                             </td>
                                                             <td data-column-id="phone" class="gridjs-td">
                                                                 <span>
-                                                                    PHONe
+                                                                    PHONE
                                                                 </span>
                                                             </td>
                                                             <td data-column-id="role" class="gridjs-td">
@@ -168,29 +167,7 @@
     </div>
     <!-- END layout-wrapper -->
     <!-- removeItemModal -->
-    <div id="removeItemModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btn-close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mt-2 text-center">
-                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                            <h4>Are you Sure ?</h4>
-                            <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this Product ?</p>
-                        </div>
-                    </div>
-                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn w-sm btn-danger " id="delete-product">Yes, Delete It!</button>
-                    </div>
-                </div>
-
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    <?php include "../../layouts/modal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
     <!-- JAVASCRIPT -->
     <script src="<?= BASE_PATH ?>public/libs/bootstrap/js/bootstrap.bundle.min.js"></script>

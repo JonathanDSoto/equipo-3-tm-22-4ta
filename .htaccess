@@ -3,16 +3,20 @@ RewriteEngine on
 
 #Rutas
 RewriteRule ^auth$ app/AuthController.php
-# RewriteRule ^product/auth$ app/Product.php
-#RewriteRule ^userCont$ app/UserController.php
+#RewriteRule ^product/auth$ app/Product.php
+#RewriteRule ^client/auth$ app/ClientController.php
 
 #Auth
 RewriteRule ^$ views/auth/login.php
 RewriteRule ^me$ views/users/profile.php
 
 #Usuarios
-RewriteRule ^users$ views/users/index.php
+RewriteRule ^users/$ views/users/index.php
 RewriteRule ^users/(.+)$ views/users/details.php?id=$1
+
+#Clientes
+RewriteRule ^clients/$ views/clients/index.php
+RewriteRule ^clients/(.+)$ views/clients/details.php?id=$1
 
 #Productos 
 RewriteRule ^products/$ views/products/index.php

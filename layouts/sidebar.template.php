@@ -31,12 +31,12 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="widgets.html">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>users/"">
                                 <i class="ri-user-2-line"></i> <span data-key="t-widgets">Users</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="widgets.html">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>clients/">
                                 <i class="ri-user-3-line"></i> <span data-key="t-widgets">Clients</span>
                             </a>
                         </li>
