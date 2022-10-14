@@ -140,20 +140,9 @@ Class CouponController
 
 		if ( isset($response->code) && $response->code > 0) {
 			
-			return $response->data;
-		}else{
+			$coupon = $response->data;
+			$total_discount = 0;
 
-			return array();
-		}
-	}
-
-	public function getWidgets($id){
-		
-		$coupon = $this->getCouponById($id);
-
-		$total_discount = 0;
-
-		if($coupon){
 			foreach ($coupon->orders as $order) {
 				if($coupon->amount_discount > 0){
 					$total_discount += $coupon->amount_discount;
@@ -162,11 +151,17 @@ Class CouponController
 					$total_discount += $order->total*($coupon->percentage_discount/100);
 				}
 			}
-		}
 
-		return $total_discount;
+			$response->data->total_discount = $total_discount;
+
+			return $response->data;
+
+		}else{
+
+			return array();
+		}
 	}
-	
+
 	public function create($name, $code, $percentage_discount, $amount_discount, $min_amount_required,
 	$min_product_required, $start_date, $end_date, $max_uses, $count_uses, $valid_only_first_purchase, $status)
 	{
