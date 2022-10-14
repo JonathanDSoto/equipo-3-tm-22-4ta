@@ -15,3 +15,5 @@
     <link href="<?= BASE_PATH ?>public/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="<?= BASE_PATH ?>public/css/custom.min.css" rel="stylesheet" type="text/css" />
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
