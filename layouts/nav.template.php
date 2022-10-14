@@ -1,3 +1,9 @@
+<?php 
+	include "../../app/UserController.php";
+    $users = new UserController();
+    $user = $users->getUserById($_SESSION['id']);
+    // var_dump($user);
+?>
 	<div class="layout-width">
 			<div class="navbar-header">
 					<div class="d-flex">
