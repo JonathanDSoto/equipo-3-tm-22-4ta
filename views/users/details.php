@@ -1,5 +1,9 @@
 <?php
 	include_once "../../app/config.php";
+    include "../../app/UserController.php";
+    $users = new UserController();
+    $user = $users->getUserById($_SESSION['id']);
+    var_dump($user);
 ?> 
 <!doctype html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -47,14 +51,14 @@
                             <div class="col-auto">
                                 <div class="avatar-lg">
                                                 <!-- IMAGEN DE USUARIO -->
-                                    <img src="<?= BASE_PATH ?>public/images/users/avatar-1.jpg" alt="user-img" class="img-thumbnail rounded-circle" />
+                                    <img src="<?= $user->avatar ?>" alt="user-img" class="img-thumbnail rounded-circle" />
                                 </div>
                             </div>
                             <!--end col-->
                             <div class="col">
                                 <div class="p-3">
-                                    <h3 class="text-white mb-1">name lastname</h3>
-                                    <p class="text-white-75">Role</p>
+                                    <h3 class="text-white mb-1"><?= $user->name ?></h3>
+                                    <p class="text-white-75"><?= $user->role ?></p>
                                 </div>
                             </div>
                         </div>
@@ -89,19 +93,21 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Full Name :</th>
-                                                                        <td class="text-muted">Nombre</td>
+                                                                        <td class="text-muted"><?=$user->name?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">E-mail :</th>
-                                                                        <td class="text-muted">Correo</td>
+                                                                        <td class="text-muted"><?= $user->email ?></td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <th class="ps-0" scope="row">Mobile :</th>
-                                                                        <td class="text-muted">Telefono</td>
-                                                                    </tr>
+                                                                    <?php if(isset($user->phone_number)): ?>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">Mobile :</th>
+                                                                            <td class="text-muted"><?= $user->phone_number ?></td>
+                                                                        </tr>
+                                                                    <?php endif ?>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Joining Date</th>
-                                                                        <td class="text-muted">Creado el</td>
+                                                                        <td class="text-muted"><?= $user->created_at ?></td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -133,7 +139,7 @@
     <!-- END layout-wrapper -->
     <?php include "../../layouts/function_footer.template.php" ?>
     <!-- JAVASCRIPT -->
-    <script src="<?= BASE_PATH ?>public/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= BASE_PATH ?>public/libs/bootstrap/js/bootstrap.bundle.min.js"></scripname>
     <script src="<?= BASE_PATH ?>public/libs/simplebar/simplebar.min.js"></script>
     <script src="<?= BASE_PATH ?>public/libs/node-waves/waves.min.js"></script>
     <script src="<?= BASE_PATH ?>public/libs/feather-icons/feather.min.js"></script>
@@ -145,6 +151,13 @@
     <script src="<?= BASE_PATH ?>public/js/pages/profile.init.js"></script>
     <!-- App js -->
     <script src="<?= BASE_PATH ?>public/js/app.js"></script>
+
+    <script type="text/javascript">
+        function name(string){
+            var cadena = string.split();
+            return cadena[0];
+        }
+    </script>
 </body>
 
 
