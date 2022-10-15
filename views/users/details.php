@@ -18,11 +18,10 @@
   <!-- custom Css-->
   <link href="<?= BASE_PATH ?>public/css/custom.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="https://unpkg.com/vue@3"></script>
 </head>
 <body>
     <!-- Begin page -->
-    <div id="app">
+    <div id="contenedor">
         <header id="page-topbar">
             <?php include "../../layouts/nav.template.php" ?>
         </header>
@@ -137,36 +136,12 @@
     <!-- END layout-wrapper -->
     <?php include "../../layouts/function_footer.template.php" ?>
     <?php include "../../layouts/scripts.template.php" ?>
-    <!-- JAVASCRIPT -->
-    <script src="<?= BASE_PATH ?>public/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= BASE_PATH ?>public/libs/simplebar/simplebar.min.js"></script>
-    <script src="<?= BASE_PATH ?>public/libs/node-waves/waves.min.js"></script>
-    <script src="<?= BASE_PATH ?>public/libs/feather-icons/feather.min.js"></script>
-    <script src="<?= BASE_PATH ?>public/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="<?= BASE_PATH ?>public/js/plugins.js"></script>
     <!-- swiper js -->
     <script src="<?= BASE_PATH ?>public/libs/swiper/swiper-bundle.min.js"></script>
     <!-- profile init js -->
     <script src="<?= BASE_PATH ?>public/js/pages/profile.init.js"></script>
-    <!-- App js -->
-    <script src="<?= BASE_PATH ?>public/js/app.js"></script>
-    <script type="text/javascript">
-        const {createApp} = Vue;
-        
-        var app = createApp({
-            data(){
-                return {
-                    date: '',
-                }
-            },methods : {
-               
-            },
-            mounted(){
-                var date_aux = "Hola";
-                this.date = date_aux.substring(0,9);
-            },
-        }).mount('#app')
-    </script>
+    
+    
 </body>
 
 

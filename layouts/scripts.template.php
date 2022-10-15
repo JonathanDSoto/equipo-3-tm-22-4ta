@@ -9,27 +9,37 @@
     <!-- App js -->
     <script src="<?= BASE_PATH ?>public/js/app.js"></script>
 
-    
-    
     <script type="text/javascript">
-        function logout(id){
-            var bodyFormData = new FormData();
-            bodyFormData.append('id', id);
-            bodyFormData.append('action', 'logout');
-            bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
-            if(id == <?= $_SESSION['id'] ?>){
-                axios.post('<?= BASE_PATH ?>auth', bodyFormData)
-                .then(function (response){
-                    console.log(response.data);
-                    if(response.data==true){
-                        window.location = "<?= BASE_PATH ?>";
+        const {createApp} = Vue;
+        
+        var app = createApp({
+            data(){
+                return {
+                    date: '',
+                }
+            },methods : {
+                logout(id){
+                    console.log(id);
+                    var bodyFormData = new FormData();
+                    bodyFormData.append('id', id);
+                    bodyFormData.append('action', 'logout');
+                    bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
+                    if(id == <?= $_SESSION['id'] ?>){
+                        axios.post('<?= BASE_PATH ?>auth', bodyFormData)
+                        .then(function (response){
+                            if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>";
+                            }
+                        })
+                        .catch(function (error){
+                            console.log('error')
+                        })
                     }
-                })
-                .catch(function (error){
-                    console.log('error')
-                })
-            }else{
-                
-            }
-        }
+                }
+            },
+            mounted(){
+                var date_aux = "<?php echo $user->created_at ?>";
+                this.date = date_aux.substring(0,10);
+            },
+        }).mount('#contenedor')
     </script>

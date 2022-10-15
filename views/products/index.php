@@ -9,7 +9,7 @@
 <body>
     
     <!-- Begin page -->
-    <div id="layout-wrapper">
+    <div id="contenedor">
         <header id="page-topbar">
             <?php include "../../layouts/nav.template.php" ?>
         </header>
