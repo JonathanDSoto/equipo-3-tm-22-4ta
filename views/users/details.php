@@ -1,12 +1,12 @@
 <?php
 	include_once "../../app/config.php";
 ?> 
-<!doctype html>
+<!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 <head>
     <?php include "../../layouts/head.template.php" ?>
   <!-- swiper css -->
-  <link rel="stylesheet" href="<?= BASE_PATH ?>public/libs/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="<?= BASE_PATH ?>public/libs/swiper/swiper-bundle.min.css" />
   <!-- Layout config Js -->
   <script src="<?= BASE_PATH ?>public/js/layout.js"></script>
   <!-- Bootstrap Css -->
@@ -17,10 +17,12 @@
   <link href="<?= BASE_PATH ?>public/css/app.min.css" rel="stylesheet" type="text/css" />
   <!-- custom Css-->
   <link href="<?= BASE_PATH ?>public/css/custom.min.css" rel="stylesheet" type="text/css" />
+
+  <script src="https://unpkg.com/vue@3"></script>
 </head>
 <body>
     <!-- Begin page -->
-    <div id="layout-wrapper">
+    <div id="app">
         <header id="page-topbar">
             <?php include "../../layouts/nav.template.php" ?>
         </header>
@@ -103,7 +105,7 @@
                                                                     <?php endif ?>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Joining Date</th>
-                                                                        <td class="text-muted"><?= $user->created_at ?></td>
+                                                                        <td class="text-muted">{{date}}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -134,6 +136,7 @@
     </div>
     <!-- END layout-wrapper -->
     <?php include "../../layouts/function_footer.template.php" ?>
+    <?php include "../../layouts/scripts.template.php" ?>
     <!-- JAVASCRIPT -->
     <script src="<?= BASE_PATH ?>public/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= BASE_PATH ?>public/libs/simplebar/simplebar.min.js"></script>
@@ -147,28 +150,22 @@
     <script src="<?= BASE_PATH ?>public/js/pages/profile.init.js"></script>
     <!-- App js -->
     <script src="<?= BASE_PATH ?>public/js/app.js"></script>
-
     <script type="text/javascript">
-        function logout(id){
-            var bodyFormData = new FormData();
-            bodyFormData.append('id', id);
-            bodyFormData.append('action', 'logout');
-            bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
-            if(id == <?= $_SESSION['id'] ?>){
-                axios.post('<?= BASE_PATH ?>auth', bodyFormData)
-                .then(function (response){
-                    console.log(response.data);
-                    if(response.data==true){
-                        window.location = "<?= BASE_PATH ?>";
-                    }
-                })
-                .catch(function (error){
-                    console.log('error')
-                })
-            }else{
-                
-            }
-        }
+        const {createApp} = Vue;
+        
+        var app = createApp({
+            data(){
+                return {
+                    date: '',
+                }
+            },methods : {
+               
+            },
+            mounted(){
+                var date_aux = "Hola";
+                this.date = date_aux.substring(0,9);
+            },
+        }).mount('#app')
     </script>
 </body>
 
