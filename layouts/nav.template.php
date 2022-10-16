@@ -74,7 +74,7 @@
 											<a class="dropdown-item" href="<?= BASE_PATH ?>users/<?= $_SESSION['id']?>"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
 											<div class="dropdown-divider"></div>
 											<a class="dropdown-item" href="pages-profile-settings.html"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
-											<a onclick="logout(<?= $_SESSION['id'] ?>)" class="dropdown-item" href="#"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>	
+											<button @click="logout('<?= $_SESSION['id'] ?>')" class="dropdown-item"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></button>	
 									</div>
 							</div>
 					</div>

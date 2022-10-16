@@ -31,7 +31,7 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>users/"">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>users/">
                                 <i class="ri-user-2-line"></i> <span data-key="t-widgets">Users</span>
                             </a>
                         </li>
