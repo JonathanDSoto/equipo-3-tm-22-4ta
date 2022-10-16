@@ -23,6 +23,7 @@
                     modal: '',
                     usuarios: null,
                     usuario: null,
+                    usuarioLog:null,
                 }
             },methods : {
                 logout(id){
@@ -133,7 +134,6 @@
                     id = '<?php echo $_GET['id'] ?>';
                 <?php endif ?>
 
-                console.log(id);
                 var config = {
                     method: 'get',
                     url: 'https://crud.jonathansoto.mx/api/users/'+id,
@@ -144,7 +144,6 @@
 
                 axios(config)
                 .then(function (response) {
-                    console.log(JSON.stringify(response.data));
                     app.usuario = response.data.data;
                     console.log(app.usuario);
                     <?php if(isset($_GET['id'])): ?>
@@ -157,6 +156,24 @@
                 .catch(function (error) {
                     console.log(error);
                 });
+
+                var config = {
+                    method: 'get',
+                    url: 'https://crud.jonathansoto.mx/api/users/'+'<?php echo $_SESSION['id'] ?>',
+                    headers: { 
+                        'Authorization': 'Bearer '+'<?php echo $_SESSION['token'] ?>'
+                    }
+                };
+
+                axios(config)
+                .then(function (response) {
+                    app.usuarioLog = response.data.data;
+                    console.log(app.usuarioLog);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
 
             },
         }).mount('#contenedor')

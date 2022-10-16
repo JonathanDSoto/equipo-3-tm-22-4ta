@@ -1,5 +1,9 @@
 <?php
 	include_once "../../app/config.php";
+    include "../../app/UserController.php";
+    $us = new UserController();
+    $users = $us->getUsers();
+	// var_dump($user);
 ?> 
 <!DOCTYPE html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
