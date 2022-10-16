@@ -41,7 +41,7 @@ if (isset($_POST['action'])) {
 				$lastname = strip_tags($_POST['lastname']);
                 $email = strip_tags($_POST['email']);
 				$phone_number = strip_tags($_POST['phone_number']);
-				$created_by = strip_tags($_SESSION['name']);
+				$created_by = strip_tags($_POST['created_by']);
 				$role = strip_tags($_POST['role']);
 				$password = strip_tags($_POST['password']);
 
