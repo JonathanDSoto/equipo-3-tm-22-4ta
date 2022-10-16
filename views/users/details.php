@@ -58,9 +58,9 @@
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
-                                                <i class="ri-airplay-fill d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Overview</span>
-                                            </a>
+                                            <button @click="editPhotoUser('<?php echo $user->id ?>')" data-bs-toggle="modal" data-bs-target="#userModal" class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
+                                                <span class="d-none d-md-inline-block"><i class="ri-edit-box-line align-bottom"></i> Edit Photo Profile</span>
+                                            </button>
                                         </li>
                                     </ul>
                                     <div class="flex-shrink-0">
@@ -93,8 +93,16 @@
                                                                         </tr>
                                                                     <?php endif ?>
                                                                     <tr>
+                                                                        <th class="ps-0" scope="row">Created By :</th>
+                                                                        <td class="text-muted"><?= $user->created_by ?></td>
+                                                                    </tr>
+                                                                    <tr>
                                                                         <th class="ps-0" scope="row">Joining Date</th>
                                                                         <td class="text-muted">{{date}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th class="ps-0" scope="row">Update Date</th>
+                                                                        <td class="text-muted">{{update}}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>

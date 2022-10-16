@@ -7,6 +7,11 @@
                             Edit Profile
                         </h5>
                     </div>
+                    <div v-else-if="(modal=='editPhoto')">
+                        <h5 class="modal-title" id="exampleModelLabel">
+                            Edit Profile Photo
+                        </h5>
+                    </div>
                     <div v-else>
                         <h5 class="modal-title" id="exampleModelLabel">
                             Create Profile
@@ -15,7 +20,7 @@
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form enctype="multipart/form-data" method="POST" action="<?= BASE_PATH ?>user">
-                    <div class="modal-body">
+                    <div class="modal-body" v-if="(modal!='editPhoto')">
                         <label class="input-group mb-3">Name(s)</label>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1">
@@ -44,11 +49,19 @@
                         </div>
                         <div v-if="(modal=='create')">
                             <div class="input-group mb-3 mt-4">
-                                <label class="form-label">Img User</label>
+                                <label class="form-label">Photo User</label>
                             </div>
                             <div class="input-group mb-3">
                                 <input class="form-control form-control-sm" name="profile_photo" type="file">
                             </div>
+                        </div>
+                    </div>
+                    <div class="modal-body" v-else>
+                        <div class="input-group mb-3 mt-4">
+                            <label class="form-label">Photo User</label>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input class="form-control form-control-sm" name="profile_photo" type="file">
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -19,6 +19,7 @@
             data(){
                 return {
                     date: '',
+                    update: '',
                     modal: '',
                 }
             },methods : {
@@ -89,18 +90,26 @@
                             }
                             })
                             .catch(function (error){
+                                window.location = "<?= BASE_PATH ?>users/";
                                 console.log('error')
                             })
                         } else {
                             swal("The user continues to be saved!");
                         }
                     });
+                },
+                editPhotoUser(id){
+                    app.modal = "editPhoto";
+                    document.getElementById("input_oculto").value = "editPfp";
+                    document.getElementById("id").value = id;
                 }
             },
             mounted(){
                 <?php if(isset($_GET['id'])): ?>
                     var date_aux = "<?php echo $user->created_at ?>";
                     this.date = date_aux.substring(0,10);
+                    date_aux = "<?php echo $user->updated_at ?>";
+                    this.update = date_aux.substring(0,10);
                 <?php endif ?>
                 
             },
