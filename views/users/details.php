@@ -59,7 +59,7 @@
                                     <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist">
                                         <li class="nav-item">
                                             <button @click="editPhotoUser('<?php echo $user->id ?>')" data-bs-toggle="modal" data-bs-target="#userModal" class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
-                                                <span class="d-none d-md-inline-block"><i class="ri-edit-box-line align-bottom"></i> Edit Photo Profile</span>
+                                                <span class="d-none d-md-inline-block"><i class="ri-edit-box-line align-bottom"></i> Edit Profile Picture</span>
                                             </button>
                                         </li>
                                     </ul>

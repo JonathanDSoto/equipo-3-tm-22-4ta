@@ -57,13 +57,13 @@
                 createUser(){
                     app.modal = "create";
                     document.getElementById("input_oculto").value = "store";
-                    document.getElementById("id").value = " ";
-                    document.getElementById("name").value = " ";
-                    document.getElementById("lastname").value = " ";
-                    document.getElementById("email").value = " ";
+                    document.getElementById("id").value = "";
+                    document.getElementById("name").value = "";
+                    document.getElementById("lastname").value = "";
+                    document.getElementById("email").value = "";
                     // document.getElementById("password").value = user.password;
-                    document.getElementById("phone_number").value = " ";
-                    document.getElementById("role").value = " ";
+                    document.getElementById("phone_number").value = "";
+                    document.getElementById("role").value = "";
                 },
                 deleteUser(id){
                     swal({
