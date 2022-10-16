@@ -144,6 +144,32 @@ Class ClientController{
 		$response = json_decode($response);
 
 		if ( isset($response->code) && $response->code > 0) {
+
+            $client = $response->data;
+			$widget_cash = 0;
+			$widget_card = 0;
+			$widget_transfer = 0;
+
+			foreach ($client->orders as $order) {
+				if($order->is_paid == 1){
+                    switch($order->payment_type_id){
+                        case 1:
+                            $widget_cash += $order->total;
+                            break;
+                        case 2:
+                            $widget_card += $order->total;
+                            break;
+                        case 3:
+                            $widget_transfer += $order->total;
+                            break;
+                    }
+                }
+			}
+
+            $response->data->widget_cash = $widget_cash;
+            $response->data->widget_card = $widget_card;
+            $response->data->widget_transfer = $widget_transfer;
+
 			return $response->data;
 		}else{
 			return array();
