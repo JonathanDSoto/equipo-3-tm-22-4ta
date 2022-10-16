@@ -9,7 +9,7 @@
 <body>
 
     <!-- Begin page -->
-    <div id="layout-wrapper">
+    <div id="contenedor">
         <header id="page-topbar">
             <?php include "../../layouts/nav.template.php" ?>
         </header>
@@ -49,7 +49,7 @@
                                         <div class="row g-4">
                                             <div class="col-sm-auto">
                                                 <div>
-                                                    <a href="details.php" class="btn btn-success" id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add User</a>
+                                                    <button @click="createUser()" data-bs-toggle="modal" data-bs-target="#userModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add User</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,17 +125,17 @@
                                                                                     </a>
                                                                                 </li>
                                                                                 <li>
-                                                                                    <a class="dropdown-item edit-list" data-edit-id="1" href="apps-ecommerce-add-product.html">
+                                                                                    <button id="<?php echo $user->id ?>" data-product='<?php echo json_encode($user) ?>' @click="editUser('<?php echo $user->id ?>')" data-bs-toggle="modal" data-bs-target="#userModal" class="dropdown-item edit-list">
                                                                                         <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
                                                                                         Edit
-                                                                                    </a>
+                                                                                    </button>
                                                                                 </li>
                                                                                 <li class="dropdown-divider"></li>
                                                                                 <li>
-                                                                                    <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
+                                                                                    <button @click="deleteUser('<?php echo $user->id ?>')" class="dropdown-item edit-list">
                                                                                         <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
                                                                                         Delete
-                                                                                    </a>
+                                                                                    </button>
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
@@ -166,18 +166,12 @@
             <?php include "../../layouts/footer.template.php" ?>
         </div>
         <!-- end main content-->
+        <!-- Modal -->
+        <?php include "../../layouts/editUserModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
-    <!-- removeItemModal -->
-    <?php include "../../layouts/modal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
-    <!-- JAVASCRIPT -->
-    <script src="<?= BASE_PATH ?>public/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= BASE_PATH ?>public/libs/simplebar/simplebar.min.js"></script>
-    <script src="<?= BASE_PATH ?>public/libs/node-waves/waves.min.js"></script>
-    <script src="<?= BASE_PATH ?>public/libs/feather-icons/feather.min.js"></script>
-    <script src="<?= BASE_PATH ?>public/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="<?= BASE_PATH ?>public/js/plugins.js"></script>
+    <?php include "../../layouts/scripts.template.php" ?>
 
     <!-- nouisliderribute js -->
     <script src="<?= BASE_PATH ?>public/libs/nouislider/nouislider.min.js"></script>
@@ -185,12 +179,9 @@
 
     <!-- gridjs js -->
     <script src="<?= BASE_PATH ?>public/libs/gridjs/gridjs.umd.js"></script>
-    <script src="../../../../unpkg.com/gridjs%405.1.0/plugins/selection/dist/selection.umd.js"></script>
+    <!-- <script src="../../../../unpkg.com/gridjs%405.1.0/plugins/selection/dist/selection.umd.js"></script> -->
     <!-- ecommerce product list -->
-    <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
-
-    <!-- App js -->
-    <script src="<?= BASE_PATH ?>public/js/app.js"></script>
+    <!-- <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script> -->
     
 </body>
 

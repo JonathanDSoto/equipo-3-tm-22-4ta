@@ -10,6 +10,8 @@
     <!-- App js -->
     <script src="<?= BASE_PATH ?>public/js/app.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script type="text/javascript">
         const {createApp} = Vue;
         
@@ -17,6 +19,7 @@
             data(){
                 return {
                     date: '',
+                    modal: '',
                 }
             },methods : {
                 logout(id){
@@ -37,8 +40,9 @@
                         })
                     }
                 },
-                editUser(){
-                    let boton = document.getElementById("edit");
+                editUser(val){
+                    app.modal = "edit";
+                    let boton = document.getElementById(val);
                     document.getElementById("input_oculto").value = "edit";
                     let user = JSON.parse(boton.getAttribute("data-product"));
                     document.getElementById("id").value = user.id;
@@ -48,11 +52,57 @@
                     // document.getElementById("password").value = user.password;
                     document.getElementById("phone_number").value = user.phone_number;
                     document.getElementById("role").value = user.role;
+                },
+                createUser(){
+                    app.modal = "create";
+                    document.getElementById("input_oculto").value = "store";
+                    document.getElementById("id").value = " ";
+                    document.getElementById("name").value = " ";
+                    document.getElementById("lastname").value = " ";
+                    document.getElementById("email").value = " ";
+                    // document.getElementById("password").value = user.password;
+                    document.getElementById("phone_number").value = " ";
+                    document.getElementById("role").value = " ";
+                },
+                deleteUser(id){
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover the information!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("The user was successfully deleted!", {
+                                icon: "success",
+                            });
+                            var bodyFormData = new FormData();
+                            bodyFormData.append('id', id);
+                            bodyFormData.append('action', 'delete');
+                            bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
+
+                            axios.post('<?php echo BASE_PATH ?>user', bodyFormData)
+                            .then(function (response){
+                                if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>users/";
+                            }
+                            })
+                            .catch(function (error){
+                                console.log('error')
+                            })
+                        } else {
+                            swal("The user continues to be saved!");
+                        }
+                    });
                 }
             },
             mounted(){
-                var date_aux = "<?php echo $user->created_at ?>";
-                this.date = date_aux.substring(0,10);
+                <?php if(isset($_GET['id'])): ?>
+                    var date_aux = "<?php echo $user->created_at ?>";
+                    this.date = date_aux.substring(0,10);
+                <?php endif ?>
+                
             },
         }).mount('#contenedor')
     </script>

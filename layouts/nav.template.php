@@ -1,12 +1,11 @@
 <?php 
 	include "../../app/UserController.php";
-    $users = new UserController();
-    $userLog = $users->getUserById($_SESSION['id']);
+    $us = new UserController();
+    $userLog = $us->getUserById($_SESSION['id']);
 	// var_dump($user);
 	if(isset($_GET['id'])){
-		$user = $users->getUserById($_GET['id']);
+		$user = $us->getUserById($_GET['id']);
 	}
-	$us = new UserController();
     $users = $us->getUsers();
     // var_dump($users);
 ?>
