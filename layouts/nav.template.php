@@ -1,8 +1,14 @@
 <?php 
 	include "../../app/UserController.php";
     $users = new UserController();
-    $user = $users->getUserById($_SESSION['id']);
-    // var_dump($user);
+    $userLog = $users->getUserById($_SESSION['id']);
+	// var_dump($user);
+	if(isset($_GET['id'])){
+		$user = $users->getUserById($_GET['id']);
+	}
+	$us = new UserController();
+    $users = $us->getUsers();
+    // var_dump($users);
 ?>
 	<div class="layout-width">
 			<div class="navbar-header">
@@ -62,15 +68,15 @@
 							<div class="dropdown ms-sm-3 header-item topbar-user">
 									<button type="button" class="btn shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											<span class="d-flex align-items-center">
-													<img src="<?= $user->avatar ?>" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+													<img src="<?= $userLog->avatar ?>" class="me-3 rounded-circle avatar-xs" alt="user-pic">
 													<span class="text-start ms-xl-2">									  <!-- Nombre -->
-															<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= $user->name ?></span>
+															<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= $userLog->name ?></span>
 													</span>
 											</span>
 									</button>
 									<div class="dropdown-menu dropdown-menu-end">
 											<!-- item-->
-											<h6 class="dropdown-header">Welcome <?= $user->name ?></h6>
+											<h6 class="dropdown-header">Welcome <?= $userLog->name ?></h6>
 											<a class="dropdown-item" href="<?= BASE_PATH ?>users/<?= $_SESSION['id']?>"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
 											<div class="dropdown-divider"></div>
 											<a class="dropdown-item" href="pages-profile-settings.html"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>

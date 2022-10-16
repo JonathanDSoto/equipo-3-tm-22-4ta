@@ -80,67 +80,69 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="gridjs-tbody">
-                                                        <tr class="gridjs-tr">
-                                                            <td data-column-id="name" class="gridjs-td">
-                                                                <span>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="flex-shrink-0 me-3">
-                                                                            <div class="avatar-sm bg-light rounded p-1">
-                                                                                <img src="assets/images/products/img-1.png" alt="" class="img-fluid d-block">
+                                                        <?php foreach($users as $user): ?>
+                                                            <tr class="gridjs-tr">
+                                                                <td data-column-id="name" class="gridjs-td">
+                                                                    <span>
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div class="flex-shrink-0 me-3">
+                                                                                <div class="avatar-sm bg-light rounded p-1">
+                                                                                    <img src="<?= $user->avatar ?>" alt="" class="img-fluid d-block">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="flex-grow-1">
+                                                                                <h5 class="fs-14 mb-1">
+                                                                                    <a href="details.php" class="text-dark">
+                                                                                        <?= $user->name ?>
+                                                                                    </a>
+                                                                                </h5>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="flex-grow-1">
-                                                                            <h5 class="fs-14 mb-1">
-                                                                                <a href="details.php" class="text-dark">
-                                                                                    NAME
-                                                                                </a>
-                                                                            </h5>
+                                                                    </span>
+                                                                </td>
+                                                                <td data-column-id="emial" class="gridjs-td">
+                                                                    <?= $user->email ?>
+                                                                </td>
+                                                                <td data-column-id="phone" class="gridjs-td">
+                                                                    <span>
+                                                                        <?= $user->phone_number ?>
+                                                                    </span>
+                                                                </td>
+                                                                <td data-column-id="role" class="gridjs-td">
+                                                                    <?= $user->role ?>
+                                                                </td>
+                                                                <td data-column-id="action" class="gridjs-td">
+                                                                    <span>
+                                                                        <div class="dropdown">
+                                                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                <i class="ri-more-fill"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                                                <li>
+                                                                                    <a class="dropdown-item" href="<?= BASE_PATH ?>users/<?= $user->id ?>">
+                                                                                        <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                                                                        View
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a class="dropdown-item edit-list" data-edit-id="1" href="apps-ecommerce-add-product.html">
+                                                                                        <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
+                                                                                        Edit
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="dropdown-divider"></li>
+                                                                                <li>
+                                                                                    <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
+                                                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                                        Delete
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
                                                                         </div>
-                                                                    </div>
-                                                                </span>
-                                                            </td>
-                                                            <td data-column-id="emial" class="gridjs-td">
-                                                                EMAIL
-                                                            </td>
-                                                            <td data-column-id="phone" class="gridjs-td">
-                                                                <span>
-                                                                    PHONE
-                                                                </span>
-                                                            </td>
-                                                            <td data-column-id="role" class="gridjs-td">
-                                                                ROLE
-                                                            </td>
-                                                            <td data-column-id="action" class="gridjs-td">
-                                                                <span>
-                                                                    <div class="dropdown">
-                                                                        <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                            <i class="ri-more-fill"></i>
-                                                                        </button>
-                                                                        <ul class="dropdown-menu dropdown-menu-end">
-                                                                            <li>
-                                                                                <a class="dropdown-item" href="apps-ecommerce-product-details.html">
-                                                                                    <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
-                                                                                    View
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item edit-list" data-edit-id="1" href="apps-ecommerce-add-product.html">
-                                                                                    <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
-                                                                                    Edit
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="dropdown-divider"></li>
-                                                                            <li>
-                                                                                <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
-                                                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                                    Delete
-                                                                                </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </span>
-                                                            </td>
-                                                        </tr>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endforeach ?>
                                                     </tbody>
                                                 </table>
                                             </div>
