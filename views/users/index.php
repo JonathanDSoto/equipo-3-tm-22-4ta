@@ -51,6 +51,7 @@
                                                 <div>
                                                     <button @click="createUser()" data-bs-toggle="modal" data-bs-target="#userModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add User</button>
                                                 </div>
+                                                <!-- {{usuarios}} -->
                                             </div>
                                         </div>
                                     </div>
@@ -79,70 +80,74 @@
                                                             </th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody class="gridjs-tbody">
-                                                        <?php foreach($users as $user): ?>
-                                                            <tr class="gridjs-tr">
-                                                                <td data-column-id="name" class="gridjs-td">
-                                                                    <span>
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="flex-shrink-0 me-3">
-                                                                                <div class="avatar-sm bg-light rounded p-1">
-                                                                                    <img src="<?= $user->avatar ?>" alt="" class="img-fluid d-block">
-                                                                                </div>
+                                                    <tbody class="gridjs-tbody" v-if="usuarios!=null">
+                                                        <tr class="gridjs-tr" v-for="usuario in usuarios">
+                                                            <!-- <td>
+                                                            {{usuario}}
+                                                            </td> -->
+                                                            <td data-column-id="name" class="gridjs-td">
+                                                                <span>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 me-3">
+                                                                            <div v-if="usuario.avatar!='https://crud.jonathansoto.mx/storage/users/avatars/'" class="avatar-sm bg-light rounded p-1">
+                                                                                <img :src="usuario.avatar" alt="" class="img-fluid d-block">
                                                                             </div>
-                                                                            <div class="flex-grow-1">
-                                                                                <h5 class="fs-14 mb-1">
-                                                                                    <a href="<?= BASE_PATH ?>users/<?= $user->id ?>" class="text-dark">
-                                                                                        <?= $user->name ?>
-                                                                                    </a>
-                                                                                </h5>
+                                                                            <div v-else class="avatar-sm bg-light rounded p-1">
+                                                                                <img src="https://media.tenor.com/OXua4v7_uSkAAAAC/profile-picture.gifr" alt="" class="img-fluid d-block">
                                                                             </div>
                                                                         </div>
-                                                                    </span>
-                                                                </td>
-                                                                <td data-column-id="emial" class="gridjs-td">
-                                                                    <?= $user->email ?>
-                                                                </td>
-                                                                <td data-column-id="phone" class="gridjs-td">
-                                                                    <span>
-                                                                        <?= $user->phone_number ?>
-                                                                    </span>
-                                                                </td>
-                                                                <td data-column-id="role" class="gridjs-td">
-                                                                    <?= $user->role ?>
-                                                                </td>
-                                                                <td data-column-id="action" class="gridjs-td">
-                                                                    <span>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                <i class="ri-more-fill"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                                                <li>
-                                                                                    <a class="dropdown-item" href="<?= BASE_PATH ?>users/<?= $user->id ?>">
-                                                                                        <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
-                                                                                        View
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <button id="<?php echo $user->id ?>" data-product='<?php echo json_encode($user) ?>' @click="editUser('<?php echo $user->id ?>')" data-bs-toggle="modal" data-bs-target="#userModal" class="dropdown-item edit-list">
-                                                                                        <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
-                                                                                        Edit
-                                                                                    </button>
-                                                                                </li>
-                                                                                <li class="dropdown-divider"></li>
-                                                                                <li>
-                                                                                    <button @click="deleteUser('<?php echo $user->id ?>')" class="dropdown-item edit-list">
-                                                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                                        Delete
-                                                                                    </button>
-                                                                                </li>
-                                                                            </ul>
+                                                                        <div class="flex-grow-1">
+                                                                            <h5 class="fs-14 mb-1">
+                                                                                <a :href="'<?= BASE_PATH ?>users/'+usuario.id" class="text-dark">
+                                                                                    {{usuario.name}}
+                                                                                </a>
+                                                                            </h5>
                                                                         </div>
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                        <?php endforeach ?>
+                                                                    </div>
+                                                                </span>
+                                                            </td>
+                                                            <td data-column-id="emial" class="gridjs-td">
+                                                                {{usuario.email}}
+                                                            </td>
+                                                            <td data-column-id="phone" class="gridjs-td">
+                                                                <span>
+                                                                    {{usuario.phone_number}}
+                                                                </span>
+                                                            </td>
+                                                            <td data-column-id="role" class="gridjs-td">
+                                                                {{usuario.role}}
+                                                            </td>
+                                                            <td data-column-id="action" class="gridjs-td">
+                                                                <span>
+                                                                    <div class="dropdown">
+                                                                        <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <i class="ri-more-fill"></i>
+                                                                        </button>
+                                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                                            <li>
+                                                                                <a class="dropdown-item" :href="'<?= BASE_PATH ?>users/'+usuario.id" >
+                                                                                    <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                                                                    View
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <button :id="usuario.id" :data-product='JSON.stringify(usuario)' v-on:click="editUser(usuario.id)" data-bs-toggle="modal" data-bs-target="#userModal" class="dropdown-item edit-list">
+                                                                                    <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
+                                                                                    Edit
+                                                                                </button>
+                                                                            </li>
+                                                                            <li class="dropdown-divider"></li>
+                                                                            <li>
+                                                                                <button v-on:click="deleteUser(usuario.id)" class="dropdown-item edit-list">
+                                                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                                    Delete
+                                                                                </button>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>

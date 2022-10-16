@@ -3,9 +3,6 @@
     $us = new UserController();
     $userLog = $us->getUserById($_SESSION['id']);
 	// var_dump($user);
-	if(isset($_GET['id'])){
-		$user = $us->getUserById($_GET['id']);
-	}
     $users = $us->getUsers();
     // var_dump($users);
 ?>

@@ -21,6 +21,8 @@
                     date: '',
                     update: '',
                     modal: '',
+                    usuarios: null,
+                    usuario: null,
                 }
             },methods : {
                 logout(id){
@@ -46,7 +48,7 @@
                     let boton = document.getElementById(val);
                     document.getElementById("input_oculto").value = "edit";
                     let user = JSON.parse(boton.getAttribute("data-product"));
-                    console.log(user.created_by);
+                    console.log(user);
                     document.getElementById("id").value = user.id;
                     document.getElementById("name").value = user.name;
                     document.getElementById("lastname").value = user.lastname;
@@ -104,16 +106,58 @@
                     app.modal = "editPhoto";
                     document.getElementById("input_oculto").value = "editPfp";
                     document.getElementById("id").value = id;
-                }
+                },
             },
             mounted(){
+
+                var config = {
+                    method: 'get',
+                    url: 'https://crud.jonathansoto.mx/api/users',
+                    headers: { 
+                        'Authorization': 'Bearer '+'<?php echo $_SESSION['token'] ?>'
+                    }
+                };
+
+                axios(config)
+                .then(function (response) {
+                    // console.log(JSON.stringify(response.data));
+                    // console.log(response.data.data);
+                    app.usuarios = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+                var id = '<?php echo $_SESSION['id'] ?>';
                 <?php if(isset($_GET['id'])): ?>
-                    var date_aux = "<?php echo $user->created_at ?>";
-                    this.date = date_aux.substring(0,10);
-                    date_aux = "<?php echo $user->updated_at ?>";
-                    this.update = date_aux.substring(0,10);
+                    id = '<?php echo $_GET['id'] ?>';
                 <?php endif ?>
-                
+
+                console.log(id);
+                var config = {
+                    method: 'get',
+                    url: 'https://crud.jonathansoto.mx/api/users/'+id,
+                    headers: { 
+                        'Authorization': 'Bearer '+'<?php echo $_SESSION['token'] ?>'
+                    }
+                };
+
+                axios(config)
+                .then(function (response) {
+                    console.log(JSON.stringify(response.data));
+                    app.usuario = response.data.data;
+                    console.log(app.usuario);
+                    <?php if(isset($_GET['id'])): ?>
+                        var date_aux = app.usuario.created_at;
+                        app.date = date_aux.substring(0,10);
+                        var date_aux = app.usuario.updated_at;
+                        app.update = date_aux.substring(0,10);
+                    <?php endif ?>
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
             },
         }).mount('#contenedor')
     </script>
