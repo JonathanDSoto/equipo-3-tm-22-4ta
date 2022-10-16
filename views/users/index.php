@@ -92,7 +92,7 @@
                                                                             </div>
                                                                             <div class="flex-grow-1">
                                                                                 <h5 class="fs-14 mb-1">
-                                                                                    <a href="details.php" class="text-dark">
+                                                                                    <a href="<?= BASE_PATH ?>users/<?= $user->id ?>" class="text-dark">
                                                                                         <?= $user->name ?>
                                                                                     </a>
                                                                                 </h5>
