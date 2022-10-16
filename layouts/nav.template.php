@@ -1,6 +1,14 @@
-
+<?php 
+	include "../../app/UserController.php";
+	$us = new UserController();
+	$users = $us->getUsers();
+    $userLog = $us->getUserById($_SESSION['id']);
+	if(isset($_GET['id'])){
+		$user = $us->getUserById($_GET['id']);
+	}
+?>
 <div class="layout-width">
-	<div class="navbar-header" v-if="usuarioLog!=null">
+	<div class="navbar-header">
 		<div class="d-flex">
 			<!-- LOGO -->
 			<div class="navbar-brand-box horizontal-logo">
@@ -57,19 +65,19 @@
 			<div class="dropdown ms-sm-3 header-item topbar-user">
 				<button type="button" class="btn shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<span class="d-flex align-items-center">
-						<img :src="usuarioLog.avatar" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+						<img src="<?= $userLog->avatar ?>" class="me-3 rounded-circle avatar-xs" alt="user-pic">
 						<span class="text-start ms-xl-2">									  <!-- Nombre -->
-							<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{usuarioLog.name}}</span>
+								<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= $userLog->name ?></span>
 						</span>
 					</span>
 				</button>
 				<div class="dropdown-menu dropdown-menu-end">
-					<!-- item-->
-					<h6 class="dropdown-header">Welcome {{usuarioLog.name}}</h6>
-					<a class="dropdown-item" :href="'<?= BASE_PATH ?>users/'+usuarioLog.id"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="pages-profile-settings.html"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
-					<button  v-on:click="logout(usuarioLog.id)" class="dropdown-item"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></button>	
+						<!-- item-->
+						<h6 class="dropdown-header">Welcome <?= $userLog->name ?></h6>
+						<a class="dropdown-item" href="<?= BASE_PATH ?>users/<?= $_SESSION['id']?>"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="pages-profile-settings.html"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
+						<button @click="logout('<?= $_SESSION['id'] ?>')" class="dropdown-item"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></button>	
 				</div>
 			</div>
 		</div>

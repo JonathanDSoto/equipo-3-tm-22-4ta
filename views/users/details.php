@@ -1,5 +1,5 @@
 <?php
-	include_once "../../app/config.php";
+	include_once "../../app/config.php"
 ?> 
 <!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -26,7 +26,7 @@
         <!-- ============================================================== -->
         <div class="main-content">
             <div class="page-content">
-                <div class="container-fluid" v-if="usuario!=null">
+                <div class="container-fluid">
                     <div class="profile-foreground position-relative mx-n4 mt-n4">
                         <div class="profile-wid-bg">
                                 <!-- IMAGEN DE FONDO -->
@@ -37,14 +37,14 @@
                         <div class="row g-4">
                             <div class="col-auto">
                                 <div class="avatar-lg">
-                                    <img :src="usuario.avatar" alt="user-img" class="img-thumbnail rounded-circle" />
+                                    <img src="<?= $user->avatar ?>" alt="user-img" class="img-thumbnail rounded-circle" />
                                 </div>
                             </div>
                             <!--end col-->
                             <div class="col">
                                 <div class="p-3">
-                                    <h3 class="text-white mb-1">{{usuario.name}}</h3>
-                                    <p class="text-white-75">{{usuario.role}}</p>
+                                    <h3 class="text-white mb-1"><?= $user->name ?></h3>
+                                    <p class="text-white-75"><?= $user->role ?></p>
                                 </div>
                             </div>
                         </div>
@@ -57,13 +57,13 @@
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist">
                                         <li class="nav-item">
-                                            <button v-on:click="editPhotoUser(usuario.id)"  data-bs-toggle="modal" data-bs-target="#userModal" class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
+                                            <button @click="editPhotoUser('<?php echo $user->id ?>')" data-bs-toggle="modal" data-bs-target="#userModal" class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
                                                 <span class="d-none d-md-inline-block"><i class="ri-edit-box-line align-bottom"></i> Edit Profile Picture</span>
                                             </button>
                                         </li>
                                     </ul>
                                     <div class="flex-shrink-0">
-                                        <button :id="usuario.id" :data-product='JSON.stringify(usuario)' v-on:click="editUser(usuario.id)" data-bs-toggle="modal" data-bs-target="#userModal" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</button>
+                                        <button id="<?php echo $user->id ?>" data-product='<?php echo json_encode($user) ?>' @click="editUser('<?php echo $user->id ?>')"  data-bs-toggle="modal" data-bs-target="#userModal" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</button>
                                     </div>
                                 </div>
                                 <!-- Tab panes -->
@@ -79,19 +79,19 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Full Name :</th>
-                                                                        <td class="text-muted">{{usuario.name}} {{usuario.lastname}}</td>
+                                                                        <td class="text-muted"><?= $user->name." ".$user->lastname ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">E-mail :</th>
-                                                                        <td class="text-muted">{{usuario.email}}</td>
+                                                                        <td class="text-muted"><?= $user->email ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Mobile :</th>
-                                                                        <td class="text-muted">{{usuario.phone_number}}</td>
+                                                                        <td class="text-muted"><?= $user->phone_number ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Created By :</th>
-                                                                        <td class="text-muted">{{usuario.created_by}}</td>
+                                                                        <td class="text-muted"><?= $user->created_by ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Joining Date</th>
