@@ -72,6 +72,7 @@
                             Save changes
                         </button>
                     </div>
+                    <input id="created_by" type="hidden" name="created_by" value="default">
                     <input id="input_oculto" type="hidden" name="action" value="store">
                     <input id="id" type="hidden" name="id">
                     <input type="hidden" value="<?= $_SESSION['global_token'] ?>" name="global_token">

@@ -46,10 +46,12 @@
                     let boton = document.getElementById(val);
                     document.getElementById("input_oculto").value = "edit";
                     let user = JSON.parse(boton.getAttribute("data-product"));
+                    console.log(user.created_by);
                     document.getElementById("id").value = user.id;
                     document.getElementById("name").value = user.name;
                     document.getElementById("lastname").value = user.lastname;
                     document.getElementById("email").value = user.email;
+                    document.getElementById("created_by").value = user.created_by;
                     // document.getElementById("password").value = user.password;
                     document.getElementById("phone_number").value = user.phone_number;
                     document.getElementById("role").value = user.role;
