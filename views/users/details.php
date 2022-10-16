@@ -7,16 +7,6 @@
     <?php include "../../layouts/head.template.php" ?>
   <!-- swiper css -->
   <link rel="stylesheet" href="<?= BASE_PATH ?>public/libs/swiper/swiper-bundle.min.css" />
-  <!-- Layout config Js -->
-  <script src="<?= BASE_PATH ?>public/js/layout.js"></script>
-  <!-- Bootstrap Css -->
-  <link href="<?= BASE_PATH ?>public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <!-- Icons Css -->
-  <link href="<?= BASE_PATH ?>public/css/icons.min.css" rel="stylesheet" type="text/css" />
-  <!-- App Css-->
-  <link href="<?= BASE_PATH ?>public/css/app.min.css" rel="stylesheet" type="text/css" />
-  <!-- custom Css-->
-  <link href="<?= BASE_PATH ?>public/css/custom.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -74,7 +64,7 @@
                                         </li>
                                     </ul>
                                     <div class="flex-shrink-0">
-                                        <a href="#" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
+                                        <button id="edit" data-product='<?php echo json_encode($user) ?>' @click="editUser()" data-bs-toggle="modal" data-bs-target="#userModal" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</button>
                                     </div>
                                 </div>
                                 <!-- Tab panes -->
@@ -90,7 +80,7 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Full Name :</th>
-                                                                        <td class="text-muted"><?=$user->name?></td>
+                                                                        <td class="text-muted"><?= $user->name." ".$user->lastname ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">E-mail :</th>
@@ -133,7 +123,53 @@
         </div><!-- end main content-->
 
     </div>
-    <!-- END layout-wrapper -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModelLabel">
+                        Edit Profile
+                    </h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="<?= BASE_PATH ?>user">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control"  id="email" name="email" placeholder="Email" aria-label="email" aria-describedby="basic-addon1">
+                        </div>
+                        <!-- <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="basic-addon1">
+                        </div> -->
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="role" name="role" placeholder="Role" value="Administrador">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Save changes
+                        </button>
+                    </div>
+                    <input id="input_oculto" type="hidden" name="action" value="store">
+                    <input id="id" type="hidden" name="id">
+                    <input type="hidden" value="<?= $_SESSION['global_token'] ?>" name="global_token">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
     <?php include "../../layouts/function_footer.template.php" ?>
     <?php include "../../layouts/scripts.template.php" ?>
     <!-- swiper js -->

@@ -5,6 +5,7 @@
     <script src="<?= BASE_PATH ?>public/libs/feather-icons/feather.min.js"></script>
     <script src="<?= BASE_PATH ?>public/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="<?= BASE_PATH ?>public/js/plugins.js"></script>
+    
 
     <!-- App js -->
     <script src="<?= BASE_PATH ?>public/js/app.js"></script>
@@ -35,6 +36,18 @@
                             console.log('error')
                         })
                     }
+                },
+                editUser(){
+                    let boton = document.getElementById("edit");
+                    document.getElementById("input_oculto").value = "edit";
+                    let user = JSON.parse(boton.getAttribute("data-product"));
+                    document.getElementById("id").value = user.id;
+                    document.getElementById("name").value = user.name;
+                    document.getElementById("lastname").value = user.lastname;
+                    document.getElementById("email").value = user.email;
+                    // document.getElementById("password").value = user.password;
+                    document.getElementById("phone_number").value = user.phone_number;
+                    document.getElementById("role").value = user.role;
                 }
             },
             mounted(){
