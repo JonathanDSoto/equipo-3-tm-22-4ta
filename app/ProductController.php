@@ -16,9 +16,30 @@ if (isset($_POST['action'])) {
 				$brand_id = strip_tags($_POST['brand_id']);
 				$cover = $_FILES['cover']['tmp_name'];
 
+				$categories = array();
+				$count = 0;
+				while (true){
+					if(isset($_POST['categories['.$count.']'])){
+						$categories['categories['.$count.']'] = strip_tags($_POST['categories['.$count.']']);
+						$count++;
+					}
+					else break;
+				}
+
+				$tags = array();
+				$count = 0;
+				while (true){
+					if(isset($_POST['tags['.$count.']'])){
+						$tags['tags['.$count.']'] = strip_tags($_POST['tags['.$count.']']);
+						$count++;
+					}
+					else break;
+				}
+
 				$productController = new ProductController();
 
-				$productController->create($name,$slug,$description,$features,$brand_id, $cover);
+				$productController->create($name,$slug,$description,$features,$brand_id, $cover, 
+				$categories, $tags);
 				 
 			break; 
 
@@ -31,9 +52,30 @@ if (isset($_POST['action'])) {
 				$features = strip_tags($_POST['features']);
 				$brand_id = strip_tags($_POST['brand_id']);
 
+				$categories = '';
+				$count = 0;
+				while (true){
+					if(isset($_POST['categories['.$count.']'])){
+						$categories .= '&categories['.$count.']=' . strip_tags($_POST['categories['.$count.']']);
+						$count++;
+					}
+					else break;
+				}
+
+				$tags = '';
+				$count = 0;
+				while (true){
+					if(isset($_POST['tags['.$count.']'])){
+						$tags .= '&tags['.$count.']=' . strip_tags($_POST['tags['.$count.']']);
+						$count++;
+					}
+					else break;
+				}
+
 				$productController = new ProductController();
 
-				$productController->update($id, $name,$slug,$description,$features,$brand_id);
+				$productController->update($id, $name,$slug,$description,$features,$brand_id,
+				$categories, $tags);
 				 
 			break;
 
@@ -152,7 +194,7 @@ Class ProductController
 		}
 	}
 	
-	public function create($name,$slug,$description,$features,$brand_id, $cover)
+	public function create($name,$slug,$description,$features,$brand_id, $cover, $categories, $tags)
 	{
 
 		$curl = curl_init();
@@ -173,7 +215,7 @@ Class ProductController
 		  	'features' => $features,
 		  	'brand_id' => $brand_id,
 		  	'cover'=> new CURLFILE($cover)
-		  ),
+		  ) + $categories + $tags,
 		  CURLOPT_HTTPHEADER => array(
 		    'Authorization: Bearer '.$_SESSION['token']
 		  ),
@@ -194,10 +236,9 @@ Class ProductController
 
 	}
 
-	public function update($id, $name,$slug,$description,$features,$brand_id)
+	public function update($id, $name,$slug,$description,$features,$brand_id, $categories, $tags)
 	{
- 
-
+		
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
@@ -209,7 +250,7 @@ Class ProductController
 		  CURLOPT_FOLLOWLOCATION => true,
 		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		  CURLOPT_CUSTOMREQUEST => 'PUT',
-		  CURLOPT_POSTFIELDS => 'name='.$name.'&slug='.$slug.'&description='.$description.'&features='.$features.'&brand_id='.$brand_id.'&id='.$id,
+		  CURLOPT_POSTFIELDS => 'name='.$name.'&slug='.$slug.'&description='.$description.'&features='.$features.'&brand_id='.$brand_id.'&id='.$id.$categories.$tags,
 		  CURLOPT_HTTPHEADER => array(
 		    'Authorization: Bearer '.$_SESSION['token'],
 		    'Content-Type: application/x-www-form-urlencoded'
