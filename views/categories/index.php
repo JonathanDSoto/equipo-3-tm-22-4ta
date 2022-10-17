@@ -43,26 +43,25 @@
                     <!-- end page title -->
                     <div class="row">
                     <!-- start cart -->
-                      <a href="">
                         <div class="col-xl-3 col-md-6">
-                          <div class="card card-animate">
-                              <div class="card-body">
-                                  <div class="d-flex justify-content-between">
-                                    <div>
-                                        <p class="fw-medium text-muted mb-0">CATEGORIE</p>
-                                        <h2 class="mt-4 ff-secondary fw-semibold"><span>NAME</span></h2>
-                                    </div>
-                                    <div>
-                                        <div class="avatar-sm flex-shrink-0">
-                                            <span class="avatar-title bg-soft-info rounded-circle fs-2 shadow">
-                                                
-                                            </span>
+                            <a class="card-body" href="">
+                                <div class="card card-height-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-sm flex-shrink-0">
+                                                <span class="avatar-title bg-info text-white rounded-2 fs-2 shadow">
+                                                    <i class="bx bx-store-alt"></i>
+                                                </span>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <p class="text-uppercase fw-medium text-muted mb-3">ANOTHER TEXT</p>
+                                                <h4 class="fs-4 mb-3"><span>NAME CATEGORIE</span></h4>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div><!-- end card body -->
                                 </div>
-                            </div><!-- end card body -->
+                            </a>
                         </div>
-                      </a>
                     </div> <!-- end card-->
 
                   </div>
