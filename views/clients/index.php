@@ -132,10 +132,10 @@
                                                                                 </li>
                                                                                 <li class="dropdown-divider"></li>
                                                                                 <li>
-                                                                                    <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
+                                                                                    <button @click="deleteClient('<?php echo $client->id ?>')" class="dropdown-item remove-list">
                                                                                         <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
                                                                                         Delete
-                                                                                    </a>
+                                                                                    </button>
                                                                                 </li>
                                                                             </ul>
                                                                         </div>

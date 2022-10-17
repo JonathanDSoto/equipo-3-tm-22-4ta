@@ -129,6 +129,38 @@
                     document.getElementById("phone_number").value = client.phone_number;
                     document.getElementById("level").value = "";
                 },
+                deleteClient(id){
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover the information!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("The user was successfully deleted!", {
+                                icon: "success",
+                            });
+                            var bodyFormData = new FormData();
+                            bodyFormData.append('id', id);
+                            bodyFormData.append('action', 'delete');
+                            bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
+
+                            axios.post('<?php echo BASE_PATH ?>client', bodyFormData)
+                            .then(function (response){
+                                if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>clients/";
+                            }
+                            })
+                            .catch(function (error){
+                                console.log('error')
+                            })
+                        } else {
+                            swal("The user continues to be saved!");
+                        }
+                    });
+                },
             },
             mounted(){
 
