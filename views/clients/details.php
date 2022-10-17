@@ -1,5 +1,10 @@
 <?php
 	include_once "../../app/config.php";
+    include "../../app/ClientController.php";
+    $cl = new ClientController();
+    if(isset($_GET['id'])){
+        $client = $cl->getClientById($_GET['id']);
+	}
 ?> 
 <!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -44,8 +49,7 @@
                             <!--end col-->
                             <div class="col">
                                 <div class="p-3">
-                                    <h3 class="text-white mb-1">Name Lastname</h3>
-                                    <p class="text-white-75">Role</p>
+                                    <h3 class="text-white mb-1"><?= $client->name ?></h3>
                                 </div>
                             </div>
                         </div>
@@ -58,13 +62,13 @@
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
+                                            <!-- <a class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
                                                 <i class="ri-airplay-fill d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Overview</span>
-                                            </a>
+                                            </a> -->
                                         </li>
                                     </ul>
                                     <div class="flex-shrink-0">
-                                        <a href="#" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Client</a>
+                                        <button id="<?php echo $client->id ?>" data-client='<?php echo json_encode($client) ?>' @click="editClient('<?php echo $client->id ?>')" data-bs-toggle="modal" data-bs-target="#clientModal" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Client</button>
                                     </div>
                                 </div>
                                 <!-- Tab panes -->
@@ -80,23 +84,27 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Full Name :</th>
-                                                                        <td class="text-muted">NAME</td>
+                                                                        <td class="text-muted"><?= $client->name ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">E-mail :</th>
-                                                                        <td class="text-muted">EMAIL</td>
+                                                                        <td class="text-muted"><?= $client->email ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Phone :</th>
-                                                                        <td class="text-muted">PHONE</td>
+                                                                        <td class="text-muted"><?= $client->phone_number ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Is suscribed :</th>
-                                                                        <td class="text-muted">Is SUScribed</td>
+                                                                        <td class="text-muted"v-if="<?= $client->is_suscribed ?>==1">TRUE</td>
+                                                                        <td class="text-muted"v-if="<?= $client->is_suscribed ?>==0">FALSE</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Level :</th>
-                                                                        <td class="text-muted">LEVEL NAME -> PROCENTAGE DISCOUNT</td>
+                                                                        <td class="text-muted"><?= $client->level->name ?></td>
+                                                                    </tr><tr>
+                                                                        <th class="ps-0" scope="row">PROCENTAGE DISCOUNT :</th>
+                                                                        <td class="text-muted">%<?= $client->level->percentage_discount ?></td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -206,7 +214,7 @@
                                                                         <thead class="gridjs-thead">
                                                                             <tr class="gridjs-tr">
                                                                                 <th data-column-id="name" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
-                                                                                    <div class="gridjs-th-content">Order</div>
+                                                                                    <div class="gridjs-th-content">Folio</div>
                                                                                 </th>
                                                                                 <th data-column-id="action" class="gridjs-th gridjs-th-sort text-muted" style="width: 84px;" tabindex="0">
                                                                                     <div class="gridjs-th-content">Action</div>
@@ -214,45 +222,47 @@
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody class="gridjs-tbody">
-                                                                            <tr class="gridjs-tr">
-                                                                                <td data-column-id="name" class="gridjs-td">
-                                                                                    <span>
-                                                                                        <div class="d-flex align-items-center">
-                                                                                            <div class="flex-grow-1">
-                                                                                                <h5 class="fs-14 mb-1">
-                                                                                                    <p href="details.php" class="text-dark">
-                                                                                                        ADDRESS
-                                                                                                    </p>
-                                                                                                </h5>
+                                                                            <?php foreach($client->orders as $order): ?>
+                                                                                <tr class="gridjs-tr">
+                                                                                    <td data-column-id="name" class="gridjs-td">
+                                                                                        <span>
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <div class="flex-grow-1">
+                                                                                                    <h5 class="fs-14 mb-1">
+                                                                                                        <p href="details.php" class="text-dark">
+                                                                                                            <?= $order->folio ?>
+                                                                                                        </p>
+                                                                                                    </h5>
+                                                                                                </div>
                                                                                             </div>
-                                                                                        </div>
-                                                                                    </span>
-                                                                                </td>
-                                                                                <td data-column-id="action" class="gridjs-td">
-                                                                                    <span>
-                                                                                        <div class="dropdown">
-                                                                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                                <i class="ri-more-fill"></i>
-                                                                                            </button>
-                                                                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                                                                <li>
-                                                                                                    <a class="dropdown-item edit-list" data-edit-id="1" href="#">
-                                                                                                        <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
-                                                                                                        Edit
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                                <li class="dropdown-divider"></li>
-                                                                                                <li>
-                                                                                                    <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
-                                                                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                                                        Delete
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </span>
-                                                                                </td>
-                                                                            </tr>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td data-column-id="action" class="gridjs-td">
+                                                                                        <span>
+                                                                                            <div class="dropdown">
+                                                                                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                                    <i class="ri-more-fill"></i>
+                                                                                                </button>
+                                                                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                                                                    <li>
+                                                                                                        <a class="dropdown-item edit-list" data-edit-id="1" href="#">
+                                                                                                            <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
+                                                                                                            Edit
+                                                                                                        </a>
+                                                                                                    </li>
+                                                                                                    <li class="dropdown-divider"></li>
+                                                                                                    <li>
+                                                                                                        <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
+                                                                                                            <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                                                            Delete
+                                                                                                        </a>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            <?php endforeach ?>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>

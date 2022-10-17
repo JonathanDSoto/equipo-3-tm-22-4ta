@@ -52,7 +52,7 @@
                             <div class="collapse menu-dropdown" id="sidebarDashboards">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"> Categories </a>
+                                        <a href="<?= BASE_PATH ?>categories/" class="nav-link" data-key="t-analytics"> Categories </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> Brands </a>
@@ -66,7 +66,7 @@
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="widgets.html">
-                                <i class="ri-coupon-line"></i> <span data-key="t-widgets">Cupons</span>
+                                <i class="ri-coupon-line"></i> <span data-key="t-widgets">Coupons</span>
                             </a>
                         </li> 
 

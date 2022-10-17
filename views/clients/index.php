@@ -92,7 +92,7 @@
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="flex-grow-1">
                                                                                 <h5 class="fs-14 mb-1">
-                                                                                    <a href="details.php" class="text-dark">
+                                                                                    <a href="<?= BASE_PATH ?>clients/<?= $client->id ?>" class="text-dark">
                                                                                         <?= $client->name ?>
                                                                                     </a>
                                                                                 </h5>
