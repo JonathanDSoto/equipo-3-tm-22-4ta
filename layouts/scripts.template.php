@@ -105,6 +105,16 @@
                     document.getElementById("input_oculto").value = "editPfp";
                     document.getElementById("id").value = id;
                 },
+                createClient(){
+                    app.modal = "create";
+                    document.getElementById("input_oculto").value = "store";
+                    document.getElementById("id").value = "";
+                    document.getElementById("name").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("password").value = "";
+                    document.getElementById("phone_number").value = "";
+                    document.getElementById("level").value = "";
+                },
             },
             mounted(){
 

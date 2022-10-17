@@ -1,5 +1,9 @@
 <?php
 	include_once "../../app/config.php";
+    include "../../app/ClientController.php";
+    $cl = new ClientController();
+	$clients = $cl->getClients();
+    // var_dump($clients)
 ?> 
 <!DOCTYPE html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -9,7 +13,7 @@
 <body>
 
     <!-- Begin page -->
-    <div id="layout-wrapper">
+    <div id="contenedor">
         <header id="page-topbar">
             <?php include "../../layouts/nav.template.php" ?>
         </header>
@@ -50,7 +54,7 @@
                                         <div class="row g-4">
                                             <div class="col-sm-auto">
                                                 <div>
-                                                    <a href="details.php" class="btn btn-success" id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add Client</a>
+                                                    <a @click="createClient()" data-bs-toggle="modal" data-bs-target="#clientModal" class="btn btn-success" id="addClientBtn"><i class="ri-add-line align-bottom me-1"></i> Add Client</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,62 +85,64 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="gridjs-tbody">
-                                                        <tr class="gridjs-tr">
-                                                            <td data-column-id="name" class="gridjs-td">
-                                                                <span>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="flex-grow-1">
-                                                                            <h5 class="fs-14 mb-1">
-                                                                                <a href="details.php" class="text-dark">
-                                                                                    NOMBRE
-                                                                                </a>
-                                                                            </h5>
+                                                        <?php foreach($clients as $client): ?>
+                                                            <tr class="gridjs-tr">
+                                                                <td data-column-id="name" class="gridjs-td">
+                                                                    <span>
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div class="flex-grow-1">
+                                                                                <h5 class="fs-14 mb-1">
+                                                                                    <a href="details.php" class="text-dark">
+                                                                                        <?= $client->name ?>
+                                                                                    </a>
+                                                                                </h5>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </span>
-                                                            </td>
-                                                            <td data-column-id="emial" class="gridjs-td">
-                                                                EMAIL
-                                                            </td>
-                                                            <td data-column-id="phone" class="gridjs-td">
-                                                                <span>
-                                                                    PHONE
-                                                                </span>
-                                                            </td>
-                                                            <td data-column-id="role" class="gridjs-td">
-                                                                LEVEL
-                                                            </td>
-                                                            <td data-column-id="action" class="gridjs-td">
-                                                                <span>
-                                                                    <div class="dropdown">
-                                                                        <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                            <i class="ri-more-fill"></i>
-                                                                        </button>
-                                                                        <ul class="dropdown-menu dropdown-menu-end">
-                                                                            <li>
-                                                                                <a class="dropdown-item" href="details.php">
-                                                                                    <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
-                                                                                    View
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item edit-list" data-edit-id="1" href="#">
-                                                                                    <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
-                                                                                    Edit
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="dropdown-divider"></li>
-                                                                            <li>
-                                                                                <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
-                                                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                                    Delete
-                                                                                </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </span>
-                                                            </td>
-                                                        </tr>
+                                                                    </span>
+                                                                </td>
+                                                                <td data-column-id="emial" class="gridjs-td">
+                                                                    <?= $client->email ?>
+                                                                </td>
+                                                                <td data-column-id="phone" class="gridjs-td">
+                                                                    <span>
+                                                                        <?= $client->phone_number ?>
+                                                                    </span>
+                                                                </td>
+                                                                <td data-column-id="role" class="gridjs-td">
+                                                                    <?= $client->level->name ?>
+                                                                </td>
+                                                                <td data-column-id="action" class="gridjs-td">
+                                                                    <span>
+                                                                        <div class="dropdown">
+                                                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                <i class="ri-more-fill"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                                                <li>
+                                                                                    <a class="dropdown-item" href="details.php">
+                                                                                        <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                                                                        View
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a class="dropdown-item edit-list" data-edit-id="1" href="#">
+                                                                                        <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
+                                                                                        Edit
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="dropdown-divider"></li>
+                                                                                <li>
+                                                                                    <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
+                                                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                                        Delete
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endforeach ?>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -160,10 +166,9 @@
             <?php include "../../layouts/footer.template.php" ?>
         </div>
         <!-- end main content-->
+        <?php include "../../layouts/clientModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
-    <!-- removeItemModal -->
-    <?php include "../../layouts/modal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
     
     <?php include "../../layouts/scripts.template.php" ?>
