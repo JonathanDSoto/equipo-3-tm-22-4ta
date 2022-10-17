@@ -115,6 +115,20 @@
                     document.getElementById("phone_number").value = "";
                     document.getElementById("level").value = "";
                 },
+                editClient(val){
+                    app.modal = "edit";
+                    let boton = document.getElementById(val);
+                    document.getElementById("input_oculto").value = "edit";
+                    let client = JSON.parse(boton.getAttribute("data-client"));
+                    console.log(client);
+                    app.modal = "edit";
+                    document.getElementById("id").value = client.id;
+                    document.getElementById("name").value = client.name;
+                    document.getElementById("email").value = client.email;
+                    // document.getElementById("password").value = client.password;
+                    document.getElementById("phone_number").value = client.phone_number;
+                    document.getElementById("level").value = "";
+                },
             },
             mounted(){
 

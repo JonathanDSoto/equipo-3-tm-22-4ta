@@ -24,10 +24,10 @@
                         <div class="input-group mb-3">
                             <input type="text" class="form-control"  id="email" name="email" placeholder="Email" aria-label="email" aria-describedby="basic-addon1">
                         </div>
-                        <div v-if="(modal=='create')">
+                        <div >
                             <label class="input-group mb-3">Password</label>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <label class="input-group mb-3">Phone Number</label>

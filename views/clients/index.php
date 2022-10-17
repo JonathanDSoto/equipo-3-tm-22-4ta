@@ -119,16 +119,16 @@
                                                                             </button>
                                                                             <ul class="dropdown-menu dropdown-menu-end">
                                                                                 <li>
-                                                                                    <a class="dropdown-item" href="details.php">
+                                                                                    <a class="dropdown-item" href="<?= BASE_PATH ?>clients/<?= $client->id ?>">
                                                                                         <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
                                                                                         View
                                                                                     </a>
                                                                                 </li>
                                                                                 <li>
-                                                                                    <a class="dropdown-item edit-list" data-edit-id="1" href="#">
+                                                                                    <button id="<?php echo $client->id ?>" data-client='<?php echo json_encode($client) ?>' @click="editClient('<?php echo $client->id ?>')" data-bs-toggle="modal" data-bs-target="#clientModal" class="dropdown-item edit-list" data-edit-id="1" href="#">
                                                                                         <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
                                                                                         Edit
-                                                                                    </a>
+                                                                                    </button>
                                                                                 </li>
                                                                                 <li class="dropdown-divider"></li>
                                                                                 <li>

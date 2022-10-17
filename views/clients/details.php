@@ -20,7 +20,7 @@
 </head>
 <body>
     <!-- Begin page -->
-    <div id="layout-wrapper">
+    <div id="contenedor">
         <header id="page-topbar">
             <?php include "../../layouts/nav.template.php" ?>
         </header>
@@ -286,7 +286,7 @@
             <?php include "../../layouts/modal.template.php" ?>
             <?php include "../../layouts/footer.template.php" ?>
         </div><!-- end main content-->
-
+        <?php include "../../layouts/clientModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
     <?php include "../../layouts/function_footer.template.php" ?>
