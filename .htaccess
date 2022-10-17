@@ -6,6 +6,7 @@ RewriteRule ^auth$ app/AuthController.php
 #RewriteRule ^product/auth$ app/Product.php
 #RewriteRule ^client/auth$ app/ClientController.php
 RewriteRule ^user$ app/UserController.php
+RewriteRule ^client$ app/ClientController.php
 
 #Auth
 RewriteRule ^$ views/auth/login.php
