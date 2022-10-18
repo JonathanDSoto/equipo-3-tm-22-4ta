@@ -40,6 +40,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex flex-row-reverse card-header border-0 mb-3">
+                        <div class="row g-4">
+                            <div class="col-sm-auto">
+                                <div>
+                                    <button @click="createUser()" data-bs-toggle="modal" data-bs-target="#categorieModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Categorie</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- end page title -->
                     <div class="row">
                     <!-- start cart -->
@@ -57,6 +66,10 @@
                                                 <p class="text-uppercase fw-medium text-muted mb-3">ANOTHER TEXT</p>
                                                 <h4 class="fs-4 mb-3"><span>NAME CATEGORIE</span></h4>
                                             </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+                                            <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
+                                            <button type="button" class="btn btn-ghost-info waves-effect waves-light git"></button>
                                         </div>
                                     </div><!-- end card body -->
                                 </div>
@@ -76,6 +89,7 @@
     </div>
     <!-- END layout-wrapper -->
     <?php include "../../layouts/modal.template.php" ?>
+    <?php include "../../layouts/categoryModal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
     
     <?php include "../../layouts/scripts.template.php" ?>
