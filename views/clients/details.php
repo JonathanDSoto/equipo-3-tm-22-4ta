@@ -6,8 +6,9 @@
     $as = new AddressController();
     if(isset($_GET['id'])){
         $client = $cl->getClientById($_GET['id']);
-        $address = $as->getAddressById($_GET['id']);
+        $addresses = $as->getClientAdresses($_GET['id']);
 	}
+    // var_dump($addresses);
 ?> 
 <!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -145,7 +146,7 @@
                                                                                     <div class="gridjs-th-content">Order status</div>
                                                                                 </th>
                                                                                 <th data-column-id="folio" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
-                                                                                    <div class="gridjs-th-content">Address ID</div>
+                                                                                    <div class="gridjs-th-content">No. Address</div>
                                                                                 </th>
                                                                                 <th data-column-id="folio" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
                                                                                     <div class="gridjs-th-content">Payment type</div>
@@ -271,16 +272,9 @@
                                                                                                 </button>
                                                                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                                                                     <li>
-                                                                                                        <a class="dropdown-item edit-list" data-edit-id="1" href="#">
-                                                                                                            <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
-                                                                                                            Edit
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                    <li class="dropdown-divider"></li>
-                                                                                                    <li>
-                                                                                                        <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
-                                                                                                            <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                                                            Delete
+                                                                                                        <a class="dropdown-item" href="<?= BASE_PATH ?>orders/<?= $order->id ?>">
+                                                                                                            <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                                                                                            View
                                                                                                         </a>
                                                                                                     </li>
                                                                                                 </ul>
@@ -323,8 +317,26 @@
                                                                     <table role="grid" class="gridjs-table" style="height: auto;">
                                                                         <thead class="gridjs-thead">
                                                                             <tr class="gridjs-tr">
-                                                                                <th data-column-id="name" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
-                                                                                    <div class="gridjs-th-content">Address</div>
+                                                                                <th data-column-id="address" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
+                                                                                    <div class="gridjs-th-content">No. Address</div>
+                                                                                </th>
+                                                                                <th data-column-id="address" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
+                                                                                    <div class="gridjs-th-content">Street and Number</div>
+                                                                                </th>
+                                                                                <th data-column-id="address" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
+                                                                                    <div class="gridjs-th-content">Apartment</div>
+                                                                                </th>
+                                                                                <th data-column-id="address" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
+                                                                                    <div class="gridjs-th-content">Postal Code</div>
+                                                                                </th>
+                                                                                <th data-column-id="address" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
+                                                                                    <div class="gridjs-th-content">City</div>
+                                                                                </th>
+                                                                                <th data-column-id="address" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
+                                                                                    <div class="gridjs-th-content">Province</div>
+                                                                                </th>
+                                                                                <th data-column-id="address" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
+                                                                                    <div class="gridjs-th-content">Phone Number</div>
                                                                                 </th>
                                                                                 <th data-column-id="action" class="gridjs-th gridjs-th-sort text-muted" style="width: 84px;" tabindex="0">
                                                                                     <div class="gridjs-th-content">Action</div>
@@ -332,45 +344,125 @@
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody class="gridjs-tbody">
-                                                                            <tr class="gridjs-tr">
-                                                                                <td data-column-id="name" class="gridjs-td">
-                                                                                    <span>
-                                                                                        <div class="d-flex align-items-center">
-                                                                                            <div class="flex-grow-1">
-                                                                                                <h5 class="fs-14 mb-1">
-                                                                                                    <p href="details.php" class="text-dark">
-                                                                                                        ADDRESS
-                                                                                                    </p>
-                                                                                                </h5>
+                                                                            <?php foreach($addresses as $address): ?>
+                                                                                <tr class="gridjs-tr">
+                                                                                    <td data-column-id="name" class="gridjs-td">
+                                                                                        <span>
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <div class="flex-grow-1">
+                                                                                                    <h5 class="fs-14 mb-1">
+                                                                                                        <p class="text-dark">
+                                                                                                           <?= $address->id ?> 
+                                                                                                        </p>
+                                                                                                    </h5>
+                                                                                                </div>
                                                                                             </div>
-                                                                                        </div>
-                                                                                    </span>
-                                                                                </td>
-                                                                                <td data-column-id="action" class="gridjs-td">
-                                                                                    <span>
-                                                                                        <div class="dropdown">
-                                                                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                                <i class="ri-more-fill"></i>
-                                                                                            </button>
-                                                                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                                                                <li>
-                                                                                                    <a class="dropdown-item edit-list" data-edit-id="1" href="#">
-                                                                                                        <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
-                                                                                                        Edit
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                                <li class="dropdown-divider"></li>
-                                                                                                <li>
-                                                                                                    <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
-                                                                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                                                        Delete
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </span>
-                                                                                </td>
-                                                                            </tr>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td data-column-id="name" class="gridjs-td">
+                                                                                        <span>
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <div class="flex-grow-1">
+                                                                                                    <h5 class="fs-14 mb-1">
+                                                                                                        <p class="text-dark">
+                                                                                                           <?= $address->street_and_use_number ?> 
+                                                                                                        </p>
+                                                                                                    </h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td data-column-id="name" class="gridjs-td">
+                                                                                        <span>
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <div class="flex-grow-1">
+                                                                                                    <h5 class="fs-14 mb-1">
+                                                                                                        <p class="text-dark">
+                                                                                                           <?= $address->apartment ?> 
+                                                                                                        </p>
+                                                                                                    </h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td data-column-id="name" class="gridjs-td">
+                                                                                        <span>
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <div class="flex-grow-1">
+                                                                                                    <h5 class="fs-14 mb-1">
+                                                                                                        <p class="text-dark">
+                                                                                                           <?= $address->postal_code ?> 
+                                                                                                        </p>
+                                                                                                    </h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td data-column-id="name" class="gridjs-td">
+                                                                                        <span>
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <div class="flex-grow-1">
+                                                                                                    <h5 class="fs-14 mb-1">
+                                                                                                        <p class="text-dark">
+                                                                                                           <?= $address->city ?> 
+                                                                                                        </p>
+                                                                                                    </h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td data-column-id="name" class="gridjs-td">
+                                                                                        <span>
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <div class="flex-grow-1">
+                                                                                                    <h5 class="fs-14 mb-1">
+                                                                                                        <p class="text-dark">
+                                                                                                           <?= $address->province ?> 
+                                                                                                        </p>
+                                                                                                    </h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td data-column-id="name" class="gridjs-td">
+                                                                                        <span>
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <div class="flex-grow-1">
+                                                                                                    <h5 class="fs-14 mb-1">
+                                                                                                        <p class="text-dark">
+                                                                                                           <?= $address->phone_number ?> 
+                                                                                                        </p>
+                                                                                                    </h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td data-column-id="action" class="gridjs-td">
+                                                                                        <span>
+                                                                                            <div class="dropdown">
+                                                                                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                                    <i class="ri-more-fill"></i>
+                                                                                                </button>
+                                                                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                                                                    <li>
+                                                                                                        <button id="<?php echo $address->id ?>" data-address='<?php echo json_encode($address) ?>' @click="editAddress('<?php echo $address->id ?>')" data-bs-toggle="modal" data-bs-target="#addressModal" class="dropdown-item edit-list" data-edit-id="1" href="#">
+                                                                                                            <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
+                                                                                                            Edit
+                                                                                                        </button>
+                                                                                                    </li>
+                                                                                                    <li class="dropdown-divider"></li>
+                                                                                                    <li>
+                                                                                                        <button @click="deleteAddress('<?php echo $address->id ?>')" class="dropdown-item remove-list">
+                                                                                                            <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                                                            Delete
+                                                                                                        </button>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            <?php endforeach ?>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
