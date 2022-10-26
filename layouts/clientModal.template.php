@@ -46,6 +46,7 @@
                     <input id="is_suscribed" type="hidden" name="is_suscribed" value="1">
                     <input id="input_oculto" type="hidden" name="action" value="store">
                     <input id="id" type="hidden" name="id">
+                    <input id="level" type="hidden" name="level" value="1">
                     <input type="hidden" value="<?= $_SESSION['global_token'] ?>" name="global_token">
 
                 </form>

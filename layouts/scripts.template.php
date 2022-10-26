@@ -127,7 +127,6 @@
                     document.getElementById("email").value = client.email;
                     // document.getElementById("password").value = client.password;
                     document.getElementById("phone_number").value = client.phone_number;
-                    document.getElementById("level").value = "";
                 },
                 deleteClient(id){
                     swal({
@@ -148,6 +147,69 @@
                             bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
 
                             axios.post('<?php echo BASE_PATH ?>client', bodyFormData)
+                            .then(function (response){
+                                if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>clients/";
+                            }
+                            })
+                            .catch(function (error){
+                                console.log('error')
+                            })
+                        } else {
+                            swal("The user continues to be saved!");
+                        }
+                    });
+                },
+                editAddress(val){
+                    app.modal = "edit";
+                    let boton = document.getElementById(val);
+                    document.getElementById("input_oculto").value = "edit";
+                    let address = JSON.parse(boton.getAttribute("data-address"));
+                    console.log(address);
+                    document.getElementById("id").value = address.id;
+                    document.getElementById("first_name").value = address.first_name;
+                    document.getElementById("last_name").value = address.last_name;
+                    document.getElementById("street_and_use_number").value = address.street_and_use_number;
+                    document.getElementById("apartment").value = address.apartment;
+                    document.getElementById("postal_code").value = address.postal_code;
+                    document.getElementById("city").value = address.city;
+                    document.getElementById("province").value = address.province;
+                    document.getElementById("phone_number").value = address.phone_number;
+                    document.getElementById("is_billing_address").value = "1";
+                },
+                createAddress(){
+                    app.modal = "create";
+                    document.getElementById("input_oculto").value = "store";
+                    document.getElementById("id").value = "";
+                    document.getElementById("first_name").value = "";
+                    document.getElementById("last_name").value = "";
+                    document.getElementById("street_and_use_number").value = "";
+                    document.getElementById("apartment").value = "";
+                    document.getElementById("postal_code").value = "";
+                    document.getElementById("city").value = "";
+                    document.getElementById("province").value = "";
+                    document.getElementById("phone_number").value = "";
+                    document.getElementById("is_billing_address").value = "";
+                },
+                deleteAddress(id){
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover the information!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("The user was successfully deleted!", {
+                                icon: "success",
+                            });
+                            var bodyFormData = new FormData();
+                            bodyFormData.append('id', id);
+                            bodyFormData.append('action', 'delete');
+                            bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
+
+                            axios.post('<?php echo BASE_PATH ?>address', bodyFormData)
                             .then(function (response){
                                 if(response.data==true){
                                 window.location = "<?= BASE_PATH ?>clients/";

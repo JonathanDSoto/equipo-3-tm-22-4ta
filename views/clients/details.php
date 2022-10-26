@@ -8,7 +8,7 @@
         $client = $cl->getClientById($_GET['id']);
         $addresses = $as->getClientAdresses($_GET['id']);
 	}
-    // var_dump($addresses);
+    //  var_dump($addresses);
 ?> 
 <!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -213,13 +213,15 @@
                                                                                     </td>
                                                                                     <td data-column-id="folio" class="gridjs-td">
                                                                                         <span>
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <div class="flex-grow-1">
-                                                                                                    <h5 class="fs-14 mb-1">
-                                                                                                        <p class="text-dark"><?= $order->coupon->name ?></p>
-                                                                                                    </h5>
+                                                                                            <?php if(isset($order->coupon->name)): ?>
+                                                                                                <div class="d-flex align-items-center">
+                                                                                                    <div class="flex-grow-1">
+                                                                                                        <h5 class="fs-14 mb-1">
+                                                                                                            <p class="text-dark"><?= $order->coupon->name ?></p>
+                                                                                                        </h5>
+                                                                                                    </div>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            <?php endif; ?>
                                                                                         </span>
                                                                                     </td>
                                                                                     <!-- Mostrar los articulos de la orden -->
@@ -304,7 +306,7 @@
                                                             <div class="row g-4">
                                                                 <div class="col-sm-auto">
                                                                     <div>
-                                                                        <a href="details.php" class="btn btn-success" id="addAddress-btn"><i class="ri-add-line align-bottom me-1"></i> Add Address</a>
+                                                                        <button @click="createAddress()" data-bs-toggle="modal" data-bs-target="#addressModal" class="btn btn-success" id="addAddress-btn"><i class="ri-add-line align-bottom me-1"></i> Add Address</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -495,7 +497,7 @@
             <?php include "../../layouts/modal.template.php" ?>
             <?php include "../../layouts/footer.template.php" ?>
         </div><!-- end main content-->
-        <?php include "../../layouts/clientModal.template.php" ?>
+        <?php include "../../layouts/addressModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
     <?php include "../../layouts/function_footer.template.php" ?>
