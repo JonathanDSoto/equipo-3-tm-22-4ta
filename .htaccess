@@ -5,6 +5,7 @@ RewriteEngine on
 RewriteRule ^auth$ app/AuthController.php
 RewriteRule ^user$ app/UserController.php
 RewriteRule ^client$ app/ClientController.php
+RewriteRule ^address$ app/AddressController.php
 
 #Auth
 RewriteRule ^$ views/auth/login.php

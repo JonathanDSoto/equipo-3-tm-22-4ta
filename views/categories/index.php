@@ -2,7 +2,7 @@
 	include_once "../../app/config.php";
 ?> 
 <!DOCTYPE html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+    <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 <head>
     <?php include "../../layouts/head.template.php" ?>
 </head>
@@ -14,18 +14,13 @@
             <?php include "../../layouts/nav.template.php" ?>
         </header>
         <!-- ========== App Menu ========== -->
-        <div class="app-menu navbar-menu">
-            <?php include "../../layouts/sidebar.template.php" ?>
-        </div>
-        <!-- Vertical Overlay-->
+        <?php include "../../layouts/sidebar.template.php" ?>
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
         <div class="main-content">
-
             <div class="page-content">
               <div class="container-fluid">
-              
                     <!-- start page title -->
                     <div class="row">
                         <div class="col-12">
@@ -69,7 +64,7 @@
                                         </div>
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
-                                            <button type="button" class="btn btn-ghost-info waves-effect waves-light git"></button>
+                                            <button type="button" class="btn btn-ghost-info waves-effect waves-light shadow-none ri-eye-line"></button>
                                         </div>
                                     </div><!-- end card body -->
                                 </div>
