@@ -205,7 +205,7 @@
             <footer class="footer">
                 <?php include "../../layouts/footer.template.php" ?>
             </footer>
-            <?php include "../../layouts/clientModal.template.php" ?>
+            <?php include "../../layouts/productModal.template.php" ?>
         </div>
         <!-- end main content-->
 
