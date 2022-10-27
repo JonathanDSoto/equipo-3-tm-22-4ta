@@ -183,6 +183,69 @@
                                                     </div>
                                                 </div>
                                                 <!-- product-content -->
+
+                                                <div class="product-content mt-5">
+                                                    <div class="table-responsive">
+                                                        <table class="table align-middle mb-0">
+                                                            <thead class="table-light">
+                                                                <tr>
+                                                                    <th scope="col">
+                                                                        #
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Date
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Status
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Customer
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Purchased
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Revenue
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <a href="#" class="fw-semibold">
+                                                                            #VZ2110
+                                                                        </a>
+                                                                    </td>
+                                                                    <td>
+                                                                        10 Oct, 14:47
+                                                                    </td>
+                                                                    <td class="text-success">
+                                                                        <i class="ri-checkbox-circle-line fs-17 align-middle"></i> 
+                                                                        Paid
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="d-flex gap-2 align-items-center">
+                                                                            <div class="flex-shrink-0">
+                                                                                <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-xs rounded-circle">
+                                                                            </div>
+                                                                            <div class="flex-grow-1">
+                                                                                Jordan Kennedy 
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        Mastering the grid
+                                                                    </td>
+                                                                    <td>
+                                                                        $9.98
+                                                                    </td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                        <!-- end table -->
+                                                    </div>
+                                                    <!-- end table responsive -->
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- end col -->
