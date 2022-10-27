@@ -1,6 +1,12 @@
 <?php
 	include_once "../../app/config.php";
+    include "../../app/BrandController.php";
+    include "../../app/TagController.php";
+    $brand = new BrandController();
+    $brands = $brand->getBrands();
+    // var_dump($products);
 ?> 
+
 <!DOCTYPE html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 <head>
@@ -49,7 +55,7 @@
                                         <div class="row g-4">
                                             <div class="col-sm-auto">
                                                 <div>
-                                                    <a href="details.php" class="btn btn-success" id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add Product</a>
+                                                    <button v-on:click="createProduct()" data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-success" id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add Product</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -65,110 +71,99 @@
                                                             <th data-column-id="product" class="gridjs-th gridjs-th-sort text-muted" style="width: 360px;" tabindex="0">
                                                                 <div class="gridjs-th-content">Product</div>
                                                             </th>
-                                                            <th data-column-id="stock" class="gridjs-th gridjs-th-sort text-muted" style="width: 94px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Stock</div>
+                                                            <th data-column-id="description" class="gridjs-th gridjs-th-sort text-muted" style="width: 94px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Description</div>
                                                             </th>
-                                                            <th data-column-id="price" class="gridjs-th gridjs-th-sort text-muted" style="width: 101px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Price</div>
+                                                            <th data-column-id="features" class="gridjs-th gridjs-th-sort text-muted" style="width: 101px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Features</div>
                                                             </th>
-                                                            <th data-column-id="orders" class="gridjs-th gridjs-th-sort text-muted" style="width: 84px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Orders</div>
-                                                            </th>
-                                                            <th data-column-id="rating" class="gridjs-th gridjs-th-sort text-muted" style="width: 105px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Rating</div>
-                                                            </th>
-                                                            <th data-column-id="published" class="gridjs-th gridjs-th-sort text-muted" style="width: 220px;" tabindex="0">
-                                                                <div class="gridjs-th-content">Published</div>
+                                                            <th data-column-id="brand" class="gridjs-th gridjs-th-sort text-muted" style="width: 220px;" tabindex="0">
+                                                                <div class="gridjs-th-content">Brand</div>
                                                             </th>
                                                             <th data-column-id="action" class="gridjs-th text-muted" style="width: 80px;">
                                                                 <div class="gridjs-th-content">Action</div>
                                                             </th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody class="gridjs-tbody">
-                                                        <tr class="gridjs-tr">
-                                                            <td data-column-id="product" class="gridjs-td">
-                                                                <span>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="flex-shrink-0 me-3">
-                                                                            <div class="avatar-sm bg-light rounded p-1">
-                                                                                <img src="assets/images/products/img-1.png" alt="" class="img-fluid d-block">
+                                                    
+                                                    <tbody class="gridjs-tbody" >
+                                                            <tr class="gridjs-tr" v-for="product in products">
+                                                                <td data-column-id="product" class="gridjs-td">
+                                                                    <span>
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div class="flex-shrink-0 me-3" v-if="(product.cover!=null)">
+                                                                                <div class="avatar-sm bg-light rounded p-1" v-if="(ruta!=product.cover)">
+                                                                                        <img :src="product.cover" alt="" class="img-fluid d-block">
+                                                                                </div>
+                                                                                <div class="avatar-sm bg-light rounded p-1" v-else>
+                                                                                        <img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-13.png" alt="" class="img-fluid d-block">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="flex-grow-1">
+                                                                                <h5 class="fs-14 mb-1">
+                                                                                    <a :href="'<?= BASE_PATH ?>users/'+product.id" class="text-dark">
+                                                                                        {{product.name}}
+                                                                                    </a>
+                                                                                </h5>
+                                                                                <p class="text-success mb-0">
+                                                                                    Category : 
+                                                                                    <span class="fw-medium" v-for="category in product.categories">
+                                                                                        <strong ><span > • </span>{{category.name}} </strong>
+                                                                                    </span>
+                                                                                </p>
+                                                                                <p class="text-primary mb-0 mt-2">
+                                                                                    Tags : 
+                                                                                    <span class="fw-medium" v-for="tag in product.tags">
+                                                                                        <strong ><span > • </span>{{tag.name}} </strong>
+                                                                                    </span>
+                                                                                </p>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="flex-grow-1">
-                                                                            <h5 class="fs-14 mb-1">
-                                                                                <a href="details.php" class="text-dark">
-                                                                                    NAME
-                                                                                </a>
-                                                                            </h5>
-                                                                            <p class="text-muted mb-0">
-                                                                                Category : 
-                                                                                <span class="fw-medium">
-                                                                                    <a href="#">SEX</a>
-                                                                                </span>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </span>
-                                                            </td>
-                                                            <td data-column-id="stock" class="gridjs-td">
-                                                                0
-                                                            </td>
-                                                            <td data-column-id="price" class="gridjs-td">
-                                                                <span>
-                                                                    $0
-                                                                </span>
-                                                            </td>
-                                                            <td data-column-id="orders" class="gridjs-td">
-                                                                0
-                                                            </td>
-                                                            <td data-column-id="rating" class="gridjs-td">
-                                                                <span>
-                                                                    <span class="badge bg-light text-body fs-12 fw-medium">
-                                                                        <i class="mdi mdi-star text-warning me-1"></i>
-                                                                            0
                                                                     </span>
-                                                                </span>
-                                                            </td>
-                                                            <td data-column-id="published" class="gridjs-td">
-                                                                <span>
-                                                                    DAY MOUNTH, YEAR
-                                                                    <small class="text-muted ms-1">
-                                                                        HOUR:MINUTE AM/PM
-                                                                    </small>
-                                                                </span>
-                                                            </td>
-                                                            <td data-column-id="action" class="gridjs-td">
-                                                                <span>
-                                                                    <div class="dropdown">
-                                                                        <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                            <i class="ri-more-fill"></i>
-                                                                        </button>
-                                                                        <ul class="dropdown-menu dropdown-menu-end">
-                                                                            <li>
-                                                                                <a class="dropdown-item" href="details.php">
-                                                                                    <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
-                                                                                    View
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item edit-list" data-edit-id="1" href="#">
-                                                                                    <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
-                                                                                    Edit
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="dropdown-divider"></li>
-                                                                            <li>
-                                                                                <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
-                                                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                                    Delete
-                                                                                </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </span>
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                                <td data-column-id="Description" class="gridjs-td">
+                                                                    <span>
+                                                                        {{product.description}}
+                                                                    </span>
+                                                                </td>
+                                                                <td data-column-id="features" class="gridjs-td">
+                                                                    <span>
+                                                                        {{product.features}}
+                                                                    </span>
+                                                                </td>
+                                                                <td data-column-id="brand" class="gridjs-td">
+                                                                    <span v-if="product.brand!=null">
+                                                                        {{product.brand.name}}
+                                                                    </span>
+                                                                </td>
+                                                                <td data-column-id="action" class="gridjs-td">
+                                                                    <span>
+                                                                        <div class="dropdown">
+                                                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                <i class="ri-more-fill"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                                                <li>
+                                                                                    <a class="dropdown-item" href="details.php">
+                                                                                        <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                                                                        View
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <button :id="product.id" :data-product='JSON.stringify(product)' v-on:click="editProduct(product.id)" data-bs-toggle="modal" data-bs-target="#productModal" class="dropdown-item"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit Profile</button>
+                                                                                </li>
+                                                                                <li class="dropdown-divider"></li>
+                                                                                <li>
+                                                                                    <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
+                                                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                                        Delete
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -192,9 +187,9 @@
             <?php include "../../layouts/footer.template.php" ?>
         </div>
         <!-- end main content-->
+        <?php include "../../layouts/productModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
-    <?php include "../../layouts/modal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
     
     <?php include "../../layouts/scripts.template.php" ?>

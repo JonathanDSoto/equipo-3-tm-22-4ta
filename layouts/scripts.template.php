@@ -21,6 +21,10 @@
                     date: '',
                     update: '',
                     modal: '',
+                    ruta: 'http://crud.jonathansoto.mx/storage/products/',
+                    products: [],
+                    tags: [],
+                    categories: [],
                 }
             },methods : {
                 logout(id){
@@ -223,6 +227,53 @@
                         }
                     });
                 },
+                editProduct(val){
+                    
+                    app.modal = "edit";
+                    let boton = document.getElementById(val);
+                    document.getElementById("input_oculto").value = "update";
+                    let product = JSON.parse(boton.getAttribute("data-product"));
+                    document.getElementById("id").value = product.id;
+                    document.getElementById("name").value = product.name;
+                    document.getElementById("slug").value = product.slug;
+                    document.getElementById("description").value = product.description;
+                    document.getElementById("features").value = product.features;
+                    document.getElementById("brand_id").value = product.brand_id;
+
+                    //  Limpiar los checkbox antes de ser asigmados
+                    app.clearCheckBox();
+
+                    for (let i = 0; i < product.categories.length; i++) {
+                        document.getElementById(product.categories[i].id+"c").checked = 1;
+                    }
+
+                    for (let i = 0; i < product.tags.length; i++) {
+                        document.getElementById(product.tags[i].id+"t").checked = 1;
+                    }
+                    
+                },
+                createProduct(){
+                    app.modal = "create";
+                    app.clearCheckBox();
+
+                    document.getElementById("input_oculto").value = "store";
+                    document.getElementById("id").value = "";
+                    document.getElementById("name").value = "";
+                    document.getElementById("slug").value = "";
+                    document.getElementById("description").value = "";
+                    document.getElementById("features").value = "";
+                    document.getElementById("brand_id").value = "";
+
+                },
+                clearCheckBox(){
+                    for (let i = 0; i < app.categories.length; i++) {
+                        document.getElementById(app.categories[i].id+"c").checked = 0;
+                    }
+                    for (let i = 0; i < app.tags.length; i++) {
+                        document.getElementById(app.tags[i].id+"t").checked = 0;
+                    }
+                }
+
             },
             mounted(){
 
@@ -232,6 +283,61 @@
                     date_aux = "<?php echo $user->updated_at ?>";
                     this.update = date_aux.substring(0,10);
                 <?php endif ?>
+
+                
+
+                var config = {
+                    method: 'get',
+                    url: 'https://crud.jonathansoto.mx/api/products',
+                    headers: { 
+                        'Authorization': "Bearer "+'<?=$_SESSION['token']?>',
+                    }
+                };
+
+                axios(config)
+                .then(function (response) {
+                    // console.log(JSON.stringify(response.data.data));
+                    app.products = response.data.data
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+
+                var config = {
+                    method: 'get',
+                    url: 'https://crud.jonathansoto.mx/api/categories',
+                    headers: { 
+                        'Authorization': "Bearer "+'<?=$_SESSION['token']?>',
+                    }
+                };
+
+                axios(config)
+                .then(function (response) {
+                    // console.log(JSON.stringify(response.data));
+                    app.categories = response.data.data
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+
+                var config = {
+                    method: 'get',
+                    url: 'https://crud.jonathansoto.mx/api/tags',
+                    headers: { 
+                        'Authorization': "Bearer "+'<?=$_SESSION['token']?>',
+                    }
+                };
+
+                axios(config)
+                .then(function (response) {
+                    // console.log(JSON.stringify(response.data));
+                    app.tags = response.data.data
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             },
         }).mount('#contenedor')
     </script>
