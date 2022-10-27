@@ -19,8 +19,8 @@ if (isset($_POST['action'])) {
 				$categories = array();
 				$count = 0;
 				while (true){
-					if(isset($_POST['categories['.$count.']'])){
-						$categories['categories['.$count.']'] = strip_tags($_POST['categories['.$count.']']);
+					if(isset($_POST['categories'][$count])){
+						$categories['categories['.$count.']'] = strip_tags($_POST['categories'][$count]);
 						$count++;
 					}
 					else break;
@@ -29,8 +29,8 @@ if (isset($_POST['action'])) {
 				$tags = array();
 				$count = 0;
 				while (true){
-					if(isset($_POST['tags['.$count.']'])){
-						$tags['tags['.$count.']'] = strip_tags($_POST['tags['.$count.']']);
+					if(isset($_POST['tags'][$count])){
+						$tags['tags['.$count.']'] = strip_tags($_POST['tags'][$count]);
 						$count++;
 					}
 					else break;
@@ -55,8 +55,8 @@ if (isset($_POST['action'])) {
 				$categories = '';
 				$count = 0;
 				while (true){
-					if(isset($_POST['categories['.$count.']'])){
-						$categories .= '&categories['.$count.']=' . strip_tags($_POST['categories['.$count.']']);
+					if(isset($_POST['categories'][$count])){
+						$categories .= '&categories['.$count.']=' . strip_tags($_POST['categories'][$count]);
 						$count++;
 					}
 					else break;
@@ -65,8 +65,8 @@ if (isset($_POST['action'])) {
 				$tags = '';
 				$count = 0;
 				while (true){
-					if(isset($_POST['tags['.$count.']'])){
-						$tags .= '&tags['.$count.']=' . strip_tags($_POST['tags['.$count.']']);
+					if(isset($_POST['tags'][$count])){
+						$tags .= '&tags['.$count.']=' . strip_tags($_POST['tags'][$count]);
 						$count++;
 					}
 					else break;
