@@ -57,14 +57,14 @@
                         <div class="row text-center">
                             <label class="input-group mt-2 mb-3">Categories</label>
                             <div class="col-5 form-check form-check-inline" v-for="(category, index)  in categories">
-                                <input :id='category.id+"c"' :name="'categories['+index+']'" class="form-check-input" type="checkbox" id="inlineCheckbox2" :value="category.id">
+                                <input :id='category.id+"c"' name="categories[]" class="form-check-input" type="checkbox" id="inlineCheckbox2" :value="category.id">
                                 <label class="form-check-label" for="inlineCheckbox2">{{category.name}}</label>
                             </div>
                         </div>
                         <div class="row text-center">
                             <label class="input-group mt-4 mb-3">Tags</label>
                             <div class="col-5 form-check form-check-inline" v-for="(tag, index)  in tags">
-                                <input :id='tag.id+"t"' :name="'tags['+index+']'" class="form-check-input" type="checkbox" id="inlineCheckbox1" :value="tag.id">
+                                <input :id='tag.id+"t"' name="tags[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" :value="tag.id">
                                 <label class="form-check-label" for="inlineCheckbox1">{{tag.name}}</label>
                             </div>
                         </div>
