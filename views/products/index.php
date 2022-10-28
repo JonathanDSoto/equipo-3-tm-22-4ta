@@ -55,7 +55,7 @@
                                         <div class="row g-4">
                                             <div class="col-sm-auto">
                                                 <div>
-                                                    <button v-on:click="createProduct()" data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-success" id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add Product</button>
+                                                    <button @click="createProduct()" data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-success" id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add Product</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -154,10 +154,10 @@
                                                                                 </li>
                                                                                 <li class="dropdown-divider"></li>
                                                                                 <li>
-                                                                                    <a class="dropdown-item remove-list" href="#" data-id="1" data-bs-toggle="modal" data-bs-target="#removeItemModal">
+                                                                                    <button v-on:click="deleteProduct(product.id)" class="dropdown-item remove-list">
                                                                                         <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
                                                                                         Delete
-                                                                                    </a>
+                                                                                    </button>
                                                                                 </li>
                                                                             </ul>
                                                                         </div>

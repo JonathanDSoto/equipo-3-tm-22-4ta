@@ -16,6 +16,14 @@
                 </div>
                 <form enctype="multipart/form-data" method="POST" action="<?= BASE_PATH ?>product">
                     <div class="modal-body">
+                        <div v-if="(modal=='create')">
+                            <div class="input-group mb-3 mt-4">
+                                <label class="form-label">Product IMG</label>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input class="form-control form-control-sm" name="cover" type="file">
+                            </div>
+                        </div>
                         <label class="input-group mb-3">Name</label>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1">
@@ -46,17 +54,17 @@
                                 </ul>
                             </select>
                         </div>
-                        <div>
+                        <div class="row text-center">
                             <label class="input-group mt-2 mb-3">Categories</label>
-                            <div class="form-check form-check-inline" v-for="(category, index)  in categories">
-                                <input :id='category.id+"c"' :name="'categories['+index +']'" class="form-check-input" type="checkbox" id="inlineCheckbox2" :value="category.id">
+                            <div class="col-5 form-check form-check-inline" v-for="(category, index)  in categories">
+                                <input :id='category.id+"c"' :name="'categories['+index+']'" class="form-check-input" type="checkbox" id="inlineCheckbox2" :value="category.id">
                                 <label class="form-check-label" for="inlineCheckbox2">{{category.name}}</label>
                             </div>
                         </div>
-                        <div>
+                        <div class="row text-center">
                             <label class="input-group mt-4 mb-3">Tags</label>
-                            <div class="form-check form-check-inline" v-for="(tag, index)  in tags">
-                                <input :id='tag.id+"t"' :name="'tags['+index +']'" class="form-check-input" type="checkbox" id="inlineCheckbox1" :value="tag.id">
+                            <div class="col-5 form-check form-check-inline" v-for="(tag, index)  in tags">
+                                <input :id='tag.id+"t"' :name="'tags['+index+']'" class="form-check-input" type="checkbox" id="inlineCheckbox1" :value="tag.id">
                                 <label class="form-check-label" for="inlineCheckbox1">{{tag.name}}</label>
                             </div>
                         </div>
@@ -70,7 +78,7 @@
                         </button>
                     </div>
 
-                    <input id="input_oculto" type="hidden" name="action" value="store">
+                    <input id="input_oculto" type="hidden" name="action" value="create">
                     <input id="id" type="hidden" name="id">
                     <input type="hidden" value="<?= $_SESSION['global_token'] ?>" name="global_token">
 

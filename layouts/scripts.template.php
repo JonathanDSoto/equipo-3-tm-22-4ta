@@ -256,7 +256,7 @@
                     app.modal = "create";
                     app.clearCheckBox();
 
-                    document.getElementById("input_oculto").value = "store";
+                    document.getElementById("input_oculto").value = "create";
                     document.getElementById("id").value = "";
                     document.getElementById("name").value = "";
                     document.getElementById("slug").value = "";
@@ -272,7 +272,39 @@
                     for (let i = 0; i < app.tags.length; i++) {
                         document.getElementById(app.tags[i].id+"t").checked = 0;
                     }
-                }
+                },
+                deleteProduct(id){
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover the information!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("The user was successfully deleted!", {
+                                icon: "success",
+                            });
+                            var bodyFormData = new FormData();
+                            bodyFormData.append('id', id);
+                            bodyFormData.append('action', 'delete');
+                            bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
+
+                            axios.post('<?php echo BASE_PATH ?>product', bodyFormData)
+                            .then(function (response){
+                                if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>products/";
+                            }
+                            })
+                            .catch(function (error){
+                                console.log('error')
+                            })
+                        } else {
+                            swal("The user continues to be saved!");
+                        }
+                    });
+                },
 
             },
             mounted(){
