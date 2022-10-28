@@ -39,7 +39,7 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <button @click="createUser()" data-bs-toggle="modal" data-bs-target="#categorieModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Categorie</button>
+                                    <button data-bs-toggle="modal" data-bs-target="#categorieModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Categorie</button>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-info text-white rounded-2 fs-2 shadow">
-                                                    <i class="bx bx-store-alt"></i>
+                                                    <i class="bx bx-receipt"></i>
                                                 </span>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
-                                            <button type="button" class="btn btn-ghost-info waves-effect waves-light shadow-none ri-eye-line"></button>
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#categorieModal" class="btn btn-ghost-info waves-effect waves-light shadow-none bx bx-pencil"></button>
                                         </div>
                                     </div><!-- end card body -->
                                 </div>

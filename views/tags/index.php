@@ -25,11 +25,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Brands</h4>
+                                <h4 class="mb-sm-0">Tags</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                        <li class="breadcrumb-item active">Brands</li>
+                                        <li class="breadcrumb-item active">Tags</li>
                                     </ol>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <button @click="" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Brands</button>
+                                    <button @click="createUser()" data-bs-toggle="modal" data-bs-target="#tagModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Tag</button>
                                 </div>
                             </div>
                         </div>
@@ -53,18 +53,18 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-primary text-white rounded-2 fs-2 shadow">
-                                                    <i class="bx bxs-t-shirt"></i>
+                                                <span class="avatar-title bg-warning text-white rounded-2 fs-2 shadow">
+                                                    <i class="bx bx-purchase-tag"></i>
                                                 </span>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <p class="text-uppercase fw-medium text-muted mb-3">ANOTHER TEXT</p>
-                                                <h4 class="fs-4 mb-3"><span>NAME Brands</span></h4>
+                                                <h4 class="fs-4 mb-3"><span>NAME Tag</span></h4>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-ghost-info waves-effect waves-light shadow-none bx bx-pencil"></button>
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#tagModal" class="btn btn-ghost-info waves-effect waves-light shadow-none bx bx-pencil"></button>
                                         </div>
                                     </div><!-- end card body -->
                                 </div>
@@ -84,7 +84,7 @@
     </div>
     <!-- END layout-wrapper -->
     <?php include "../../layouts/modal.template.php" ?>
-    <?php include "../../layouts/brandModal.template.php" ?>
+    <?php include "../../layouts/tagModal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
     
     <?php include "../../layouts/scripts.template.php" ?>

@@ -26,3 +26,11 @@ RewriteRule ^products/(.+)$ views/products/details.php?slug=$1
 
 #Categorias
 RewriteRule ^categories/$ views/categories/index.php
+#RewriteRule ^categories/(.+)$ views/categories/details.php?categorie=$1
+
+#Brands
+RewriteRule ^brands/$ views/brands/index.php
+#RewriteRule ^brands/(.+)$ views/brands/details.php?brand=$1
+
+#Tags
+RewriteRule ^tags/$ views/tags/index.php
