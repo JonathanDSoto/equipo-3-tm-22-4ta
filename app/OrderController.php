@@ -21,9 +21,9 @@ if (isset($_POST['action'])) {
 				$presentations = array();
 				$count = 0;
 				while (true){
-					if(isset($_POST['presentations['.$count.'][id]']) && isset($_POST['presentations['.$count.'][quantity]'])){
-						$presentations['presentations['.$count.'][id]'] = strip_tags($_POST['presentations['.$count.'][id]']);
-						$presentations['presentations['.$count.'][quantity]'] = strip_tags($_POST['presentations['.$count.'][quantity]']);
+					if(isset($_POST['presentations'][$count]['id']) && isset($_POST['presentations'][$count]['quantity'])){
+						$presentations['presentations['.$count.'][id]'] = strip_tags($_POST['presentations'][$count]['id']);
+						$presentations['presentations['.$count.'][quantity]'] = strip_tags($_POST['presentations'][$count]['quantity']);
 						$count++;
 					}
 					else break;
