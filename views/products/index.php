@@ -144,7 +144,7 @@
                                                                             </button>
                                                                             <ul class="dropdown-menu dropdown-menu-end">
                                                                                 <li>
-                                                                                    <a class="dropdown-item" href="details.php">
+                                                                                    <a class="dropdown-item" :href="'<?= BASE_PATH ?>products/'+product.slug">
                                                                                         <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
                                                                                         View
                                                                                     </a>

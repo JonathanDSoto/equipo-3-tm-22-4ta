@@ -55,10 +55,10 @@
                                         <a href="<?= BASE_PATH ?>categories/" class="nav-link" data-key="t-analytics"> Categories </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> Brands </a>
+                                        <a href="<?= BASE_PATH ?>brands/" class="nav-link" data-key="t-crm"> Brands </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="index.html" class="nav-link" data-key="t-ecommerce"> Tags </a>
+                                        <a href="<?= BASE_PATH ?>tags/" class="nav-link" data-key="t-ecommerce"> Tags </a>
                                     </li>
                                 </ul>
                             </div>
