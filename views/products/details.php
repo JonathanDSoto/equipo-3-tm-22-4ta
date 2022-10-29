@@ -1,5 +1,9 @@
 <?php
 	include_once "../../app/config.php";
+    include "../../app/ProductController.php";
+    $pr = new ProductController();
+    $product = $pr->getProductBySlug($_GET['slug']);
+
 ?>
 <!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -47,7 +51,7 @@
                                                 <div class="swiper product-thumbnail-slider p-2 rounded bg-light">
                                                     <div class="img">
                                                         <!-- IMGAGEN -->
-                                                        <img src="" alt="" class="img-fluid d-block" />
+                                                        <img src="<?= $product->cover ?>" alt="" class="img-fluid d-block" />
                                                     </div>
                                                 </div>
                                                 <!-- end swiper thumbnail slide -->
@@ -58,9 +62,9 @@
                                             <div class="mt-xl-0 mt-5">
                                                 <div class="d-flex">
                                                     <div class="flex-grow-1">
-                                                        <h4>NAME PRODUCT</h4>
+                                                        <h4><?= $product->name ?></h4>
                                                         <div class="hstack gap-3 flex-wrap">
-                                                            <div><a href="#" class="text-primary d-block">BRAND NAME</a></div>
+                                                            <div><a href="#" class="text-primary d-block"><?= $product->brand->name ?></a></div>
                                                             <div class="vr"></div>
                                                                                                                 <!-- SI NO HAY DEJALO COMO "DESCONOCIDO" -->
                                                             <div class="text-muted">Seller : <span class="text-body fw-medium">PROVIDERS</span></div>

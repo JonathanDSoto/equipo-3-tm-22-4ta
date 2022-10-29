@@ -65,13 +65,13 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="widgets.html">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>coupons/">
                                 <i class="ri-coupon-line"></i> <span data-key="t-widgets">Coupons</span>
                             </a>
                         </li> 
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="widgets.html">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>orders/">
                                 <i class="ri-shopping-bag-3-line"></i> <span data-key="t-widgets">Orders</span>
                             </a>
                         </li> 

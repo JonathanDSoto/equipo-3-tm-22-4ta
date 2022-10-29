@@ -101,7 +101,7 @@
                                                                             </div>
                                                                             <div class="flex-grow-1">
                                                                                 <h5 class="fs-14 mb-1">
-                                                                                    <a :href="'<?= BASE_PATH ?>users/'+product.id" class="text-dark">
+                                                                                    <a :href="'<?= BASE_PATH ?>products/'+product.slug" class="text-dark">
                                                                                         {{product.name}}
                                                                                     </a>
                                                                                 </h5>
