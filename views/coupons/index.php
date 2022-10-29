@@ -47,13 +47,13 @@
                     <div class="row">
                     <!-- start cart -->
                     <div class="col-xl-3 col-md-6">
-                            <a class="card-body" href="">
+                            <a class="card-body" href="./details.php">
                                 <div class="card card-height-100">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-info text-white rounded-2 fs-2 shadow">
-                                                    <i class="bx bx-receipt"></i>
+                                                <span class="avatar-title bg-dark text-white rounded-2 fs-2 shadow">
+                                                    <i class="bx bxs-discount"></i>
                                                 </span>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
@@ -63,7 +63,6 @@
                                         </div>
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#categorieModal" class="btn btn-ghost-info waves-effect waves-light shadow-none bx bx-pencil"></button>
                                         </div>
                                     </div><!-- end card body -->
                                 </div>

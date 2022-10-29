@@ -1,15 +1,15 @@
-<div class="modal fade" id="categorieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="couponModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <div v-if="(modal=='edit')">
                     <h5 class="modal-title" id="exampleModelLabel">
-                        Edit Category
+                        Edit Coupon
                     </h5>
                 </div>
                 <div v-else>
                     <h5 class="modal-title" id="exampleModelLabel">
-                        Create Category
+                        Create Coupon
                     </h5>
                 </div>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -20,15 +20,49 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name" aria-describedby="basic-addon1">
                     </div>
-                    <label class="input-group mb-3">Description</label>
+                    <label class="input-group mb-3">Code</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control"  id="description" name="description" placeholder="Description" aria-label="description" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="code" name="code" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
                     </div>
-                    <div >
-                        <label class="input-group mb-3">Slug</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1">
-                        </div>
+                    <label class="input-group mb-3">Percentage Discount</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="percentage_discount" name="percentage_discount" placeholder="Percentage Discount" aria-label="percentage_discount" aria-describedby="basic-addon1">
+                    </div>
+                    <label class="input-group mb-3">Amount Discount</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="amount_discount" name="amount_discount" placeholder="Amount Discount" aria-label="amount_discount" aria-describedby="basic-addon1">
+                    </div>
+                    <label class="input-group mb-3">Min Amount Required</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="min_amount_required" name="min_amount_required" placeholder="Min Amount Required" aria-label="min_amount_required" aria-describedby="basic-addon1">
+                    </div>
+                    <label class="input-group mb-3">Min Product Required</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="min_product_required" name="min_product_required" placeholder="Min Product Required" aria-label="min_product_required" aria-describedby="basic-addon1">
+                    </div>
+                    <label class="input-group mb-3">Start Date</label>
+                    <div class="input-group mb-3">
+                        <input type="date" class="form-control" id="start_date" name="start_date" placeholder="Start Date" aria-label="start_date" aria-describedby="basic-addon1">
+                    </div>
+                    <label class="input-group mb-3">End Date</label>
+                    <div class="input-group mb-3">
+                        <input type="date" class="form-control" id="end_date" name="end_date" placeholder="End Date" aria-label="end_date" aria-describedby="basic-addon1">
+                    </div>
+                    <label class="input-group mb-3">Max Uses</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="max_uses" name="max_uses" placeholder="Max Uses" aria-label="max_uses" aria-describedby="basic-addon1">
+                    </div>
+                    <label class="input-group mb-3">Count Uses</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="count_uses" name="count_uses" placeholder="Count Uses" aria-label="count_uses" aria-describedby="basic-addon1">
+                    </div>
+                    <label class="input-group mb-3">Valid Only First Purchase</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="valid_only_first_purchase" name="valid_only_first_purchase" placeholder="Valid Only First Purchase" aria-label="valid_only_first_purchase" aria-describedby="basic-addon1">
+                    </div>
+                    <label class="input-group mb-3">Status</label>
+                    <div class="input-group mb-3">             <!-- vvvvvvv Si le quitas el _ se pone raro ¿? -->
+                        <input type="text" class="form-control" id="_status" name="status" placeholder="Status" aria-label="status" aria-describedby="basic-addon1">
                     </div>
                 </div>
                 <div class="modal-footer">

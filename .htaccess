@@ -37,3 +37,5 @@ RewriteRule ^tags/$ views/tags/index.php
 
 #Coupons
 RewriteRule ^coupons/$ views/coupons/index.php
+RewriteRule ^coupons/(.+)$ views/coupons/details.php?coupon=$1
+
