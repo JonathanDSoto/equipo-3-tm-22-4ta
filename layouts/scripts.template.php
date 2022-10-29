@@ -21,8 +21,10 @@
                     date: '',
                     update: '',
                     modal: '',
-                    ruta: 'http://crud.jonathansoto.mx/storage/products/',
+                    ruta: 'https://crud.jonathansoto.mx/storage/products/',
                     products: [],
+                    product: [],
+                    presentations: [],
                     tags: [],
                     categories: [],
                 }
@@ -245,10 +247,12 @@
 
                     for (let i = 0; i < product.categories.length; i++) {
                         document.getElementById(product.categories[i].id+"c").checked = 1;
+                        document.getElementById(product.categories[i].id+"c").disabled = 1;
                     }
 
                     for (let i = 0; i < product.tags.length; i++) {
                         document.getElementById(product.tags[i].id+"t").checked = 1;
+                        document.getElementById(product.tags[i].id+"t").disabled = 1;
                     }
                     
                 },
@@ -322,7 +326,7 @@
                     method: 'get',
                     url: 'https://crud.jonathansoto.mx/api/products',
                     headers: { 
-                        'Authorization': "Bearer "+'<?=$_SESSION['token']?>',
+                        'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
                     }
                 };
 
@@ -340,7 +344,7 @@
                     method: 'get',
                     url: 'https://crud.jonathansoto.mx/api/categories',
                     headers: { 
-                        'Authorization': "Bearer "+'<?=$_SESSION['token']?>',
+                        'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
                     }
                 };
 
@@ -358,7 +362,7 @@
                     method: 'get',
                     url: 'https://crud.jonathansoto.mx/api/tags',
                     headers: { 
-                        'Authorization': "Bearer "+'<?=$_SESSION['token']?>',
+                        'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
                     }
                 };
 
@@ -370,6 +374,25 @@
                 .catch(function (error) {
                     console.log(error);
                 });
+                <?php if(isset($_GET['slug'])) : ?>
+                    var config = {
+                        method: 'get',
+                        url: 'https://crud.jonathansoto.mx/api/products/slug/'+'<?=$_GET['slug']?>',
+                        headers: { 
+                            'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
+                        }
+                    };
+                    
+                    axios(config)
+                    .then(function (response) {
+                        // console.log(JSON.stringify(response.data.data));
+                        app.product = response.data.data;
+                        app.presentations = app.product.presentations;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                <?php endif; ?>
             },
         }).mount('#contenedor')
     </script>
