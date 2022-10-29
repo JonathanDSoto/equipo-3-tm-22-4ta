@@ -7,7 +7,6 @@
     <?php include "../../layouts/head.template.php" ?>
 </head>
 <body>
-    
     <!-- Begin page -->
     <div id="contenedor">
         <header id="page-topbar">
@@ -47,7 +46,7 @@
                     <!-- end page title -->
                     <div class="row">
                     <!-- start cart -->
-                        <div class="col-xl-3 col-md-6">
+                    <div class="col-xl-3 col-md-6">
                             <a class="card-body" href="">
                                 <div class="card card-height-100">
                                     <div class="card-body">
@@ -98,8 +97,5 @@
     <!-- ecommerce product list -->
     <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
     </script>
-    
 </body>
-
-
 </html>

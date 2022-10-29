@@ -7,7 +7,6 @@
     <?php include "../../layouts/head.template.php" ?>
 </head>
 <body>
-    
     <!-- Begin page -->
     <div id="contenedor">
         <header id="page-topbar">
@@ -25,11 +24,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Brands</h4>
+                                <h4 class="mb-sm-0">Coupons</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                        <li class="breadcrumb-item active">Brands</li>
+                                        <li class="breadcrumb-item active">Coupons</li>
                                     </ol>
                                 </div>
                             </div>
@@ -39,7 +38,7 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <button @click="" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Brands</button>
+                                    <button data-bs-toggle="modal" data-bs-target="#couponModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Coupon</button>
                                 </div>
                             </div>
                         </div>
@@ -47,31 +46,30 @@
                     <!-- end page title -->
                     <div class="row">
                     <!-- start cart -->
-                        <div class="col-xl-3 col-md-6">
+                    <div class="col-xl-3 col-md-6">
                             <a class="card-body" href="">
                                 <div class="card card-height-100">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-primary text-white rounded-2 fs-2 shadow">
-                                                    <i class="bx bxs-t-shirt"></i>
+                                                <span class="avatar-title bg-info text-white rounded-2 fs-2 shadow">
+                                                    <i class="bx bx-receipt"></i>
                                                 </span>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <p class="text-uppercase fw-medium text-muted mb-3">ANOTHER TEXT</p>
-                                                <h4 class="fs-4 mb-3"><span>NAME Brands</span></h4>
+                                                <h4 class="fs-4 mb-3"><span>NAME Coupon</span></h4>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-ghost-info waves-effect waves-light shadow-none bx bx-pencil"></button>
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#categorieModal" class="btn btn-ghost-info waves-effect waves-light shadow-none bx bx-pencil"></button>
                                         </div>
                                     </div><!-- end card body -->
                                 </div>
                             </a>
                         </div>
                     </div> <!-- end card-->
-                    
 
                   </div>
                     <!-- end row -->
@@ -85,7 +83,7 @@
     </div>
     <!-- END layout-wrapper -->
     <?php include "../../layouts/modal.template.php" ?>
-    <?php include "../../layouts/brandModal.template.php" ?>
+    <?php include "../../layouts/couponModal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
     
     <?php include "../../layouts/scripts.template.php" ?>
@@ -99,8 +97,5 @@
     <!-- ecommerce product list -->
     <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
     </script>
-    
 </body>
-
-
 </html>
