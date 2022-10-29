@@ -186,7 +186,6 @@
             <?php include "../../layouts/couponModal.template.php" ?>
         </div>
         <!-- end main content-->
-
     </div>
     <!-- END layout-wrapper -->
     <?php include "../../layouts/footer.template.php" ?>
