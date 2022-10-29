@@ -49,9 +49,12 @@
                                         <div class="col-xl-4 col-md-8 mx-auto">
                                             <div class="product-img-slider sticky-side-div">
                                                 <div class="swiper product-thumbnail-slider p-2 rounded bg-light">
-                                                    <div class="img">
-                                                        <!-- IMGAGEN -->
-                                                        <img src="<?= $product->cover ?>" alt="" class="img-fluid d-block" />
+                                                    <!-- IMAGEN -->
+                                                    <div class="img" v-if="(ruta!=product.cover)">
+                                                        <img :src="product.cover" alt="" class="img-fluid d-block" />
+                                                    </div>
+                                                    <div class="img" v-else>
+                                                        <img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-13.png" alt="" class="img-fluid d-block" />
                                                     </div>
                                                 </div>
                                                 <!-- end swiper thumbnail slide -->
@@ -62,17 +65,15 @@
                                             <div class="mt-xl-0 mt-5">
                                                 <div class="d-flex">
                                                     <div class="flex-grow-1">
-                                                        <h4><?= $product->name ?></h4>
+                                                        <h4>{{product.name}}</h4>
                                                         <div class="hstack gap-3 flex-wrap">
-                                                            <div><a href="#" class="text-primary d-block"><?= $product->brand->name ?></a></div>
-                                                            <div class="vr"></div>
-                                                                                                                <!-- SI NO HAY DEJALO COMO "DESCONOCIDO" -->
-                                                            <div class="text-muted">Seller : <span class="text-body fw-medium">PROVIDERS</span></div>
+                                                            <div v-if="product.brand!=null"><a href="#" class="text-primary d-block">{{product.brand.name}}</a></div>
+                                                            <div v-else><a class="text-primary d-block">No Brand</a></div>                    
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <div>
-                                                            <a href="apps-ecommerce-add-product.html" class="btn btn-light" data-bs-toggle="modal" @click="editClient()" data-bs-toggle="modal" data-bs-target="#clientModal" data-bs-placement="top" title="Edit"><i class="ri-pencil-fill align-bottom"></i></a>
+                                                            <button :id="product.id" :data-product="JSON.stringify(product)" v-on:click="editProduct(product.id)" data-bs-toggle="modal" data-bs-target="#productModal" data-bs-placement="top" title="Edit"><i class="ri-pencil-fill align-bottom"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,7 +89,12 @@
                                                                 </div>
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">Price :</p>
-                                                                    <h5 class="mb-0">$00.00</h5>
+                                                                    <div v-if="presentations.length>0">
+                                                                        <h5 class="mb-0">${{presentations[0].price[0].amount}}</h5>
+                                                                    </div>
+                                                                    <div v-else>
+                                                                        <h5 class="mb-0">$ 0.00 </h5>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -104,7 +110,12 @@
                                                                 </div>
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">No. of Orders :</p>
-                                                                    <h5 class="mb-0">0,00</h5>
+                                                                    <div v-if="presentations.length>0">
+                                                                        <h5 class="mb-0">{{presentations[0].orders.length}}</h5>
+                                                                    </div>
+                                                                    <div v-else>
+                                                                        <h5 class="mb-0">0</h5>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -120,7 +131,12 @@
                                                                 </div>
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">Available Stocks :</p>
-                                                                    <h5 class="mb-0">0,00</h5>
+                                                                    <div v-if="presentations.length>0">
+                                                                        <h5 class="mb-0">{{presentations[0].stock}}</h5>
+                                                                    </div>
+                                                                    <div v-else>
+                                                                        <h5 class="mb-0">0</h5>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -131,12 +147,12 @@
 
                                                 <div class="mt-4 text-muted">
                                                     <div class="hstack gap-2 flex-wrap mb-3">
-                                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">View description</button>
+                                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">View features</button>
                                                     </div>
                                                     <div class="collapse" id="collapseExample">
                                                         <div class="card mb-0">
                                                             <div class="card-body">
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, odio excepturi. Tempora totam vel voluptatibus voluptatem doloribus quasi iste quod perspiciatis excepturi? At facere aperiam doloribus, repellat ex est natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur alias itaque laboriosam eligendi! Nesciunt quidem temporibus nemo libero natus ullam exercitationem sapiente maxime enim magnam, iste ut neque tenetur. Temporibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora obcaecati molestiae eligendi voluptatibus, iste quasi est exercitationem, nulla assumenda ipsum similique animi, aut commodi ea repellendus expedita maiores nemo! Perferendis! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti suscipit vero non delectus magnam iure ipsum omnis expedita esse earum, voluptates consectetur voluptate eaque officia aut ipsa dolore dolores? Neque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita error doloremque nobis? Repellat eius, nesciunt consequuntur mollitia itaque ipsa eos blanditiis facere aspernatur consectetur? Quo mollitia eveniet tenetur nisi rerum.
+                                                                {{product.features}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -160,16 +176,22 @@
                                                                 <table class="table mb-0">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <th scope="row" style="width: 200px;">Category</th>
-                                                                            <td>NAME</td>
+                                                                            <th scope="row" style="width: 200px;">Categories</th>
+                                                                            <td v-for="category in product.categories">
+                                                                                <a href="#" class="text-primary d-block">{{category.name}}</a>
+                                                                            </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th scope="row">Brand</th>
-                                                                            <td>BRAND</td>
+                                                                            <td v-if="product.brand!=null">
+                                                                                <a href="#" class="text-primary d-block">{{product.brand.name}}</a>
+                                                                            </td>
+                                                                            <td v-else>No Brand</td>                                                                           
                                                                         </tr>
                                                                         <tr>
                                                                             <th scope="row">Weight</th>
-                                                                            <td>WEIGHT_IN_GRAMS</td>
+                                                                            <td v-if="presentations.length>0">{{presentations[0].weight_in_grams}}</td>
+                                                                            <td v-else>No Weight</td>   
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
@@ -177,10 +199,9 @@
                                                         </div>
                                                         <div class="tab-pane fade" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
                                                             <div>
-                                                                <h5 class="font-size-16 mb-3">NAME PRODUCT</h5>
-                                                                <p>ALCH AQUI PON LA DESCRIPION MAS CORTA</p>
+                                                                <h5 class="font-size-16 mb-3">{{product.name}}</h5>
                                                                 <div>
-                                                                    <p class="mb-2"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i> NO PSS SI QUIERES METES ALGUN DATO XD NO SE ME OCURRIO NADA</p>
+                                                                    <p class="mb-2"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>{{product.description}}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -269,19 +290,26 @@
             </div>
             <!-- End Page-content -->
 
-            <footer class="footer">
-                <?php include "../../layouts/footer.template.php" ?>
-            </footer>
-            <?php include "../../layouts/productModal.template.php" ?>
+            <?php include "../../layouts/footer.template.php" ?>
         </div>
         <!-- end main content-->
-
+        <?php include "../../layouts/productModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
-    <?php include "../../layouts/footer.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
-    <!-- JAVASCRIPT -->
+    
     <?php include "../../layouts/scripts.template.php" ?>
+    <!-- nouisliderribute js -->
+    <script src="<?= BASE_PATH ?>public/libs/nouislider/nouislider.min.js"></script>
+    <script src="<?= BASE_PATH ?>public/libs/wnumb/wNumb.min.js"></script>
+
+    <!-- gridjs js -->
+    <script src="<?= BASE_PATH ?>public/libs/gridjs/gridjs.umd.js"></script>
+    <script src="../../../../unpkg.com/gridjs%405.1.0/plugins/selection/dist/selection.umd.js"></script>
+    <!-- ecommerce product list -->
+    <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
+    </script>
+    
 </body>
 
 

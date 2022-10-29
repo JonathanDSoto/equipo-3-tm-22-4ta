@@ -150,7 +150,7 @@
                                                                                     </a>
                                                                                 </li>
                                                                                 <li>
-                                                                                    <button :id="product.id" :data-product='JSON.stringify(product)' v-on:click="editProduct(product.id)" data-bs-toggle="modal" data-bs-target="#productModal" class="dropdown-item"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit Profile</button>
+                                                                                    <button :id="product.id" :data-product="JSON.stringify(product)" v-on:click="editProduct(product.id)" data-bs-toggle="modal" data-bs-target="#productModal" class="dropdown-item"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit Product</button>
                                                                                 </li>
                                                                                 <li class="dropdown-divider"></li>
                                                                                 <li>
