@@ -23,12 +23,12 @@
                     <div class="modal-body" v-if="(modal!='editPhoto')">
                         <label class="input-group mb-3">Name(s)</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" required pattern="[A-Za-z ]{4,40}" 
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" required pattern="[A-Za-z\u00f1\u00d1 ]{4,40}" 
                             title="Minimo 4 carácteres y maximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
                         </div>
                         <label class="input-group mb-3">Last Name</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" required pattern="[A-Za-z ]{4,40}"
+                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" required pattern="[A-Za-z\u00f1\u00d1 ]{4,40}"
                             title="Minimo 4 carácteres y maximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
                         </div>
                         <label class="input-group mb-3">Email</label>
