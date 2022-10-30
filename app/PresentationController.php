@@ -18,11 +18,12 @@ if (isset($_POST['action'])) {
 				$stock_min = strip_tags($_POST['stock_min']);
 				$stock_max = strip_tags($_POST['stock_max']);
 				$product_id = strip_tags($_POST['product_id']);
+				$amount = strip_tags($_POST['amount']);
 				
 				$presentationController = new PresentationController();
 
 				$presentationController->create($description, $code, $weight_in_grams, $status, $cover, $stock, 
-				$stock_min, $stock_max, $product_id);
+				$stock_min, $stock_max, $product_id, $amount);
 				 
 			break; 
 
@@ -47,7 +48,7 @@ if (isset($_POST['action'])) {
 			case 'updatePrice':
 				
 				$id = strip_tags($_POST['id']);
-				$id = strip_tags($_POST['amount']);				
+				$amount = strip_tags($_POST['amount']);				
 				$product_id = strip_tags($_POST['product_id']);
 
 				$presentationController = new PresentationController();
@@ -142,7 +143,7 @@ Class PresentationController
 	}
 
 	public function create($description, $code, $weight_in_grams, $status, $cover, $stock, 
-	$stock_min, $stock_max, $product_id)
+	$stock_min, $stock_max, $product_id, $amount)
 	{
 
 		$curl = curl_init();
@@ -158,7 +159,8 @@ Class PresentationController
 		CURLOPT_CUSTOMREQUEST => 'POST',
 		CURLOPT_POSTFIELDS => array('description' => $description,'code' => $code,
 		'weight_in_grams' => $weight_in_grams, 'status' => $status,'cover'=> new CURLFILE($cover),
-		'stock' => $stock,'stock_min' => $stock_min,'stock_max' => $stock_max,'product_id' => $product_id),
+		'stock' => $stock,'stock_min' => $stock_min,'stock_max' => $stock_max, 'product_id' => $product_id,
+		'amount' => $amount),
 		CURLOPT_HTTPHEADER => array(
 			'Authorization: Bearer '.$_SESSION['token']
 		),
@@ -172,10 +174,10 @@ Class PresentationController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header('Location:'.BASE_PATH.'products/'.$response->data->product_id.'?success=true');
+			header('Location:'.BASE_PATH.'products/'.$response->data->product->slug.'?success=true');
 		}else{ 
 
-			header('Location:'.BASE_PATH.'products/'.$product_id.'?error=true');
+			header('Location:'.BASE_PATH.'products/?error=true');
 		}
 
 	}
@@ -210,10 +212,10 @@ Class PresentationController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header('Location:'.BASE_PATH.'products/'.$response->data->product_id.'?success=true');
+			header('Location:'.BASE_PATH.'products/'.$response->data->product->slug.'?success=true');
 		}else{ 
 
-			header('Location:'.BASE_PATH.'products/'.$product_id.'?error=true');
+			header('Location:'.BASE_PATH.'products/?error=true');
 		}
 
 	}
@@ -247,10 +249,10 @@ Class PresentationController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header('Location:'.BASE_PATH.'products/'.$response->data->product_id.'?success=true');
+			header('Location:'.BASE_PATH.'products/'.$response->data->product->slug.'?success=true');
 		}else{ 
 
-			header('Location:'.BASE_PATH.'products/'.$product_id.'?error=true');
+			header('Location:'.BASE_PATH.'products/?error=true');
 		}
 
 	}
