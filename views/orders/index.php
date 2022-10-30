@@ -62,7 +62,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="table-responsive table-card mt-3 mb-1">
+                                        <div class="table-responsive table-card ms-1 me-2 mt-3 mb-1">
                                             <table class="table align-middle table-nowrap" id="customerTable">
                                                 <thead class="table-light">
                                                     <tr>
@@ -93,7 +93,7 @@
                                                         <td class="status"><span class="badge badge-soft-success text-uppercase">Enviada</span></td>
                                                         <td class="status"><span class="badge badge-soft-danger text-uppercase">Abandonada</span></td>
                                                         <td class="status"><span class="badge badge-soft-warning text-uppercase">Pendiente de enviar</span></td>
-                                                        <td class="status"><span class="badge badge-soft-danger text-uppercase">Cacelada</span></td> -->
+                                                        <td class="status"><span class="badge badge-soft-danger text-uppercase">Cancelada</span></td> -->
                                                         <td>
                                                             <div class="d-flex gap-2">
                                                                 <div class="edit">
@@ -102,20 +102,16 @@
                                                                 <div class="remove">
                                                                     <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
                                                                 </div>
+                                                                <div class="view">
+                                                                    <a href="../orders/1">
+                                                                        <button class="btn btn-sm btn-primary view-item-btn">View</button>
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <div class="noresult" style="display: none">
-                                                <div class="text-center">
-                                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
-                                                    </lord-icon>
-                                                    <h5 class="mt-2">Sorry! No Result Found</h5>
-                                                    <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
-                                                        orders for you search.</p>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div><!-- end card -->

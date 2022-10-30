@@ -25,6 +25,12 @@
               </select>  
             </div>
           </div>
+          <!-- <div class="modal-body">
+            <div>
+              <label for="status-field" class="form-label">Quantity</label>
+              <input type="number" class="input-group me-3" name="" id="">
+            </div>
+          </div> -->
           <div class="modal-footer">
             <div class="hstack gap-2 justify-content-end">
               <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
