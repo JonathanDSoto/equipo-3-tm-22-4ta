@@ -74,7 +74,6 @@
                     document.getElementById("email").value = "";
                     // document.getElementById("password").value = user.password;
                     document.getElementById("phone_number").value = "";
-                    document.getElementById("role").value = "";
                 },
                 deleteUser(id){
                     swal({
