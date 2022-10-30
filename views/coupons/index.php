@@ -38,7 +38,7 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <button data-bs-toggle="modal" data-bs-target="#couponModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Coupon</button>
+                                    <button @click="createCoupon()" data-bs-toggle="modal" data-bs-target="#couponModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Coupon</button>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                                             </div>
                                         </a>
                                         <div class="d-flex justify-content-end">
-                                            <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
+                                            <button v-on:click="deleteCoupon(coupon.id)" type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
                                         </div>
                                     </div><!-- end card body -->
                                 </div>
