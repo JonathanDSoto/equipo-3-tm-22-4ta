@@ -1,5 +1,8 @@
 <?php
 	include_once "../../app/config.php";
+    include "../../app/CategoryController.php";
+    $ct = new CategoryController();
+    $categories = $ct->getCategories();
 ?> 
 <!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -19,7 +22,7 @@
         <!-- ============================================================== -->
         <div class="main-content">
             <div class="page-content">
-              <div class="container-fluid">
+                <div class="container-fluid">
                     <!-- start page title -->
                     <div class="row">
                         <div class="col-12">
@@ -27,7 +30,7 @@
                                 <h4 class="mb-sm-0">Categories</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</°a></li>
                                         <li class="breadcrumb-item active">Categories</li>
                                     </ol>
                                 </div>
@@ -38,16 +41,16 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <button data-bs-toggle="modal" data-bs-target="#categorieModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Categorie</button>
+                                    <button @click="createCategory()" data-bs-toggle="modal" data-bs-target="#categorieModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Categorie</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- end page title -->
+                        <!-- end page title -->
                     <div class="row">
-                    <!-- start cart -->
-                    <div class="col-xl-3 col-md-6">
-                            <a class="card-body" href="">
+                        <!-- start cart -->
+                        <div class="col-xl-3 col-md-6 col-sm-1" v-for="category in categories">
+                            <a class="card-body" >
                                 <div class="card card-height-100">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
@@ -57,13 +60,13 @@
                                                 </span>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
-                                                <p class="text-uppercase fw-medium text-muted mb-3">ANOTHER TEXT</p>
-                                                <h4 class="fs-4 mb-3"><span>NAME CATEGORIE</span></h4>
+                                                <p class="text-uppercase fw-medium text-muted mb-3">{{category.description}}</p>
+                                                <h4 class="fs-4 mb-3"><span>{{category.name}}</span></h4>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end">
-                                            <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#categorieModal" class="btn btn-ghost-info waves-effect waves-light shadow-none bx bx-pencil"></button>
+                                            <button v-on:click="deleteCategory(category.id)" type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
+                                            <button :id="category.id" :data-category="JSON.stringify(category)" v-on:click="editCategory(category.id)" type="button" data-bs-toggle="modal" data-bs-target="#categorieModal" class="btn btn-ghost-info waves-effect waves-light shadow-none bx bx-pencil"></button>
                                         </div>
                                     </div><!-- end card body -->
                                 </div>
@@ -71,19 +74,16 @@
                         </div>
                     </div> <!-- end card-->
 
-                  </div>
-                    <!-- end row -->
                 </div>
-                <!-- container-fluid -->
+                    <!-- end row -->
             </div>
-            <!-- End Page-content -->
+                <!-- container-fluid -->
             <?php include "../../layouts/footer.template.php" ?>
         </div>
         <!-- end main content-->
+        <?php include "../../layouts/categoryModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
-    <?php include "../../layouts/modal.template.php" ?>
-    <?php include "../../layouts/categoryModal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
     
     <?php include "../../layouts/scripts.template.php" ?>

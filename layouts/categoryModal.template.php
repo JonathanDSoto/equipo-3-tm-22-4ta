@@ -14,7 +14,7 @@
                 </div>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form enctype="multipart/form-data" method="POST" action="<?= BASE_PATH ?>client">
+            <form method="POST" action="<?=BASE_PATH?>category">
                 <div class="modal-body">
                     <label class="input-group mb-3">Name</label>
                     <div class="input-group mb-3">
@@ -39,6 +39,11 @@
                         Save changes
                     </button>
                 </div>
+
+                <input id="input_oculto" type="hidden" name="action" value="create">
+                <input id="id" type="hidden" name="id">
+                <input type="hidden" value="<?= $_SESSION['global_token'] ?>" name="global_token">
+
             </form>
         </div>
     </div>

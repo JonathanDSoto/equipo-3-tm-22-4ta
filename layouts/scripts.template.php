@@ -26,6 +26,7 @@
                     product: [],
                     presentations: [],
                     tags: [],
+                    brands: [],
                     categories: [],
                 }
             },methods : {
@@ -385,6 +386,171 @@
                         }
                     });
                 },
+                editCategory(val){
+                    
+                    app.modal = "edit";
+                    let boton = document.getElementById(val);
+                    document.getElementById("input_oculto").value = "update";
+                    let category = JSON.parse(boton.getAttribute("data-category"));
+                    console.log(category);
+                    document.getElementById("id").value = category.id;
+                    document.getElementById("name").value = category.name;
+                    document.getElementById("description").value = category.description;
+                    document.getElementById("slug").value = category.slug;
+                    
+                },
+                createCategory(){
+                    
+                    app.modal = "create";
+                    document.getElementById("input_oculto").value = "create";
+                    document.getElementById("id").value = "";
+                    document.getElementById("name").value = "";
+                    document.getElementById("description").value = "";
+                    document.getElementById("slug").value = "";
+                    
+                },
+                deleteCategory(id){
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover the information!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("The category was successfully deleted!", {
+                                icon: "success",
+                            });
+                            var bodyFormData = new FormData();
+                            bodyFormData.append('id', id);
+                            bodyFormData.append('action', 'delete');
+                            bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
+
+                            axios.post('<?php echo BASE_PATH ?>category', bodyFormData)
+                            .then(function (response){
+                                if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>categories/";
+                            }
+                            })
+                            .catch(function (error){
+                                console.log('error')
+                            })
+                        } else {
+                            swal("The category continues to be saved!");
+                        }
+                    });
+                },
+                editBrand(val){
+                    
+                    app.modal = "edit";
+                    let boton = document.getElementById(val);
+                    document.getElementById("input_oculto").value = "update";
+                    let brand = JSON.parse(boton.getAttribute("data-brand"));
+                    console.log(brand);
+                    document.getElementById("id").value = brand.id;
+                    document.getElementById("name").value = brand.name;
+                    document.getElementById("description").value = brand.description;
+                    document.getElementById("slug").value = brand.slug;
+                    
+                },
+                createBrand(){
+                    
+                    app.modal = "create";
+                    document.getElementById("input_oculto").value = "create";
+                    document.getElementById("id").value = "";
+                    document.getElementById("name").value = "";
+                    document.getElementById("description").value = "";
+                    document.getElementById("slug").value = "";
+                    
+                },
+                deleteBrand(id){
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover the information!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("The brands was successfully deleted!", {
+                                icon: "success",
+                            });
+                            var bodyFormData = new FormData();
+                            bodyFormData.append('id', id);
+                            bodyFormData.append('action', 'delete');
+                            bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
+
+                            axios.post('<?php echo BASE_PATH ?>brand', bodyFormData)
+                            .then(function (response){
+                                if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>brands/";
+                            }
+                            })
+                            .catch(function (error){
+                                console.log('error')
+                            })
+                        } else {
+                            swal("The brands continues to be saved!");
+                        }
+                    });
+                },
+                editTag(val){
+                    
+                    app.modal = "edit";
+                    let boton = document.getElementById(val);
+                    document.getElementById("input_oculto").value = "update";
+                    let brand = JSON.parse(boton.getAttribute("data-brand"));
+                    console.log(brand);
+                    document.getElementById("id").value = brand.id;
+                    document.getElementById("name").value = brand.name;
+                    document.getElementById("description").value = brand.description;
+                    document.getElementById("slug").value = brand.slug;
+                    
+                },
+                createTag(){
+                    
+                    app.modal = "create";
+                    document.getElementById("input_oculto").value = "create";
+                    document.getElementById("id").value = "";
+                    document.getElementById("name").value = "";
+                    document.getElementById("description").value = "";
+                    document.getElementById("slug").value = "";
+                    
+                },
+                deleteTag(id){
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover the information!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("The tag was successfully deleted!", {
+                                icon: "success",
+                            });
+                            var bodyFormData = new FormData();
+                            bodyFormData.append('id', id);
+                            bodyFormData.append('action', 'delete');
+                            bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
+
+                            axios.post('<?php echo BASE_PATH ?>tag', bodyFormData)
+                            .then(function (response){
+                                if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>tags/";
+                            }
+                            })
+                            .catch(function (error){
+                                console.log('error')
+                            })
+                        } else {
+                            swal("The tag continues to be saved!");
+                        }
+                    });
+                },
 
             },
             mounted(){
@@ -470,6 +636,24 @@
                         console.log(error);
                     });
                 <?php endif; ?>
+
+                var config = {
+                    method: 'get',
+                    url: 'https://crud.jonathansoto.mx/api/brands',
+                    headers: { 
+                        'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
+                    }
+                };
+
+                axios(config)
+                .then(function (response) {
+                    console.log(JSON.stringify(response.data.data));
+                    app.brands = response.data.data
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
             },
         }).mount('#contenedor')
     </script>

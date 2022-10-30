@@ -20,7 +20,7 @@
         <!-- ============================================================== -->
         <div class="main-content">
             <div class="page-content">
-              <div class="container-fluid">
+                <div class="container-fluid">
                     <!-- start page title -->
                     <div class="row">
                         <div class="col-12">
@@ -39,7 +39,7 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <button @click="" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Brands</button>
+                                    <button @click="createBrand()" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-success" id="addUserBtn"><i class="ri-add-line align-bottom me-1"></i> Add Brands</button>
                                 </div>
                             </div>
                         </div>
@@ -47,8 +47,8 @@
                     <!-- end page title -->
                     <div class="row">
                     <!-- start cart -->
-                        <div class="col-xl-3 col-md-6">
-                            <a class="card-body" href="">
+                        <div class="col-xl-3 col-md-6" v-for="brand in brands">
+                            <a class="card-body" >
                                 <div class="card card-height-100">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
@@ -58,34 +58,29 @@
                                                 </span>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
-                                                <p class="text-uppercase fw-medium text-muted mb-3">ANOTHER TEXT</p>
-                                                <h4 class="fs-4 mb-3"><span>NAME Brands</span></h4>
+                                                <p class="text-uppercase fw-medium text-muted mb-3">{{brand.description}}</p>
+                                                <h4 class="fs-4 mb-3"><span>{{brand.name}}</span></h4>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end">
-                                            <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-ghost-info waves-effect waves-light shadow-none bx bx-pencil"></button>
+                                            <button v-on:click="deleteBrand(brand.id)" type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
+                                            <button :id="brand.id" :data-brand="JSON.stringify(brand)" v-on:click="editBrand(brand.id)" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-ghost-info waves-effect waves-light shadow-none bx bx-pencil"></button>
                                         </div>
                                     </div><!-- end card body -->
                                 </div>
                             </a>
                         </div>
                     </div> <!-- end card-->
-                    
-
-                  </div>
-                    <!-- end row -->
                 </div>
-                <!-- container-fluid -->
+                    <!-- end row -->
             </div>
-            <!-- End Page-content -->
+            <!-- container-fluid -->
             <?php include "../../layouts/footer.template.php" ?>
         </div>
         <!-- end main content-->
+        <?php include "../../layouts/brandModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
-    <?php include "../../layouts/modal.template.php" ?>
-    <?php include "../../layouts/brandModal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
     
     <?php include "../../layouts/scripts.template.php" ?>
@@ -98,6 +93,7 @@
     <script src="../../../../unpkg.com/gridjs%405.1.0/plugins/selection/dist/selection.umd.js"></script>
     <!-- ecommerce product list -->
     <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
+    </script>c="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
     </script>
     
 </body>
