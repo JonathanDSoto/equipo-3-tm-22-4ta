@@ -144,11 +144,11 @@ Class CategoryController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header('Location:'.BASE_PATH.'categories?success=true');
+			header('Location:'.BASE_PATH.'categories/?success=true');
 		}else{ 
 
 			#var_dump($response);
-			header('Location:'.BASE_PATH.'categories?error=true');
+			header('Location:'.BASE_PATH.'categories/?error=true');
 		}
 
 	}
@@ -181,11 +181,11 @@ Class CategoryController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header('Location:'.BASE_PATH.'categories?success=true');
+			header('Location:'.BASE_PATH.'categories/?success=true');
 		}else{ 
 
 			#var_dump($response);
-			header('Location:'.BASE_PATH.'categories?error=true');
+			header('Location:'.BASE_PATH.'categories/?error=true');
 		}
 
 	}

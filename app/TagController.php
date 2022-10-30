@@ -144,10 +144,10 @@ Class TagController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header('Location:'.BASE_PATH.'tags?success=true');
+			header('Location:'.BASE_PATH.'tags/?success=true');
 		}else{ 
 
-			header('Location:'.BASE_PATH.'tags?error=true');
+			header('Location:'.BASE_PATH.'tags/?error=true');
 		}
 
 	}
@@ -180,11 +180,11 @@ Class TagController
 
 		if ( isset($response->code) && $response->code > 0) {
 
-			header('Location:'.BASE_PATH.'tags?success=true');
+			header('Location:'.BASE_PATH.'tags/?success=true');
 		}else{ 
 
 			#var_dump($response);
-			header('Location:'.BASE_PATH.'tags?error=true');
+			header('Location:'.BASE_PATH.'tags/?error=true');
 		}
 
 	}
