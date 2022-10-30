@@ -39,7 +39,7 @@
                         <div v-if="(modal=='create')">
                             <label class="input-group mb-3">Password</label>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="basic-addon1">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="basic-addon1" required minlength="4" maxlength="30">
                             </div>
                         </div>
                         <label class="input-group mb-3">Phone Number</label>
