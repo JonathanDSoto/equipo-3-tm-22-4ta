@@ -88,7 +88,11 @@
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">Price :</p>
                                                                     <div v-if="presentations.length>0">
-                                                                        <h5 class="mb-0">${{presentations[0].price[0].amount}}</h5>
+                                                                        <div v-for="price in presentations[0].price">
+                                                                            <div v-if="price.is_current_price==1">
+                                                                                ${{price.amount}}
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                     <div v-else>
                                                                         <h5 class="mb-0">$ 0.00 </h5>
@@ -209,9 +213,13 @@
 
                                                 <hr class="mt-5">
                                                 <h5 class="fs-4 mb-3">Presentations:</h5>
-                                                <div class="product-content mt-2" v-for="(presentation, index) in presentations">
-                                                    <div class="table-responsive" v-if="presentation.orders.length>0">
-                                                        <h5 class="fs-8 mb-3 mt-3">{{presentation.description}}</h5>
+                                                <div class="col-sm-auto">
+                                                    <div>
+                                                        <button @click="createPresentation()" data-bs-toggle="modal" data-bs-target="#presentationModal" class="btn btn-success" id="addpresent-btn"><i class="ri-add-line align-bottom me-1"></i>Add Presentation</button>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content mt-2">
+                                                    <div class="table-responsive">
                                                         <table class="table align-middle mb-0" >
                                                             <thead class="table-light">
                                                                 <tr>
@@ -230,12 +238,32 @@
                                                                     <th scope="col">
                                                                         Stock
                                                                     </th>
+                                                                    <th scope="col">
+                                                                        Price
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        <div class="gridjs-th-content">Action</div>
+                                                                    </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
+                                                                <tr v-for="(presentation, index) in presentations">
                                                                     <td>
-                                                                        {{presentation.description}}
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div class="flex-shrink-0 me-3">
+                                                                                <div class="avatar-sm bg-light rounded p-1" v-if="presentation.cover!=null">
+                                                                                    <img :src="'https://crud.jonathansoto.mx/storage/products/'+presentation.cover" alt="" class="img-fluid d-block">
+                                                                                </div>
+                                                                                <div class="avatar-sm bg-light rounded p-1" v-else>
+                                                                                    <img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-13.png" alt="" class="img-fluid d-block">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="flex-grow-1">
+                                                                                <h5 class="fs-14 mb-1">
+                                                                                    {{presentation.description}}
+                                                                                </h5>
+                                                                            </div>
+                                                                        </div>
                                                                     </td>
                                                                     <td>
                                                                         {{presentation.code}}
@@ -248,6 +276,37 @@
                                                                     </td>
                                                                     <td>
                                                                         {{presentation.stock}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <div v-for="price in presentation.price">
+                                                                            <div v-if="price.is_current_price==1">
+                                                                                ${{price.amount}}
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td data-column-id="action" class="gridjs-td">
+                                                                        <span>
+                                                                            <div class="dropdown">
+                                                                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                    <i class="ri-more-fill"></i>
+                                                                                </button>
+                                                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                                                    <li>
+                                                                                        <button :id="presentation.id" :data-presentation="JSON.stringify(presentation)" v-on:click="editPrice(presentation.id)" data-bs-toggle="modal" data-bs-target="#presentationModal" class="dropdown-item"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit Price</button>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <button :id="presentation.id" :data-presentation="JSON.stringify(presentation)" v-on:click="editPresentation(presentation.id)" data-bs-toggle="modal" data-bs-target="#presentationModal" class="dropdown-item"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit Presentation</button>
+                                                                                    </li>
+                                                                                    <li class="dropdown-divider"></li>
+                                                                                    <li>
+                                                                                        <button v-on:click="deletePresentation(product.id)" class="dropdown-item remove-list">
+                                                                                            <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                                            Delete
+                                                                                        </button>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </span>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -298,7 +357,7 @@
                                                                         Not Paid
                                                                     </td>
                                                                     <td>
-                                                                        <a href="#" class="fw-semibold">
+                                                                        <a :href="'<?=BASE_PATH?>clients/'+order.client_id" class="fw-semibold">
                                                                             {{order.client_id}} 
                                                                         </a>
                                                                     </td>
@@ -337,7 +396,7 @@
             <?php include "../../layouts/footer.template.php" ?>
         </div>
         <!-- end main content-->
-        <?php include "../../layouts/productModal.template.php" ?>
+        <?php include "../../layouts/presentationModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
     <?php include "../../layouts/function_footer.template.php" ?>

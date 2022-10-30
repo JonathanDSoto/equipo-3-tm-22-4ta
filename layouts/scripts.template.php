@@ -309,6 +309,82 @@
                         }
                     });
                 },
+                editPresentation(val){
+                    
+                    app.modal = "edit";
+                    let boton = document.getElementById(val);
+                    document.getElementById("input_oculto").value = "update";
+                    let presentation = JSON.parse(boton.getAttribute("data-presentation"));
+                    console.log(presentation);
+                    document.getElementById("idpr").value = presentation.id;
+                    document.getElementById("description").value = presentation.description;
+                    document.getElementById("code").value = presentation.code;
+                    document.getElementById("weight_in_grams").value = presentation.weight_in_grams;
+                    document.getElementById("stock").value = presentation.stock;
+                    document.getElementById("stock_min").value = presentation.stock_min;
+                    document.getElementById("stock_max").value = presentation.stock_max;
+
+                    for (let i = 0; i < presentation.price.length; i++) {
+                        if(presentation.price[i].is_current_price==1){
+                            document.getElementById("amount").value = presentation.price[i].amount;
+                        }
+                    }
+                    
+                },
+                createPresentation(){
+                    
+                    app.modal = "create";
+                    document.getElementById("input_oculto").value = "create";
+                    document.getElementById("idpr").value = "";
+                    document.getElementById("description").value = "";
+                    document.getElementById("code").value = "";
+                    document.getElementById("weight_in_grams").value = "";
+                    document.getElementById("stock").value = "";
+                    document.getElementById("stock_min").value = "";
+                    document.getElementById("stock_max").value = "";
+
+                },
+                editPrice(val){
+                    app.modal = "editPrice";
+                    let boton = document.getElementById(val);
+                    document.getElementById("input_oculto").value = "updatePrice";
+                    let presentation = JSON.parse(boton.getAttribute("data-presentation"));
+                    console.log(presentation);
+                    document.getElementById("idpr").value = presentation.id;
+                    
+                },
+                deletePresentation(id){
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover the information!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("The presentation was successfully deleted!", {
+                                icon: "success",
+                            });
+                            var bodyFormData = new FormData();
+                            bodyFormData.append('id', id);
+                            bodyFormData.append('action', 'delete');
+                            bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
+
+                            axios.post('<?php echo BASE_PATH ?>presentation', bodyFormData)
+                            .then(function (response){
+                                if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>products/";
+                            }
+                            })
+                            .catch(function (error){
+                                console.log('error')
+                            })
+                        } else {
+                            swal("The presentation continues to be saved!");
+                        }
+                    });
+                },
 
             },
             mounted(){
