@@ -7,6 +7,10 @@ RewriteRule ^user$ app/UserController.php
 RewriteRule ^client$ app/ClientController.php
 RewriteRule ^address$ app/AddressController.php
 RewriteRule ^product$ app/ProductController.php
+RewriteRule ^presentation$ app/PresentationController.php
+RewriteRule ^category$ app/CategoryController.php
+RewriteRule ^brand$ app/BrandController.php
+RewriteRule ^tag$ app/TagController.php
 
 #Auth
 RewriteRule ^$ views/auth/login.php
@@ -26,7 +30,6 @@ RewriteRule ^products/(.+)$ views/products/details.php?slug=$1
 
 #Categorias
 RewriteRule ^categories/$ views/categories/index.php
-#RewriteRule ^categories/(.+)$ views/categories/details.php?categorie=$1
 
 #Brands
 RewriteRule ^brands/$ views/brands/index.php
@@ -39,5 +42,6 @@ RewriteRule ^tags/$ views/tags/index.php
 RewriteRule ^coupons/$ views/coupons/index.php
 RewriteRule ^coupons/(.+)$ views/coupons/details.php?coupon=$1
 
-#Presentacion
-RewriteRule ^presentation$ app/PresentationController.php
+#Orders
+RewriteRule ^orders/$ views/orders/index.php
+RewriteRule ^orders/(.+)$ views/orders/details.php?order=$1
