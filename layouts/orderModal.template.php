@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <div>
                     <h5 class="modal-title" id="exampleModelLabel">
-                        Create Order
+                      Create Order
                     </h5>
                 </div>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -71,6 +71,7 @@
                             <li>
                               <option value="1" class="text-warning">Pendiente de pago</option>
                             </li>
+                          </li>
                             <li>
                               <option value="2" class="text-success">Pagada</option>
                             </li>
@@ -120,6 +121,24 @@
                             </li>
                           </ul>
                       </select>
+                    </div>
+                    <label class="input-group mb-3">Presentations</label>
+                    <div class="input-group mb-3">
+                      <select  id="coupon_id" name="coupon_id" class="form-select me-1">
+                          <ul class="dropdown-menu">
+                            <li>
+                              <option value="1">Presentation 1</option>
+                            </li>
+                            <li>
+                              <option value="2">Presentation 1</option>
+                            </li>
+                            <li>
+                              <option value="3">Presentation 1</option>
+                            </li>
+                          </ul>
+                      </select>
+                      <input type="text" class="form-control me-2" style="max-width: 60px;">
+                      <button type="button" class="btn btn-success waves-effect waves-light"><i class="bx bx-plus "></i></button>
                     </div>
                 </div>
                 <div class="modal-footer">
