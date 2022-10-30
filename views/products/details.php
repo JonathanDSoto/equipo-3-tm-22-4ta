@@ -1,9 +1,7 @@
 <?php
 	include_once "../../app/config.php";
-    include "../../app/ProductController.php";
-    $pr = new ProductController();
-    $product = $pr->getProductBySlug($_GET['slug']);
-
+    include "../../app/ClientController.php";
+    $cl = new ClientController();
 ?>
 <!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -73,7 +71,7 @@
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <div>
-                                                            <button :id="product.id" :data-product="JSON.stringify(product)" v-on:click="editProduct(product.id)" data-bs-toggle="modal" data-bs-target="#productModal" data-bs-placement="top" title="Edit"><i class="ri-pencil-fill align-bottom"></i></button>
+                                                            <button :id="product.id" :data-product="JSON.stringify(product)" v-on:click="editProduct(product.id)" data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Product</button>   
                                                         </div>
                                                     </div>
                                                 </div>
@@ -209,16 +207,66 @@
                                                 </div>
                                                 <!-- product-content -->
 
-                                                <div class="product-content mt-5">
-                                                    <div class="table-responsive">
-                                                        <table class="table align-middle mb-0">
+                                                <hr class="mt-5">
+                                                <h5 class="fs-4 mb-3">Presentations:</h5>
+                                                <div class="product-content mt-2" v-for="(presentation, index) in presentations">
+                                                    <div class="table-responsive" v-if="presentation.orders.length>0">
+                                                        <h5 class="fs-8 mb-3 mt-3">{{presentation.description}}</h5>
+                                                        <table class="table align-middle mb-0" >
+                                                            <thead class="table-light">
+                                                                <tr>
+                                                                    <th scope="col">
+                                                                        Description
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Code
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Weight
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Status
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Stock
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        {{presentation.description}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{presentation.code}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{presentation.weight_in_grams}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{presentation.status}}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{presentation.stock}}
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <!-- end table -->
+                                                    </div>
+                                                    <!-- end table responsive -->
+                                                </div>
+                                                
+                                                <hr class="mt-5">
+                                                <h5 class="fs-4 mb-3">Orders:</h5>
+                                                <div class="product-content mt-2" v-for="(presentation, index) in presentations">
+                                                    <div class="table-responsive" v-if="presentation.orders.length>0">
+                                                        <h5 class="fs-8 mb-3 mt-3">{{presentation.description}}</h5>
+                                                        <table class="table align-middle mb-0" >
                                                             <thead class="table-light">
                                                                 <tr>
                                                                     <th scope="col">
                                                                         #
-                                                                    </th>
-                                                                    <th scope="col">
-                                                                        Date
                                                                     </th>
                                                                     <th scope="col">
                                                                         Status
@@ -235,37 +283,33 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
+                                                                <tr v-for="order in presentation.orders">
                                                                     <td>
                                                                         <a href="#" class="fw-semibold">
-                                                                            #VZ2110
+                                                                            {{order.folio}}
                                                                         </a>
                                                                     </td>
-                                                                    <td>
-                                                                        10 Oct, 14:47
-                                                                    </td>
-                                                                    <td class="text-success">
+                                                                    <td class="text-success" v-if="order.is_paid==1">
                                                                         <i class="ri-checkbox-circle-line fs-17 align-middle"></i> 
                                                                         Paid
                                                                     </td>
-                                                                    <td>
-                                                                        <div class="d-flex gap-2 align-items-center">
-                                                                            <div class="flex-shrink-0">
-                                                                                <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-xs rounded-circle">
-                                                                            </div>
-                                                                            <div class="flex-grow-1">
-                                                                                Jordan Kennedy 
-                                                                            </div>
-                                                                        </div>
+                                                                    <td class="text-danger" v-else>
+                                                                        <i class="ri-forbid-line fs-17 align-middle"></i> 
+                                                                        Not Paid
                                                                     </td>
                                                                     <td>
-                                                                        Mastering the grid
+                                                                        <a href="#" class="fw-semibold">
+                                                                            {{order.client_id}} 
+                                                                        </a>
                                                                     </td>
                                                                     <td>
-                                                                        $9.98
+                                                                        {{order.pivot.quantity}}
+                                                                    </td>
+                                                                    <td>
+                                                                        ${{order.total}}
                                                                     </td>
                                                                 </tr>
-                                                            </tfoot>
+                                                            </tbody>
                                                         </table>
                                                         <!-- end table -->
                                                     </div>

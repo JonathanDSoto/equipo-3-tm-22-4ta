@@ -388,6 +388,7 @@
                         // console.log(JSON.stringify(response.data.data));
                         app.product = response.data.data;
                         app.presentations = app.product.presentations;
+                        // console.log(app.presentations);
                     })
                     .catch(function (error) {
                         console.log(error);
