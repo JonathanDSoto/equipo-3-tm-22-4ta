@@ -74,7 +74,6 @@
                     document.getElementById("email").value = "";
                     // document.getElementById("password").value = user.password;
                     document.getElementById("phone_number").value = "";
-                    document.getElementById("role").value = "";
                 },
                 deleteUser(id){
                     swal({
@@ -550,6 +549,78 @@
                             })
                         } else {
                             swal("The tag continues to be saved!");
+                        }
+                    });
+                },
+                editCoupon(val){
+                    
+                    app.modal = "edit";
+                    let boton = document.getElementById(val);
+                    document.getElementById("input_oculto").value = "update";
+                    let coupon = JSON.parse(boton.getAttribute("data-coupon"));
+                    console.log(coupon);
+                    document.getElementById("id").value = coupon.id;
+                    document.getElementById("name").value = coupon.name;
+                    document.getElementById("code").value = coupon.code;
+                    document.getElementById("percentage_discount").value = coupon.percentage_discount;
+                    document.getElementById("amount_discount").value = coupon.amount_discount;
+                    document.getElementById("min_amount_required").value = coupon.min_amount_required;
+                    document.getElementById("min_product_required").value = coupon.min_product_required;
+                    document.getElementById("end_date").value = coupon.end_date;
+                    document.getElementById("max_uses").value = coupon.max_uses;
+                    document.getElementById("count_uses").value = coupon.count_uses;
+                    document.getElementById("valid_only_first_purchase").value = coupon.valid_only_first_purchase;
+                    document.getElementById("_status").value = 1;
+                    
+                },
+                createCoupon(){
+                    
+                    app.modal = "create";
+                    document.getElementById("input_oculto").value = "create";
+
+                    document.getElementById("id").value = "";
+                    document.getElementById("name").value = "";
+                    document.getElementById("code").value = "";
+                    document.getElementById("percentage_discount").value = "";
+                    document.getElementById("amount_discount").value = 0;
+                    document.getElementById("min_amount_required").value = "";
+                    document.getElementById("min_product_required").value = "";
+                    document.getElementById("end_date").value = "";
+                    document.getElementById("max_uses").value = "";
+                    document.getElementById("count_uses").value = "";
+                    document.getElementById("valid_only_first_purchase").value = "";
+                    document.getElementById("_status").value = 1;
+                    
+                },
+                deleteCoupon(id){
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover the information!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("The coupon was successfully deleted!", {
+                                icon: "success",
+                            });
+                            var bodyFormData = new FormData();
+                            bodyFormData.append('id', id);
+                            bodyFormData.append('action', 'delete');
+                            bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
+
+                            axios.post('<?php echo BASE_PATH ?>coupon', bodyFormData)
+                            .then(function (response){
+                                if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>coupons/";
+                            }
+                            })
+                            .catch(function (error){
+                                console.log('error')
+                            })
+                        } else {
+                            swal("The coupon continues to be saved!");
                         }
                     });
                 },

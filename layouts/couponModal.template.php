@@ -14,11 +14,11 @@
                 </div>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form enctype="multipart/form-data" method="POST" action="<?= BASE_PATH ?>client">
+            <form enctype="multipart/form-data" method="POST" action="<?= BASE_PATH ?>coupon">
                 <div class="modal-body">
                     <label class="input-group mb-3">Name</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
                     </div>
                     <label class="input-group mb-3">Code</label>
                     <div class="input-group mb-3">
@@ -28,9 +28,11 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="percentage_discount" name="percentage_discount" placeholder="Percentage Discount" aria-label="percentage_discount" aria-describedby="basic-addon1">
                     </div>
-                    <label class="input-group mb-3">Amount Discount</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="amount_discount" name="amount_discount" placeholder="Amount Discount" aria-label="amount_discount" aria-describedby="basic-addon1">
+                    <div v-if="(modal=='edit')">
+                        <label class="input-group mb-3">Amount Discount</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="amount_discount" name="amount_discount" placeholder="Amount Discount" aria-label="amount_discount" aria-describedby="basic-addon1">
+                        </div> 
                     </div>
                     <label class="input-group mb-3">Min Amount Required</label>
                     <div class="input-group mb-3">
@@ -57,12 +59,15 @@
                         <input type="text" class="form-control" id="count_uses" name="count_uses" placeholder="Count Uses" aria-label="count_uses" aria-describedby="basic-addon1">
                     </div>
                     <label class="input-group mb-3">Valid Only First Purchase</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="valid_only_first_purchase" name="valid_only_first_purchase" placeholder="Valid Only First Purchase" aria-label="valid_only_first_purchase" aria-describedby="basic-addon1">
-                    </div>
-                    <label class="input-group mb-3">Status</label>
-                    <div class="input-group mb-3">             <!-- vvvvvvv Si le quitas el _ se pone raro ¿? -->
-                        <input type="text" class="form-control" id="_status" name="status" placeholder="Status" aria-label="status" aria-describedby="basic-addon1">
+                    <div class="btn-group mb-3">
+                        <select  id="valid_only_first_purchase" name="valid_only_first_purchase" class="form-select">
+                            <ul class="dropdown-menu">
+                                <li><option value="0">Only First Purchase</option></li>
+                            </ul>
+                            <ul class="dropdown-menu">
+                                <li><option value="1">All Purchase</option></li>
+                            </ul>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -73,6 +78,14 @@
                         Save changes
                     </button>
                 </div>
+                <div v-if="(modal!='edit')">
+                    <input id="amount_discount" type="hidden" name="amount_discount">
+                </div>
+                <input id="input_oculto" type="hidden" name="action" value="create">
+                <input id="id" type="hidden" name="id">
+                <input id="_status" type="hidden" name="status">
+                <input type="hidden" value="<?= $_SESSION['global_token'] ?>" name="global_token">
+
             </form>
         </div>
     </div>

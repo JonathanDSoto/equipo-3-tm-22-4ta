@@ -51,7 +51,7 @@
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <div>
-                                                            <button data-bs-toggle="modal" data-bs-target="#couponModal" class="btn btn-success" id="addUserBtn"><i class="ri-pencil-fill align-bottom"></i> Edit Coupon</button>
+                                                            <button :id="coupon.id" :data-coupon="JSON.stringify(coupon)" v-on:click="editCoupon(coupon.id)" data-bs-toggle="modal" data-bs-target="#couponModal" class="btn btn-success" id="addUserBtn"><i class="ri-pencil-fill align-bottom"></i> Edit Coupon</button>
                                                         </div>
                                                     </div>
                                                 </div>
