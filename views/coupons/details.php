@@ -48,11 +48,10 @@
                                                     <div class="flex-grow-1">
                                                         <h4>Discount: {{coupon.percentage_discount}}<i class="ri-percent-line"></i></h4>
                                                         <!-- <h4>amount_discount <i class="ri-hand-coin-line"></i></h4> -->
-                                                        {{coupon}}
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <div>
-                                                            <a href="" class="btn btn-light" data-bs-toggle="modal" @click="" data-bs-toggle="modal" data-bs-target="#couponModal" data-bs-placement="top" title="Edit"><i class="ri-pencil-fill align-bottom"></i></a>
+                                                            <button data-bs-toggle="modal" data-bs-target="#couponModal" class="btn btn-success" id="addUserBtn"><i class="ri-pencil-fill align-bottom"></i> Edit Coupon</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -121,7 +120,7 @@
                                                                         Status
                                                                     </th>
                                                                     <th scope="col">
-                                                                        Client (client_id -> nombre con consulta)
+                                                                        Client
                                                                     </th>
                                                                     <th scope="col">
                                                                         Total
@@ -129,30 +128,27 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
+                                                                <tr v-for="order in coupon.orders">
                                                                     <td>
-                                                                      82713
+                                                                        <a :href="'<?=BASE_PATH?>orders/'+order.id">
+                                                                            {{order.folio}}
+                                                                        </a>
                                                                     </td>
-                                                                    <!-- <td class="text-success">
+                                                                    <td class="text-success" v-if="order.is_paid!=0">
                                                                         <i class="ri-checkbox-circle-line fs-17 align-middle"></i> 
                                                                         Paid
-                                                                    </td> -->
-                                                                      <td class="text-danger">
+                                                                    </td>
+                                                                    <td class="text-danger" v-else>
                                                                         <i class="ri-forbid-line fs-17 align-middle"></i> 
                                                                         Not Paid
-                                                                      </td>
-                                                                    <td>
-                                                                        <div class="d-flex gap-2 align-items-center">
-                                                                            <div class="flex-shrink-0">
-                                                                                <img src="" alt="sex" class="avatar-xs rounded-circle">
-                                                                            </div>
-                                                                            <div class="flex-grow-1">
-                                                                                Client name 
-                                                                            </div>
-                                                                        </div>
                                                                     </td>
                                                                     <td>
-                                                                        $00
+                                                                        <a :href="'<?=BASE_PATH?>clients/'+order.client_id">
+                                                                            {{order.client_id}}
+                                                                        </a>
+                                                                    </td>
+                                                                    <td>
+                                                                        ${{order.total}}
                                                                     </td>
                                                                 </tr>
                                                             </tfoot>
@@ -183,7 +179,7 @@
                 <?php include "../../layouts/footer.template.php" ?>
             </div>
             <!-- end main content-->
-            <?php include "../../layouts/brandModal.template.php" ?>
+            <?php include "../../layouts/couponModal.template.php" ?>
         </div>
     </div>
     <!-- END layout-wrapper -->

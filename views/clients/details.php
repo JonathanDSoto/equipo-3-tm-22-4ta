@@ -100,8 +100,12 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Is suscribed :</th>
-                                                                        <td class="text-muted" v-if="<?= $client->is_suscribed ?>==1">TRUE</td>
-                                                                        <td class="text-muted" v-else>FALSE</td>
+                                                                        <td class="text-success" v-if="<?= $client->is_suscribed ?>==1">
+                                                                            <i class="ri-checkbox-circle-line fs-17 align-middle"></i>
+                                                                        </td>
+                                                                        <td class="text-danger" v-else>
+                                                                            <i class="ri-forbid-line fs-17 align-middle"></i>
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th class="ps-0" scope="row">Level :</th>
@@ -258,7 +262,7 @@
                                                                                             <div class="d-flex align-items-center">
                                                                                                 <div class="flex-grow-1">
                                                                                                     <h5 class="fs-14 mb-1">
-                                                                                                        <p href="details.php" class="text-dark">
+                                                                                                        <p class="text-dark">
                                                                                                             $<?= $order->total ?>
                                                                                                         </p>
                                                                                                     </h5>
