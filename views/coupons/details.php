@@ -46,8 +46,9 @@
                                             <div class="mt-xl-0 mt-5">
                                                 <div class="d-flex">
                                                     <div class="flex-grow-1">
-                                                        <h4>percentage_discount<i class="ri-percent-line"></i></h4>
+                                                        <h4>Discount: {{coupon.percentage_discount}}<i class="ri-percent-line"></i></h4>
                                                         <!-- <h4>amount_discount <i class="ri-hand-coin-line"></i></h4> -->
+                                                        {{coupon}}
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <div>
@@ -67,7 +68,7 @@
                                                                 </div>
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">Min Amount Required:</p>
-                                                                    <h5 class="mb-0">$min_amount_required</h5>
+                                                                    <h5 class="mb-0">${{coupon.min_amount_required}}</h5>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -82,7 +83,7 @@
                                                                 </div>
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">Min Products Required:</p>
-                                                                    <h5 class="mb-0">min_product_required</h5>
+                                                                    <h5 class="mb-0">{{coupon.min_product_required}}</h5>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -96,16 +97,16 @@
                                                                   </div>
                                                               </div>
                                                               <div class="flex-grow-1">
-                                                                  <p class="text-muted mb-1">end_date:</p>
-                                                                  <h5 class="mb-0">min_product_required</h5>
+                                                                  <p class="text-muted mb-1">End Date:</p>
+                                                                  <h5 class="mb-0">{{coupon.end_date}}</h5>
                                                               </div>
                                                           </div>
                                                       </div>
                                                 </div>
                                                 
                                                 <div class="mt-4 text-muted">
-                                                    <h5 class="fs-14">Description :</h5>
-                                                    <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is 100% organic cotton. This is one of the world’s leading designer lifestyle brands and is internationally recognized for celebrating the essence of classic American cool style, featuring preppy with a twist designs.</p>
+                                                    <h5 class="fs-14">Type :</h5>
+                                                    <p>{{coupon.couponable_type}}</p>
                                                 </div>
                                                 <!-- Coupon-content -->
                                                 <div class="Coupon-content mt-5">
@@ -117,8 +118,7 @@
                                                                         Folio
                                                                     </th>
                                                                     <th scope="col">
-                                                                <!-- borra esto vvvvvvvv -->
-                                                                        Status (is_paid)
+                                                                        Status
                                                                     </th>
                                                                     <th scope="col">
                                                                         Client (client_id -> nombre con consulta)
@@ -158,40 +158,48 @@
                                                             </tfoot>
                                                         </table>
                                                         <!-- end table -->
+                                                        </div>
+                                                        <!-- end table responsive -->
                                                     </div>
-                                                    <!-- end table responsive -->
                                                 </div>
                                             </div>
+                                            <!-- end col -->
                                         </div>
-                                        <!-- end col -->
+                                        <!-- end row -->
                                     </div>
-                                    <!-- end row -->
+                                    <!-- end card body -->
                                 </div>
-                                <!-- end card body -->
+                                <!-- end card -->
                             </div>
-                            <!-- end card -->
+                            <!-- end col -->
                         </div>
-                        <!-- end col -->
+                        <!-- end row -->
+
                     </div>
-                    <!-- end row -->
-
+                    <!-- container-fluid -->
                 </div>
-                <!-- container-fluid -->
-            </div>
-            <!-- End Page-content -->
+                <!-- End Page-content -->
 
-            <footer class="footer">
                 <?php include "../../layouts/footer.template.php" ?>
-            </footer>
-            <?php include "../../layouts/couponModal.template.php" ?>
+            </div>
+            <!-- end main content-->
+            <?php include "../../layouts/brandModal.template.php" ?>
         </div>
-        <!-- end main content-->
     </div>
     <!-- END layout-wrapper -->
-    <?php include "../../layouts/footer.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
-    <!-- JAVASCRIPT -->
+    
     <?php include "../../layouts/scripts.template.php" ?>
+    <!-- nouisliderribute js -->
+    <script src="<?= BASE_PATH ?>public/libs/nouislider/nouislider.min.js"></script>
+    <script src="<?= BASE_PATH ?>public/libs/wnumb/wNumb.min.js"></script>
+
+    <!-- gridjs js -->
+    <script src="<?= BASE_PATH ?>public/libs/gridjs/gridjs.umd.js"></script>
+    <script src="../../../../unpkg.com/gridjs%405.1.0/plugins/selection/dist/selection.umd.js"></script>
+    <!-- ecommerce product list -->
+    <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
+    <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
 </body>
 
 

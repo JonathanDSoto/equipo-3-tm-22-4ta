@@ -93,8 +93,7 @@
     <script src="../../../../unpkg.com/gridjs%405.1.0/plugins/selection/dist/selection.umd.js"></script>
     <!-- ecommerce product list -->
     <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
-    </script>c="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
-    </script>
+    <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
     
 </body>
 

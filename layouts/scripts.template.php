@@ -28,6 +28,8 @@
                     tags: [],
                     brands: [],
                     categories: [],
+                    coupons: [],
+                    coupon: [],
                 }
             },methods : {
                 logout(id){
@@ -647,12 +649,49 @@
 
                 axios(config)
                 .then(function (response) {
-                    console.log(JSON.stringify(response.data.data));
-                    app.brands = response.data.data
+                    // console.log(JSON.stringify(response.data.data));
+                    app.brands = response.data.data;
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
+
+
+                var config = {
+                    method: 'get',
+                    url: 'https://crud.jonathansoto.mx/api/coupons',
+                    headers: { 
+                        'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
+                    }
+                };
+
+                axios(config)
+                .then(function (response) {
+                    // console.log(JSON.stringify(response.data.data));
+                    app.coupons = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+                <?php if(isset($_GET['coupon'])): ?>
+                    var config = {
+                        method: 'get',
+                        url: 'https://crud.jonathansoto.mx/api/coupons/'+'<?=$_GET['coupon']?>',
+                        headers: { 
+                            'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
+                        }
+                    };
+
+                    axios(config)
+                    .then(function (response) {
+                        console.log(JSON.stringify(response.data.data));
+                        app.coupon = response.data.data;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                <?php endif; ?>
 
             },
         }).mount('#contenedor')

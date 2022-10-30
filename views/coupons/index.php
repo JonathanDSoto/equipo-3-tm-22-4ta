@@ -19,7 +19,7 @@
         <!-- ============================================================== -->
         <div class="main-content">
             <div class="page-content">
-              <div class="container-fluid">
+                <div class="container-fluid">
                     <!-- start page title -->
                     <div class="row">
                         <div class="col-12">
@@ -46,43 +46,39 @@
                     <!-- end page title -->
                     <div class="row">
                     <!-- start cart -->
-                    <div class="col-xl-3 col-md-6">
-                            <a class="card-body" href="./details.php">
+                    <div class="col-xl-3 col-md-6" v-for="coupon in coupons">
                                 <div class="card card-height-100">
                                     <div class="card-body">
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-dark text-white rounded-2 fs-2 shadow">
-                                                    <i class="bx bxs-discount"></i>
-                                                </span>
+                                        <a :href="'<?= BASE_PATH ?>coupons/'+coupon.id">
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title bg-dark text-white rounded-2 fs-2 shadow">
+                                                        <i class="bx bxs-discount"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <p class="text-uppercase fw-medium text-muted mb-3">{{coupon.code}}</p>
+                                                    <h4 class="fs-4 mb-3"><span>{{coupon.name}}</span></h4>
+                                                </div>
                                             </div>
-                                            <div class="flex-grow-1 ms-3">
-                                                <p class="text-uppercase fw-medium text-muted mb-3">ANOTHER TEXT</p>
-                                                <h4 class="fs-4 mb-3"><span>NAME Coupon</span></h4>
-                                            </div>
-                                        </div>
+                                        </a>
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none bx bx-trash"></button>
                                         </div>
                                     </div><!-- end card body -->
                                 </div>
-                            </a>
                         </div>
                     </div> <!-- end card-->
-
-                  </div>
-                    <!-- end row -->
                 </div>
-                <!-- container-fluid -->
+                <!-- end row -->
             </div>
-            <!-- End Page-content -->
+            <!-- container-fluid -->
             <?php include "../../layouts/footer.template.php" ?>
         </div>
         <!-- end main content-->
+        <?php include "../../layouts/couponModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
-    <?php include "../../layouts/modal.template.php" ?>
-    <?php include "../../layouts/couponModal.template.php" ?>
     <?php include "../../layouts/function_footer.template.php" ?>
     
     <?php include "../../layouts/scripts.template.php" ?>
@@ -95,6 +91,6 @@
     <script src="../../../../unpkg.com/gridjs%405.1.0/plugins/selection/dist/selection.umd.js"></script>
     <!-- ecommerce product list -->
     <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
-    </script>
+    <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
 </body>
 </html>
