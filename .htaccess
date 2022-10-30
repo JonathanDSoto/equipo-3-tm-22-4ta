@@ -39,3 +39,5 @@ RewriteRule ^tags/$ views/tags/index.php
 RewriteRule ^coupons/$ views/coupons/index.php
 RewriteRule ^coupons/(.+)$ views/coupons/details.php?coupon=$1
 
+#Presentacion
+RewriteRule ^presentation$ app/ProductController.php
