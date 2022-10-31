@@ -188,7 +188,7 @@ Class OrderController
 
 			header('Location:'.BASE_PATH.'orders/'.$response->data->id.'?success=true');
 		}else{ 
-			header('Location:'.BASE_PATH.'orders?error=true');
+			header('Location:'.BASE_PATH.'orders/?error=true');
 		}
 
 	}
