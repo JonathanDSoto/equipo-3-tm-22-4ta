@@ -1,5 +1,8 @@
 <?php
 	include_once "../../app/config.php";
+    include "../../app/OrderController.php";
+    $or = new OrderController();
+	$order = $or->getOrderById($_GET['order']);
 ?>
 <!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -47,12 +50,11 @@
                                             <div class="mt-xl-0 mt-5">
                                                 <div class="d-flex">
                                                     <div class="flex-grow-1">
-                                                        <h4>Order #FOLIO</h4>
-                                                        {{order}}
+                                                        <h4>Order #{{order.folio}}</h4>
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <div>
-                                                            <button data-bs-toggle="modal" data-bs-target="#showModal" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Order</button>   
+                                                            <button :id="order.id" :data-order="JSON.stringify(order)" v-on:click="editOrder(order.id)" data-bs-toggle="modal" data-bs-target="#showModal" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Order</button>   
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,81 +81,6 @@
                                                     </div>
                                                     <!-- end col -->
                                                     <div class="col-lg-3 col-sm-6">
-                                                        <!-- <div class="p-2 border border-dashed rounded">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-sm me-2">
-                                                                    <div class="avatar-title rounded bg-transparent text-warning fs-24">
-                                                                        <i class="ri-list-unordered"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <p class="text-muted mb-1">Order Status :</p>
-                                                                    <div>
-                                                                        <h6 class="mb-0">Pendiente de pago</h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                                        <!-- <div class="p-2 border border-dashed rounded">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-sm me-2">
-                                                                    <div class="avatar-title rounded bg-transparent text-success fs-24">
-                                                                        <i class="ri-list-unordered"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <p class="text-muted mb-1">Order Status :</p>
-                                                                    <div>
-                                                                        <h6 class="mb-0">Pagada</h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                                        <!-- <div class="p-2 border border-dashed rounded">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-sm me-2">
-                                                                    <div class="avatar-title rounded bg-transparent text-success fs-24">
-                                                                        <i class="ri-list-unordered"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <p class="text-muted mb-1">Order Status :</p>
-                                                                    <div>
-                                                                        <h6 class="mb-0">Enviada</h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                                        <!-- <div class="p-2 border border-dashed rounded">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-sm me-2">
-                                                                    <div class="avatar-title rounded bg-transparent text-danger fs-24">
-                                                                        <i class="ri-list-unordered"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <p class="text-muted mb-1">Order Status :</p>
-                                                                    <div>
-                                                                        <h6 class="mb-0">Abandonada</h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                                        <!-- <div class="p-2 border border-dashed rounded">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-sm me-2">
-                                                                    <div class="avatar-title rounded bg-transparent text-warning fs-24">
-                                                                        <i class="ri-list-unordered"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <p class="text-muted mb-1">Order Status :</p>
-                                                                    <div>
-                                                                        <h6 class="mb-0">Pendiente de enviar</h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
                                                         <div class="p-2 border border-dashed rounded">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="avatar-sm me-2">
@@ -164,11 +91,11 @@
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">Order Status :</p>
                                                                     <div>
-                                                                        <span class="badge badge-soft-warning text-uppercase" v-if="order.order_status=='Pediente de pago'">Pendiente de pago</span>
-                                                                        <span class="badge badge-soft-success text-uppercase" v-else-if="order.order_status=='Pagada'">Pagada</span>
-                                                                        <span class="badge badge-soft-success text-uppercase" v-else-if="order.order_status=='Enviada'">Enviada</span>
-                                                                        <span class="badge badge-soft-danger text-uppercase" v-else-if="order.order_status=='Abandonado'">Abandonado</span>
-                                                                        <span class="badge badge-soft-warning text-uppercase" v-else-if="order.order_status=='Pendiente de enviar'">Pendiente de enviar</span>
+                                                                        <span class="badge badge-soft-warning text-uppercase" v-if="'<?=$order->order_status->name?>'=='Pediente de pago'">Pendiente de pago</span>
+                                                                        <span class="badge badge-soft-success text-uppercase" v-else-if="'<?=$order->order_status->name?>'=='Pagada'">Pagada</span>
+                                                                        <span class="badge badge-soft-success text-uppercase" v-else-if="'<?=$order->order_status->name?>'=='Enviada'">Enviada</span>
+                                                                        <span class="badge badge-soft-danger text-uppercase" v-else-if="'<?=$order->order_status->name?>'=='Abandonado'">Abandonado</span>
+                                                                        <span class="badge badge-soft-warning text-uppercase" v-else-if="'<?=$order->order_status->name?>'=='Pendiente de enviar'">Pendiente de enviar</span>
                                                                         <span class="badge badge-soft-danger text-uppercase" v-else>Cancelada</span>
                                                                     </div>
                                                                 </div>
@@ -187,8 +114,10 @@
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">Coupon :</p>
                                                                     <div>
-                                                                        <a href="../coupons/1">
-                                                                          <h6 class="mb-0">Coupon xxx</h6>
+                                                                        <a href="<?=BASE_PATH?>coupons/<?=$order->coupon->id?>">
+                                                                            <?php if(($order->coupon)!=null): ?>
+                                                                                <h6 class="mb-0"><?=$order->coupon->name?></h6>
+                                                                            <?php endif; ?>
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -214,21 +143,19 @@
                                                                         <tr>
                                                                             <th scope="row" style="width: 200px;">Payment Method</th>
                                                                             <td>
-                                                                                <h6>Cash</h6>
-                                                                                <!-- <h6>Card</h6>
-                                                                                <h6>Bank trasfer</h6> -->
+                                                                                <h6><?=$order->payment_type->name?></h6>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th scope="row">Client</th>
                                                                             <td>
-                                                                                <a href="../clients/1" class="text-primary d-block">Client name</a>
+                                                                                <a href="<?=BASE_PATH?>clients/<?=$order->client->id?>" class="text-primary d-block"><?=$order->client->name?></a>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th scope="row">Address</th>
                                                                             <td>
-                                                                              client address
+                                                                                <?=$order->address->street_and_use_number?>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -254,6 +181,9 @@
                                                                       Cover
                                                                     </th>
                                                                     <th scope="col">
+                                                                      Code
+                                                                    </th>
+                                                                    <th scope="col">
                                                                       Description
                                                                     </th>
                                                                     <th scope="col">
@@ -265,53 +195,40 @@
                                                                     <th scope="col">
                                                                         Price
                                                                     </th>
-                                                                    <th scope="col">
-                                                                        <div class="gridjs-th-content">Action</div>
-                                                                    </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="d-flex align-items-center">
-                                                                          <div class="flex-shrink-0 me-3">
-                                                                            <div class="avatar-sm bg-light rounded p-1">
-                                                                              <img src="" alt="" class="img-fluid d-block">
+                                                                <?php foreach($order->presentations as $presentation): ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="d-flex align-items-center">
+                                                                            <div class="flex-shrink-0 me-3">
+                                                                                <div class="avatar-sm bg-light rounded p-1" v-if="'<?=$presentation->cover?>'!=ruta">
+                                                                                    <img src="https://crud.jonathansoto.mx/storage/products/<?=$presentation->cover?>" alt="" class="img-fluid d-block">
+                                                                                </div>
+                                                                                <div class="avatar-sm bg-light rounded p-1" v-else>
+                                                                                    <img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-13.png" alt="" class="img-fluid d-block">
+                                                                                </div>
                                                                             </div>
-                                                                          </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                      Description
-                                                                    </td>
-                                                                    <td>
-                                                                      0g
-                                                                    </td>
-                                                                    <td>
-                                                                      0
-                                                                    </td>
-                                                                    <td>
-                                                                      $
-                                                                    </td>
-                                                                    <td data-column-id="action" class="gridjs-td">
-                                                                        <span>
-                                                                            <div class="dropdown">
-                                                                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                    <i class="ri-more-fill"></i>
-                                                                                </button>
-                                                                                <ul class="dropdown-menu dropdown-menu-end">
-                                                                                    <li>
-                                                                                        <button data-bs-toggle="modal" data-bs-target="#showModal" class="dropdown-item"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit Quantity</button>
-                                                                                    </li>
-                                                                                    <li class="dropdown-divider"></li>
-                                                                                    <li>
-                                                                                      <button data-bs-toggle="modal" data-bs-target="#deleteRecordModal" class="dropdown-item"><i class="ri-delete-bin-line align-bottom me-2 text-muted"></i> Delete Quantity</button>
-                                                                                    </li>
-                                                                                </ul>
                                                                             </div>
-                                                                        </span>
-                                                                    </td>
-                                                                </tr>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?=$presentation->code?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?=$presentation->description?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?=$presentation->weight_in_grams?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?=$presentation->pivot->quantity?>
+                                                                        </td>
+                                                                        <td>
+                                                                            $<?=$presentation->current_price->amount?>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php endforeach; ?>
                                                             </tbody>
                                                         </table>
                                                         <!-- end table -->

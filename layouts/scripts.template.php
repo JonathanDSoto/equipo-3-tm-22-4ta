@@ -22,6 +22,7 @@
                     update: '',
                     modal: '',
                     ruta: 'https://crud.jonathansoto.mx/storage/products/',
+                    rutaAvatar: 'http://crud.jonathansoto.mx/storage/users/avatars/',
                     products: [],
                     product: [],
                     presentations: [],
