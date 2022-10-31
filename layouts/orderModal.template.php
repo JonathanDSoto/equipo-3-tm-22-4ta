@@ -9,7 +9,7 @@
                 </div>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" method="POST" action="<?= BASE_PATH ?>order">
+            <form method="POST" action="<?= BASE_PATH ?>order">
                 <div class="modal-body">
                     <label class="input-group mb-3">Folio</label>
                     <div class="input-group mb-3">
@@ -97,15 +97,7 @@
                     <div class="btn-group mb-3">
                       <select  id="coupon_id" name="coupon_id" class="form-select">
                           <ul class="dropdown-menu">
-                            <li>
-                              <option value="1">Coupon 1</option>
-                            </li>
-                            <li>
-                              <option value="2">Coupon 2</option>
-                            </li>
-                            <li>
-                              <option value="3">Coupon 3</option>
-                            </li>
+                            <li><option v-for="coupon in coupons" :value="coupon.id"><p :v-if="'coupon.max_uses'<='coupon.count_uses'">{{coupon.name}}</p></option></li>
                           </ul>
                       </select>
                     </div>
@@ -115,12 +107,14 @@
                           <ul class="dropdown-menu">
                               <?php foreach($products as $product): ?>
                                   <?php foreach($product->presentations as $presentation): ?>
-                                    <li><option value="<?=$presentation->id?>"><?=$presentation->description?></option></li>
+                                    <?php if(($presentation->stock)>($presentation->stock_min)): ?>
+                                      <li><option value="<?=$presentation->id?>"><?=$presentation->description?></option></li>
+                                    <?php endif; ?>
                                   <?php endforeach; ?>  
                               <?php endforeach; ?>
                           </ul>  
                         </select>
-                        <input id="quantity" :name="'presentations['+index+'][quantity]'" type="text" class="form-control me-2" style="max-width: 60px;">
+                        <input id="quantity" :name="'presentations['+index+'][quantity]'" type="number" class="form-control me-2" style="max-width: 60px;">
                     </div>
                     <div class="col-sm">
                       <div class="d-flex justify-content-sm-end">

@@ -53,10 +53,10 @@
                                             <div class="col-sm">
                                                 <div class="d-flex">
                                                     <label class="mt-2 me-1">Inicio: </label>
-                                                    <input class="form-control me-1" type="date" placeholder="Inicio" name="inicio" id="start">
+                                                    <input class="form-control me-1" type="date" placeholder="Inicio" name="inicio" id="start" v-model="startDate">
                                                     <label class="mt-2 me-1">Final: </label>
-                                                    <input class="form-control" type="date" placeholder="Final" name="fin" id="end">
-                                                    <button type="button" class="ms-1 form-control search"><i class="ri-search-line search-icon"></i> Search</button>
+                                                    <input class="form-control" type="date" placeholder="Final" name="fin" id="end" v-model="endDate">
+                                                    <button @click="orderByDate()" type="submit" class="ms-1 form-control search btn btn-success"><i class="ri-search-line search-icon"></i> Search</button>
                                                 </div>
                                             </div>
                                             <div class="col-sm">
@@ -110,17 +110,17 @@
                                                             <span class="badge badge-soft-warning text-uppercase" v-if="order.order_status.name=='Pediente de pago'">Pendiente de pago</span>
                                                             <span class="badge badge-soft-success text-uppercase" v-else-if="order.order_status.name=='Pagada'">Pagada</span>
                                                             <span class="badge badge-soft-success text-uppercase" v-else-if="order.order_status.name=='Enviada'">Enviada</span>
-                                                            <span class="badge badge-soft-danger text-uppercase" v-else-if="order.order_status.name=='Abandonada'">Abandonada</span>
+                                                            <span class="badge badge-soft-danger text-uppercase" v-else-if="order.order_status.name=='Abandonado'">Abandonado</span>
                                                             <span class="badge badge-soft-warning text-uppercase" v-else-if="order.order_status.name=='Pendiente de enviar'">Pendiente de enviar</span>
                                                             <span class="badge badge-soft-danger text-uppercase" v-else>Cancelada</span>
                                                         </td>
                                                         <td>
                                                             <div class="d-flex gap-2">
                                                                 <div class="edit">
-                                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                                                    <button :id="order.id" :data-order="JSON.stringify(order)" v-on:click="editOrder(order.id)" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
                                                                 </div>
                                                                 <div class="remove">
-                                                                    <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
+                                                                    <button v-on:click="deleteOrder(order.id)" class="btn btn-sm btn-danger remove-item-btn">Remove</button>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -155,7 +155,6 @@
                 <?php include "../../layouts/footer.template.php" ?>
             </footer>
             <?php include "../../layouts/orderModalEdit.template.php"?>
-            <?php include "../../layouts/orderModalDelete.template.php"?>
             <?php include "../../layouts/orderModal.template.php"?>
         </div>
         <!-- end main content-->
@@ -169,8 +168,8 @@
     <script type="text/javascript" src="<?= BASE_PATH ?>public/libs/choices.js/public/assets/scripts/choices.min.js"></script>
     <script type="text/javascript" src="<?= BASE_PATH ?>public/libs/flatpickr/flatpickr.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- prismjs plugin -->
     <script src="<?= BASE_PATH ?>public/libs/prismjs/prism.js"></script>
     <script src="<?= BASE_PATH ?>public/libs/list.js/list.min.js"></script>
@@ -179,12 +178,10 @@
     <!-- listjs init -->
     <script src="<?= BASE_PATH ?>public/js/pages/listjs.init.js"></script>
 
-    <!-- Sweet Alerts js -->
-    <script src="<?= BASE_PATH ?>public/libs/sweetalert2/sweetalert2.min.js"></script>
-
     <!-- App js -->
     <script src="<?= BASE_PATH ?>public/js/app.js"></script>
 
 
-<div style="position: static !important;"></div></body>
+<div style="position: static !important;"></div>
+</body>
 </html>

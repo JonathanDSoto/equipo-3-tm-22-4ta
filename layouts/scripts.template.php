@@ -36,6 +36,8 @@
                         quantity: '',
                     }],
                     addresses: [],
+                    startDate: '',
+                    endDate: '',
                 }
             },methods : {
                 logout(id){
@@ -643,6 +645,18 @@
                     }];
 
                 },
+                editOrder(val){
+                    
+                    app.modal = "edit";
+                    let boton = document.getElementById(val);
+                    document.getElementById("input_oculto").value = "update";
+                    let order = JSON.parse(boton.getAttribute("data-order"));
+                    console.log(order);
+                    document.getElementById("id").value = order.id;
+                    document.getElementById("order_status_id").value = order.order_status_id;
+                    
+
+                },
                 onChange(event) {
 
                     console.log(event.target.value);
@@ -665,7 +679,63 @@
                     });
                     
 
-                }
+                },
+                orderByDate() {
+
+                    if(app.startDate!='' && app.endDate!=''){
+                        
+                        var config = {
+                            method: 'get',
+                            url: 'https://crud.jonathansoto.mx/api/orders/'+app.startDate+'/'+app.endDate,
+                            headers: { 
+                                'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
+                            }
+                        };
+
+                        axios(config)
+                        .then(function (response) {
+                            console.log(JSON.stringify(response.data.data));
+                            app.orders = response.data.data;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                        
+                    }
+                },
+                deleteOrder(id) {
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover the information!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("The order was successfully deleted!", {
+                                icon: "success",
+                            });
+                            var bodyFormData = new FormData();
+                            bodyFormData.append('id', id);
+                            bodyFormData.append('action', 'delete');
+                            bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
+
+                            axios.post('<?php echo BASE_PATH ?>order', bodyFormData)
+                            .then(function (response){
+                                if(response.data==true){
+                                window.location = "<?= BASE_PATH ?>orders/";
+                            }
+                            })
+                            .catch(function (error){
+                                console.log('error')
+                            })
+                        } else {
+                            swal("The order continues to be saved!");
+                        }
+                    });
+                },
 
             },
             mounted(){
