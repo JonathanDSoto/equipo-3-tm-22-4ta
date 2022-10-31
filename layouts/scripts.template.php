@@ -18,6 +18,7 @@
         var app = createApp({
             data(){
                 return {
+                    title : '',
                     userLog: [],
                     date: '',
                     update: '',
@@ -743,6 +744,19 @@
             },
             mounted(){
 
+                var title = window.location.href;
+                var cont = 0;
+                for(var i = 36; i < title.length ; i++){
+                    if(title[i]!="/"){
+                        cont++;
+                    }else{
+                        break;
+                    }
+                }
+                var aux_title = title.substring(36,cont+36);
+                var final_title = aux_title.toUpperCase();
+                document.title = final_title;
+
                 <?php if(isset($_GET['id'])): ?>
                     var date_aux = "<?php echo $user->created_at ?>";
                     this.date = date_aux.substring(0,10);
@@ -931,7 +945,6 @@
                 .catch(function (error) {
                     console.log(error);
                 });
-
             },
         }).mount('#contenedor')
     </script>
