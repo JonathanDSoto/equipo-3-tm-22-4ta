@@ -87,8 +87,11 @@
                                                                     <span>
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="flex-shrink-0 me-3">
-                                                                                <div class="avatar-sm bg-light rounded p-1">
-                                                                                    <img src="<?= $user->avatar ?>" alt="" class="img-fluid d-block">
+                                                                                <div class="avatar-sm bg-light rounded p-1" v-if="'<?=$user->avatar?>'!=rutaAvatar">
+                                                                                    <img src="<?=$user->avatar?>" alt="" class="img-fluid d-block">
+                                                                                </div>
+                                                                                <div class="avatar-sm bg-light rounded p-1" v-else>
+                                                                                    <img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-13.png" alt="" class="img-fluid d-block">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="flex-grow-1">
