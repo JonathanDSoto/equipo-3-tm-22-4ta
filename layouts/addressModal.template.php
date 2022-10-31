@@ -18,35 +18,43 @@
                     <div class="modal-body">
                         <label class="input-group mb-3">First Name</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1" required pattern="[A-Za-z\u00f1\u00d1 ]{4,40}" 
+                            title="Minimo 4 carácteres y máximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
                         </div>
                         <label class="input-group mb-3">Last Name</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" required pattern="[A-Za-z\u00f1\u00d1 ]{4,40}" 
+                            title="Minimo 4 carácteres y máximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
                         </div>
                         <label class="input-group mb-3">Street and Number</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="street_and_use_number" name="street_and_use_number" placeholder="Street and Number" aria-label="Streetnumber" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="street_and_use_number" name="street_and_use_number" placeholder="Street and Number" aria-label="Streetnumber" aria-describedby="basic-addon1"
+                            required title="Requiere de mínimo 4 carácteres y máximo de 100 carácteres" minlength="4" maxlength="100">
                         </div>
                         <label class="input-group mb-3">Apartment</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="apartment" name="apartment" placeholder="Apartment" aria-label="Apartment" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control"  id="apartment" name="apartment" placeholder="Apartment" aria-label="Apartment" aria-describedby="basic-addon1" required pattern="[0-9]{1,10}"
+                            title="Minimo de un digito, máximo de 10 digitos">
                         </div>
                         <label class="input-group mb-3">Postal Code</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="postal_code" name="postal_code" placeholder="Postal Code" aria-label="Postal Code" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control"  id="postal_code" name="postal_code" placeholder="Postal Code" aria-label="Postal Code" aria-describedby="basic-addon1" required pattern="[0-9]{5,8}"
+                            title="Minimo 5 digitos, máximo 8 digitos">
                         </div>
                         <label class="input-group mb-3">City</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="city" name="city" placeholder="City" aria-label="City" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control"  id="city" name="city" placeholder="City" aria-label="City" aria-describedby="basic-addon1" required pattern="[A-Za-z\u00f1\u00d1 ]{4,40}" 
+                            title="Minimo 4 carácteres y máximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
                         </div>
                         <label class="input-group mb-3">Province</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="province" name="province" placeholder="Province" aria-label="Province" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control"  id="province" name="province" placeholder="Province" aria-label="Province" aria-describedby="basic-addon1" required pattern="[A-Za-z\u00f1\u00d1 ]{4,40}" 
+                            title="Minimo 4 carácteres y máximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
                         </div>
                         <label class="input-group mb-3">Phone Number</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1" required pattern="[0-9]{7,14}"
+                            title="Minimo 7 digitos, máximo 14 digitos">
                         </div>
                     </div>
                     <div class="modal-footer">

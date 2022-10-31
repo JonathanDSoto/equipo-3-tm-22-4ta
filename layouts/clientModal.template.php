@@ -19,7 +19,7 @@
                         <label class="input-group mb-3">Name(s)</label>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" required pattern="[A-Za-z\u00f1\u00d1 ]{4,40}" 
-                            title="Minimo 4 carácteres y maximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
+                            title="Minimo 4 carácteres y máximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
                         </div>
                         <label class="input-group mb-3">Email</label>
                         <div class="input-group mb-3">
@@ -35,7 +35,7 @@
                         <label class="input-group mb-3">Phone Number</label>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1" required pattern="[0-9]{7,14}"
-                            title="Minimo 7 digitos, maximo 14 digitos">
+                            title="Minimo 7 digitos, máximo 14 digitos">
                         </div>
                     </div>
                     <div class="modal-footer">
