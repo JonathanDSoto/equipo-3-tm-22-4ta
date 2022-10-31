@@ -198,7 +198,7 @@ Class CouponController
 			header('Location:'.BASE_PATH.'coupons/'.$response->data->id.'?success=true');
 		}else{ 
 
-			header('Location:'.BASE_PATH.'coupons?error=true');
+			header('Location:'.BASE_PATH.'coupons/?error=true');
 		}
 
 	}

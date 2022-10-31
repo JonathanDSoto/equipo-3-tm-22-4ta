@@ -101,7 +101,7 @@ Class UserController{
 			header("Location:".BASE_PATH."users/".$response->data->id."?success=true");
 		}else{
 			#var_dump($response);
-			header("Location:".BASE_PATH."users?error=true");
+			header("Location:".BASE_PATH."users/?error=true");
 		}
 	}
 

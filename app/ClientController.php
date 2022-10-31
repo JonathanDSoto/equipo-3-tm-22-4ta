@@ -84,7 +84,7 @@ Class ClientController{
 			header("Location:".BASE_PATH."clients/".$response->data->id."?success=true");
 		}else{
 			#var_dump($response);
-			header("Location:".BASE_PATH."clients?error=true");
+			header("Location:".BASE_PATH."clients/?error=true");
 		}
 	}
 
