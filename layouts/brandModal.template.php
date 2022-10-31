@@ -18,16 +18,18 @@
                 <div class="modal-body">
                     <label class="input-group mb-3">Name</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name" aria-describedby="basic-addon1" required pattern ="[A-Za-z0-9\u00f1\u00d1 ]{4,40}"
+                            title="Requiere de mínimo 4 carácteres y maximo 40, no utilizar: carácteres especiales y acentos.">
                     </div>
                     <label class="input-group mb-3">Description</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control"  id="description" name="description" placeholder="Description" aria-label="description" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control"  id="description" name="description" placeholder="Description" aria-label="description" aria-describedby="basic-addon1" maxlength="100">
                     </div>
                     <div >
                         <label class="input-group mb-3">Slug</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1" required pattern="^[a-z0-9]+(?:-[a-z0-9]+)*$" 
+                            title="Requiere mínimo de 4 carácteres y máximo 40, no utilizar: espacios, mayúsculas y acentos." minlength="4" maxlength="40">
                         </div>
                     </div>
                 </div>
