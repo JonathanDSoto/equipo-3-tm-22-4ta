@@ -130,7 +130,7 @@
                                                                         <h4>Orders</h4>
                                                                     </div>
                                                                     <div>
-                                                                        <a href="details.php" class="btn btn-success" id="addAddress-btn"><i class="ri-add-line align-bottom me-1"></i> Add Order</a>
+                                                                        <a href="<?= BASE_PATH ?>orders/" class="btn btn-success" id="addAddress-btn"><i class="ri-add-line align-bottom me-1"></i> Add Order</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -501,6 +501,7 @@
             <?php include "../../layouts/footer.template.php" ?>
         </div><!-- end main content-->
         <?php include "../../layouts/clientModal.template.php" ?>
+        <?php include "../../layouts/addressModal.template.php" ?>
     </div>
     <!-- END layout-wrapper -->
     <?php include "../../layouts/function_footer.template.php" ?>
