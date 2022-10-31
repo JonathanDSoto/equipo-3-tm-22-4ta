@@ -8,7 +8,7 @@ if (isset($_POST['action'])) {
 
 		switch ($_POST['action']) {
 			case 'create':
-				
+				var_dump($_POST);
 				$folio = strip_tags($_POST['folio']);
 				$total = strip_tags($_POST['total']);
 				$is_paid = strip_tags($_POST['is_paid']);
@@ -29,10 +29,10 @@ if (isset($_POST['action'])) {
 					else break;
 				}
 
-				$orderController = new orderController();
+				// $orderController = new orderController();
 
-				$orderController->create($folio, $total, $is_paid, $client_id, $address_id, $order_status_id, 
-				$payment_type_id, $coupon_id, $presentations);
+				// $orderController->create($folio, $total, $is_paid, $client_id, $address_id, $order_status_id, 
+				// $payment_type_id, $coupon_id, $presentations);
 				 
 			break; 
 

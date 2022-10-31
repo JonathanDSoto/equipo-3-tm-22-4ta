@@ -9,7 +9,7 @@
                 </div>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form enctype="multipart/form-data" method="POST" action="">
+            <form method="POST" method="POST" action="<?= BASE_PATH ?>order">
                 <div class="modal-body">
                     <label class="input-group mb-3">Folio</label>
                     <div class="input-group mb-3">
@@ -34,33 +34,19 @@
                     </div>
                     <label class="input-group mb-3">Client</label>
                     <div class="btn-group mb-3">
-                      <select  id="client_id" name="client_id" class="form-select">
+                      <select  @change="onChange($event)"  id="client_id" name="client_id" class="form-select">
                           <ul class="dropdown-menu">
-                            <li>
-                              <option value="0">Name client1</option>
-                            </li>
-                            <li>
-                              <option value="1">Name client2</option>
-                            </li>
-                            <li>
-                              <option value="2">Name client3</option>
-                            </li>
+                            <?php foreach($clients as $client): ?>
+                              <li><option value="<?=$client->id?>"><?=$client->name?></option></li>
+                            <?php endforeach; ?>
                           </ul>
                       </select>
                     </div>
                     <label class="input-group mb-3">Client Addres</label>
                     <div class="btn-group mb-3">
-                      <select  id="addres_id" name="addres_id" class="form-select">
+                      <select  id="address_id" name="address_id" class="form-select">
                           <ul class="dropdown-menu">
-                            <li>
-                              <option value="0">Addres 1</option>
-                            </li>
-                            <li>
-                              <option value="1">Addres 2</option>
-                            </li>
-                            <li>
-                              <option value="2">Addres 3</option>
-                            </li>
+                              <li><option v-for="address in addresses" :value="address.id">{{address.street_and_use_number}}</option></li>
                           </ul>
                       </select>
                     </div>
@@ -123,22 +109,24 @@
                       </select>
                     </div>
                     <label class="input-group mb-3">Presentations</label>
-                    <div class="input-group mb-3">
-                      <select  id="coupon_id" name="coupon_id" class="form-select me-1">
+                    <div class="input-group mb-3" v-for="(item, index) in presentationsOrders">
+                        <select  id="presentation_id" :name="'presentations['+index+'][id]'" class="form-select me-1">
                           <ul class="dropdown-menu">
-                            <li>
-                              <option value="1">Presentation 1</option>
-                            </li>
-                            <li>
-                              <option value="2">Presentation 1</option>
-                            </li>
-                            <li>
-                              <option value="3">Presentation 1</option>
-                            </li>
-                          </ul>
-                      </select>
-                      <input type="text" class="form-control me-2" style="max-width: 60px;">
-                      <button type="button" class="btn btn-success waves-effect waves-light"><i class="bx bx-plus "></i></button>
+                              <?php foreach($products as $product): ?>
+                                  <?php foreach($product->presentations as $presentation): ?>
+                                    <li><option value="<?=$presentation->id?>"><?=$presentation->description?></option></li>
+                                  <?php endforeach; ?>  
+                              <?php endforeach; ?>
+                          </ul>  
+                        </select>
+                        <input id="quantity" :name="'presentations['+index+'][quantity]'" type="text" class="form-control me-2" style="max-width: 60px;">
+                    </div>
+                    <div class="col-sm">
+                      <div class="d-flex justify-content-sm-end">
+                          <div>
+                            <button @click="addPresentation()" type="button" class="btn btn-success waves-effect waves-light"><i class="bx bx-plus "></i></button>
+                          </div>
+                      </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -149,6 +137,10 @@
                         Save changes
                     </button>
                 </div>
+
+                <input id="input_oculto" type="hidden" name="action" value="create">
+                <input type="hidden" value="<?= $_SESSION['global_token'] ?>" name="global_token">
+
             </form>
         </div>
     </div>

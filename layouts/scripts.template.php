@@ -30,6 +30,12 @@
                     categories: [],
                     coupons: [],
                     coupon: [],
+                    orders: [],
+                    presentationsOrders: [{
+                        id: '',
+                        quantity: '',
+                    }],
+                    addresses: [],
                 }
             },methods : {
                 logout(id){
@@ -624,6 +630,42 @@
                         }
                     });
                 },
+                addPresentation(){
+                    app.presentationsOrders.push({id: '',quantity: ''});
+                },
+                createOrder(){
+                    
+                    app.modal = "create";
+                    document.getElementById("input_oculto").value = "create";
+                    app.presentationsOrders= [{
+                        id: '',
+                        quantity: '',
+                    }];
+
+                },
+                onChange(event) {
+
+                    console.log(event.target.value);
+                    var id = event.target.value;
+                    var config = {
+                        method: 'get',
+                        url: 'https://crud.jonathansoto.mx/api/addresses/clients/'+id,
+                        headers: { 
+                            'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
+                        }
+                    };
+
+                    axios(config)
+                    .then(function (response) {
+                        console.log(JSON.stringify(response.data));
+                        app.addresses = response.data.data;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                    
+
+                }
 
             },
             mounted(){
@@ -648,7 +690,7 @@
                 axios(config)
                 .then(function (response) {
                     // console.log(JSON.stringify(response.data.data));
-                    app.products = response.data.data
+                    app.products = response.data.data;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -756,13 +798,30 @@
 
                     axios(config)
                     .then(function (response) {
-                        console.log(JSON.stringify(response.data.data));
+                        // console.log(JSON.stringify(response.data.data));
                         app.coupon = response.data.data;
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
                 <?php endif; ?>
+
+                var config = {
+                    method: 'get',
+                    url: 'https://crud.jonathansoto.mx/api/orders',
+                    headers: { 
+                        'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
+                    }
+                };
+
+                axios(config)
+                .then(function (response) {
+                    // console.log(JSON.stringify(response.data.data));
+                    app.orders = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
 
             },
         }).mount('#contenedor')
