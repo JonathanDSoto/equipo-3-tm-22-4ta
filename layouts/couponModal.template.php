@@ -18,49 +18,55 @@
                 <div class="modal-body">
                     <label class="input-group mb-3">Name</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1" required pattern ="[A-Za-z0-9\u00f1\u00d1 ]{4,40}"
+                            title="Requiere de mínimo 4 carácteres y máximo 40, no utilizar: carácteres especiales y acentos.">
                     </div>
                     <label class="input-group mb-3">Code</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="code" name="code" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="code" name="code" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1" required minlength="4" maxlength="40"
+                            title="Requiere de mínimo 4 carácteres y máximo 40" >
                     </div>
                     <label class="input-group mb-3">Percentage Discount</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="percentage_discount" name="percentage_discount" placeholder="Percentage Discount" aria-label="percentage_discount" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="percentage_discount" name="percentage_discount" placeholder="Percentage Discount" aria-label="percentage_discount" aria-describedby="basic-addon1"
+                        required pattern="[0-9]{1,3}" title="Requiere mínimo de un digito y un máximo de tres digitos">
                     </div>
                     <div v-if="(modal=='edit')">
                         <label class="input-group mb-3">Amount Discount</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="amount_discount" name="amount_discount" placeholder="Amount Discount" aria-label="amount_discount" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="amount_discount" name="amount_discount" placeholder="Amount Discount" aria-label="amount_discount" aria-describedby="basic-addon1" 
+                            required pattern="[0-9]{1,10}" title="Requiere mínimo de un digito y un máximo de 10 digitos">
                         </div> 
                     </div>
                     <label class="input-group mb-3">Min Amount Required</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="min_amount_required" name="min_amount_required" placeholder="Min Amount Required" aria-label="min_amount_required" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="min_amount_required" name="min_amount_required" placeholder="Min Amount Required" aria-label="min_amount_required" aria-describedby="basic-addon1"
+                        required pattern="[0-9]{1,10}" title="Requiere mínimo de un digito y un máximo de 10 digitos">
                     </div>
                     <label class="input-group mb-3">Min Product Required</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="min_product_required" name="min_product_required" placeholder="Min Product Required" aria-label="min_product_required" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="min_product_required" name="min_product_required" placeholder="Min Product Required" aria-label="min_product_required" aria-describedby="basic-addon1"
+                        required pattern="[0-9]{1,2}" title="Requiere mínimo de un digito y un máximo de dos digitos">
                     </div>
                     <label class="input-group mb-3">Start Date</label>
                     <div class="input-group mb-3">
-                        <input type="date" class="form-control" id="start_date" name="start_date" placeholder="Start Date" aria-label="start_date" aria-describedby="basic-addon1">
+                        <input type="date" class="form-control" id="start_date" name="start_date" placeholder="Start Date" aria-label="start_date" aria-describedby="basic-addon1" required
+                        title="Seleccione una fecha de inicio">
                     </div>
                     <label class="input-group mb-3">End Date</label>
                     <div class="input-group mb-3">
-                        <input type="date" class="form-control" id="end_date" name="end_date" placeholder="End Date" aria-label="end_date" aria-describedby="basic-addon1">
+                        <input type="date" class="form-control" id="end_date" name="end_date" placeholder="End Date" aria-label="end_date" aria-describedby="basic-addon1" required
+                        title="Seleccione una fecha de finalización">
                     </div>
                     <label class="input-group mb-3">Max Uses</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="max_uses" name="max_uses" placeholder="Max Uses" aria-label="max_uses" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="max_uses" name="max_uses" placeholder="Max Uses" aria-label="max_uses" aria-describedby="basic-addon1" 
+                        required pattern="[0-9]{1,2}" title="Requiere mínimo de un digito y un máximo de dos digitos">
                     </div>
-                    <label class="input-group mb-3">Count Uses</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="count_uses" name="count_uses" placeholder="Count Uses" aria-label="count_uses" aria-describedby="basic-addon1">
-                    </div>
+
                     <label class="input-group mb-3">Valid Only First Purchase</label>
                     <div class="btn-group mb-3">
-                        <select  id="valid_only_first_purchase" name="valid_only_first_purchase" class="form-select">
+                        <select  id="valid_only_first_purchase" name="valid_only_first_purchase" class="form-select" required>
                             <ul class="dropdown-menu">
                                 <li><option value="0">Only First Purchase</option></li>
                             </ul>
@@ -81,6 +87,7 @@
                 <div v-if="(modal!='edit')">
                     <input id="amount_discount" type="hidden" name="amount_discount">
                 </div>
+                <input type="hidden" id="count_uses" name="count_uses" value="1">
                 <input id="input_oculto" type="hidden" name="action" value="create">
                 <input id="id" type="hidden" name="id">
                 <input id="_status" type="hidden" name="status">
