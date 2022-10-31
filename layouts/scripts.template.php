@@ -31,6 +31,7 @@
                     coupons: [],
                     coupon: [],
                     orders: [],
+                    order: [],
                     presentationsOrders: [{
                         id: '',
                         quantity: '',
@@ -892,6 +893,25 @@
                 .catch(function (error) {
                     console.log(error);
                 });
+
+                <?php if(isset($_GET['order'])): ?>
+                    var config = {
+                        method: 'get',
+                        url: 'https://crud.jonathansoto.mx/api/orders/details/'+'<?=$_GET['order']?>',
+                        headers: { 
+                            'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
+                        }
+                    };
+
+                    axios(config)
+                    .then(function (response) {
+                        console.log(JSON.stringify(response.data.data));
+                        app.order = response.data.data;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                <?php endif; ?>
 
             },
         }).mount('#contenedor')

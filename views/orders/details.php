@@ -48,6 +48,7 @@
                                                 <div class="d-flex">
                                                     <div class="flex-grow-1">
                                                         <h4>Order #FOLIO</h4>
+                                                        {{order}}
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <div>
@@ -66,12 +67,8 @@
                                                                 </div>
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">Total :</p>
-                                                                    <div v-if="presentations.length>0">
-                                                                        <div v-for="price in presentations[0].price">
-                                                                            <div v-if="price.is_current_price==1">
-                                                                                ${{price.amount}}
-                                                                            </div>
-                                                                        </div>
+                                                                    <div v-if="order.total!=''">
+                                                                        ${{order.total}}
                                                                     </div>
                                                                     <div v-else>
                                                                         <h6 class="mb-0">$ 0.00 </h6>
@@ -167,7 +164,12 @@
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">Order Status :</p>
                                                                     <div>
-                                                                        <h6 class="mb-0">Cancelada</h6>
+                                                                        <span class="badge badge-soft-warning text-uppercase" v-if="order.order_status=='Pediente de pago'">Pendiente de pago</span>
+                                                                        <span class="badge badge-soft-success text-uppercase" v-else-if="order.order_status=='Pagada'">Pagada</span>
+                                                                        <span class="badge badge-soft-success text-uppercase" v-else-if="order.order_status=='Enviada'">Enviada</span>
+                                                                        <span class="badge badge-soft-danger text-uppercase" v-else-if="order.order_status=='Abandonado'">Abandonado</span>
+                                                                        <span class="badge badge-soft-warning text-uppercase" v-else-if="order.order_status=='Pendiente de enviar'">Pendiente de enviar</span>
+                                                                        <span class="badge badge-soft-danger text-uppercase" v-else>Cancelada</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
