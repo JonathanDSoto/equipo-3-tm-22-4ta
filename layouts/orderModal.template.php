@@ -13,15 +13,17 @@
                 <div class="modal-body">
                     <label class="input-group mb-3">Folio</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="folio" name="folio" placeholder="Folio" aria-label="Folio" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="folio" name="folio" placeholder="Folio" aria-label="Folio" aria-describedby="basic-addon1"
+                        required pattern="[A-Za-z0-9\u00f1\u00d1 ]{4,40}" title="Requiere de mínimo 4 carácteres y maximo 40, no utilizar: carácteres especiales y acentos.">
                     </div>
                     <label class="input-group mb-3">Total</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="total" name="total" placeholder="Total" aria-label="Total" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="total" name="total" placeholder="Total" aria-label="Total" aria-describedby="basic-addon1" 
+                        required pattern="[0-9]{1,10}" title="Requiere mínimo de un digito y un máximo de 10 digitos">
                     </div>
                     <label class="input-group mb-3">Is Paid</label>
                     <div class="btn-group mb-3">
-                      <select  id="is_paid" name="is_paid" class="form-select">
+                      <select  id="is_paid" name="is_paid" class="form-select" required>
                           <ul class="dropdown-menu">
                             <li>
                               <option value="1" class="text-success">Paid</option>
@@ -34,7 +36,7 @@
                     </div>
                     <label class="input-group mb-3">Client</label>
                     <div class="btn-group mb-3">
-                      <select  @change="onChange($event)"  id="client_id" name="client_id" class="form-select">
+                      <select  @change="onChange($event)"  id="client_id" name="client_id" class="form-select" required>
                           <ul class="dropdown-menu">
                             <li><option value=""></option></li>
                             <?php foreach($clients as $client): ?>
@@ -45,7 +47,7 @@
                     </div>
                     <label class="input-group mb-3">Client Addres</label>
                     <div class="btn-group mb-3">
-                      <select  id="address_id" name="address_id" class="form-select">
+                      <select  id="address_id" name="address_id" class="form-select" required>
                           <ul class="dropdown-menu">
                               <li><option v-for="address in addresses" :value="address.id">{{address.street_and_use_number}}</option></li>
                           </ul>
@@ -53,7 +55,7 @@
                     </div>
                     <label class="input-group mb-3">Status</label>
                     <div class="btn-group mb-3">
-                      <select  id="order_status_id" name="order_status_id" class="form-select">
+                      <select  id="order_status_id" name="order_status_id" class="form-select" required>
                           <ul class="dropdown-menu">
                             <li>
                               <option value="1" class="text-warning">Pendiente de pago</option>
@@ -79,7 +81,7 @@
                     </div>
                     <label class="input-group mb-3">Payment Method</label>
                     <div class="btn-group mb-3">
-                      <select  id="payment_type_id" name="payment_type_id" class="form-select">
+                      <select  id="payment_type_id" name="payment_type_id" class="form-select" required>
                           <ul class="dropdown-menu">
                             <li>
                               <option value="1">Cash</option>
@@ -95,7 +97,7 @@
                     </div>
                     <label class="input-group mb-3">Coupon</label>
                     <div class="btn-group mb-3">
-                      <select  id="coupon_id" name="coupon_id" class="form-select">
+                      <select  id="coupon_id" name="coupon_id" class="form-select" >
                           <ul class="dropdown-menu">
                             <li><option v-for="coupon in coupons" :value="coupon.id"><p :v-if="'coupon.max_uses'<='coupon.count_uses'">{{coupon.name}}</p></option></li>
                           </ul>
@@ -103,7 +105,7 @@
                     </div>
                     <label class="input-group mb-3">Presentations</label>
                     <div class="input-group mb-3" v-for="(item, index) in presentationsOrders">
-                        <select  id="presentation_id" :name="'presentations['+index+'][id]'" class="form-select me-1">
+                        <select  id="presentation_id" :name="'presentations['+index+'][id]'" class="form-select me-1" required>
                           <ul class="dropdown-menu">
                               <?php foreach($products as $product): ?>
                                   <?php foreach($product->presentations as $presentation): ?>
