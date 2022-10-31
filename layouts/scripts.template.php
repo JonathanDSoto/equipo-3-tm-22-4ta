@@ -597,6 +597,7 @@
                     document.getElementById("min_product_required").value = "";
                     document.getElementById("end_date").value = "";
                     document.getElementById("max_uses").value = "";
+                    
                     document.getElementById("valid_only_first_purchase").value = "";
                     document.getElementById("_status").value = 1;
                     
