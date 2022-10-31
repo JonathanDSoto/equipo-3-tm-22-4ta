@@ -156,7 +156,7 @@
                     })
                     .then((willDelete) => {
                         if (willDelete) {
-                            swal("The user was successfully deleted!", {
+                            swal("The client was successfully deleted!", {
                                 icon: "success",
                             });
                             var bodyFormData = new FormData();
@@ -174,7 +174,7 @@
                                 console.log('error')
                             })
                         } else {
-                            swal("The user continues to be saved!");
+                            swal("The client continues to be saved!");
                         }
                     });
                 },
@@ -299,7 +299,7 @@
                     })
                     .then((willDelete) => {
                         if (willDelete) {
-                            swal("The user was successfully deleted!", {
+                            swal("The product was successfully deleted!", {
                                 icon: "success",
                             });
                             var bodyFormData = new FormData();
@@ -317,7 +317,7 @@
                                 console.log('error')
                             })
                         } else {
-                            swal("The user continues to be saved!");
+                            swal("The product continues to be saved!");
                         }
                     });
                 },
@@ -485,7 +485,7 @@
                     })
                     .then((willDelete) => {
                         if (willDelete) {
-                            swal("The brands was successfully deleted!", {
+                            swal("The brand was successfully deleted!", {
                                 icon: "success",
                             });
                             var bodyFormData = new FormData();
@@ -503,7 +503,7 @@
                                 console.log('error')
                             })
                         } else {
-                            swal("The brands continues to be saved!");
+                            swal("The brand continues to be saved!");
                         }
                     });
                 },

@@ -72,12 +72,12 @@
                                             <table class="table align-middle table-nowrap" id="customerTable">
                                                 <thead class="table-light">
                                                     <tr>
-                                                        <th class="sort" data-sort="folio">Folio</th>
-                                                        <th class="sort desc" data-sort="is_paid">Is Paid</th>
-                                                        <th class="sort" data-sort="name_client">Name Client</th>
-                                                        <th class="sort" data-sort="coupon">Coupon</th>
-                                                        <th class="sort" data-sort="status">Status</th>
-                                                        <th class="sort" data-sort="action">Action</th>
+                                                        <th >Folio</th>
+                                                        <th >Is Paid</th>
+                                                        <th >Name Client</th>
+                                                        <th >Coupon</th>
+                                                        <th >Status</th>
+                                                        <th >Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="list form-check-all">
