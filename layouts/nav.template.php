@@ -2,7 +2,6 @@
 	include "../../app/UserController.php";
 	$us = new UserController();
 	$users = $us->getUsers();
-    $userLog = $us->getUserById($_SESSION['id']);
 	if(isset($_GET['id'])){
 		$user = $us->getUserById($_GET['id']);
 	}
@@ -62,21 +61,21 @@
 					<i class='bx bx-shopping-bag fs-22'></i>
 				</a>
 			</div>
-			<div class="dropdown ms-sm-3 header-item topbar-user">
+			<div class="dropdown ms-sm-3 header-item topbar-user" v-if="userLog!=null">
 				<button type="button" class="btn shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<span class="d-flex align-items-center">
-						<img src="<?= $userLog->avatar ?>" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+						<img :src="userLog.avatar" class="me-3 rounded-circle avatar-xs" alt="user-pic">
 						<span class="text-start ms-xl-2">									  <!-- Nombre -->
-								<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= $userLog->name ?></span>
+								<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{userLog.name}}</span>
 						</span>
 					</span>
 				</button>
 				<div class="dropdown-menu dropdown-menu-end">
 						<!-- item-->
-						<h6 class="dropdown-header">Welcome <?= $userLog->name ?></h6>
-						<a class="dropdown-item" href="<?= BASE_PATH ?>users/<?= $_SESSION['id']?>"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
+						<h6 class="dropdown-header">Welcome {{userLog.name}}</h6>
+						<a class="dropdown-item" :href="'<?= BASE_PATH ?>users/'+userLog.id"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
 						<div class="dropdown-divider"></div>
-						<button @click="logout('<?= $_SESSION['id'] ?>')" class="dropdown-item"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></button>	
+						<button v-on:click="logout(userLog.id)" class="dropdown-item"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></button>	
 				</div>
 			</div>
 		</div>

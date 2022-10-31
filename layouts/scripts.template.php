@@ -18,6 +18,7 @@
         var app = createApp({
             data(){
                 return {
+                    userLog: [],
                     date: '',
                     update: '',
                     modal: '',
@@ -913,6 +914,23 @@
                         console.log(error);
                     });
                 <?php endif; ?>
+
+                var config = {
+                    method: 'get',
+                    url: 'https://crud.jonathansoto.mx/api/users/'+'<?=$_SESSION['id']?>',
+                    headers: { 
+                        'Authorization': 'Bearer '+'<?=$_SESSION['token']?>',
+                    }
+                };
+
+                axios(config)
+                .then(function (response) {
+                    // console.log(JSON.stringify(response.data));
+                    app.userLog = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
 
             },
         }).mount('#contenedor')
