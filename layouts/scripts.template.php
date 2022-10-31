@@ -215,7 +215,7 @@
                     })
                     .then((willDelete) => {
                         if (willDelete) {
-                            swal("The user was successfully deleted!", {
+                            swal("The address was successfully deleted!", {
                                 icon: "success",
                             });
                             var bodyFormData = new FormData();
@@ -233,7 +233,7 @@
                                 console.log('error')
                             })
                         } else {
-                            swal("The user continues to be saved!");
+                            swal("The address continues to be saved!");
                         }
                     });
                 },

@@ -36,6 +36,7 @@
                     <div class="btn-group mb-3">
                       <select  @change="onChange($event)"  id="client_id" name="client_id" class="form-select">
                           <ul class="dropdown-menu">
+                            <li><option value=""></option></li>
                             <?php foreach($clients as $client): ?>
                               <li><option value="<?=$client->id?>"><?=$client->name?></option></li>
                             <?php endforeach; ?>
