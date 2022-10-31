@@ -174,9 +174,9 @@
                                                                                             <div class="d-flex align-items-center">
                                                                                                 <div class="flex-grow-1">
                                                                                                     <h5 class="fs-14 mb-1">
-                                                                                                        <p href="details.php" class="text-dark">
+                                                                                                        <a href="<?=BASE_PATH?>orders/<?=$order->id?>">
                                                                                                             <?= $order->folio ?>
-                                                                                                        </p>
+                                                                                                        </a>
                                                                                                     </h5>
                                                                                                 </div>
                                                                                             </div>

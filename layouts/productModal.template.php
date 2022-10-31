@@ -21,35 +21,40 @@
                                 <label class="form-label">Product IMG</label>
                             </div>
                             <div class="input-group mb-3">
-                                <input class="form-control form-control-sm" name="cover" type="file">
+                                <input class="form-control form-control-sm" name="cover" type="file" required
+                                title="Requiere seleccionar una imagen">
                             </div>
                         </div>
                         <label class="input-group mb-3">Name</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" required pattern ="[A-Za-z0-9\u00f1\u00d1 ]{4,40}"
+                            title="Requiere de mínimo 4 carácteres y maximo 40, no utilizar: carácteres especiales y acentos.">
                         </div>
                         <label class="input-group mb-3">Slug</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control"  id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1" required pattern="^[a-z0-9]+(?:-[a-z0-9]+)*$" 
+                            title="Requiere mínimo de 4 carácteres y máximo 40, no utilizar: espacios, mayúsculas y acentos." minlength="4" maxlength="40">
                         </div>
                         <div >
                             <label class="input-group mb-3">Description</label>
                             <div class="input-group mb-3">
-                                <textarea class="form-control" id="description" name="description" placeholder="Description" aria-label="description" id="floatingTextarea1" style="height: 100px"></textarea>
+                                <textarea class="form-control" id="description" name="description" placeholder="Description" aria-label="description" id="floatingTextarea1" style="height: 100px" maxlength="150"
+                                title="Máximo 150 carácteres"></textarea>
                             </div>
                         </div>
                         <div>
                             <label class="input-group mb-3">Features</label>
                             <div class="input-group mb-3">
-                                <textarea class="form-control" id="features" name="features" placeholder="Features" aria-label="features" id="floatingTextarea2" style="height: 150px"></textarea>
+                                <textarea class="form-control" id="features" name="features" placeholder="Features" aria-label="features" id="floatingTextarea2" style="height: 150px" maxlength="300"
+                                title="Máximo 300 carácteres"></textarea>
                             </div>
                         </div>
                         <label class="input-group mt-2 mb-3">Brand</label>
                         <div class="btn-group mb-3">
-                            <select  id="brand_id" name="brand_id" class="form-select">
+                            <select  id="brand_id" name="brand_id" class="form-select" required>
                                 <ul class="dropdown-menu">
                                     <?php foreach($brands as $brand): ?>
-                                        <li><option value="<?php echo $brand->id ?>" ><?= $brand->name ?></option></li>
+                                        <li><option value="<?php echo $brand->id ?>"><?= $brand->name ?></option></li>
                                      <?php endforeach ?>
                                 </ul>
                             </select>
