@@ -511,6 +511,8 @@
     <script src="<?= BASE_PATH ?>public/libs/swiper/swiper-bundle.min.js"></script>
     <!-- profile init js -->
     <script src="<?= BASE_PATH ?>public/js/pages/profile.init.js"></script>
+    <!-- App js -->
+    <script src="<?= BASE_PATH ?>public/js/app.js"></script>
 </body>
 
 
