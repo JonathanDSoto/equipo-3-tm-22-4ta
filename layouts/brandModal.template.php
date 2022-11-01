@@ -18,8 +18,7 @@
                 <div class="modal-body">
                     <label class="input-group mb-3">Name</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name" aria-describedby="basic-addon1" required pattern ="[A-Za-z0-9\u00f1\u00d1 ]{4,40}"
-                            title="Requiere de mínimo 4 carácteres y maximo 40, no utilizar: carácteres especiales y acentos.">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name" aria-describedby="basic-addon1" onkeypress="return letrasYNumeros(event)" required>
                     </div>
                     <label class="input-group mb-3">Description</label>
                     <div class="input-group mb-3">
@@ -28,8 +27,7 @@
                     <div >
                         <label class="input-group mb-3">Slug</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1" required pattern="^[a-z0-9]+(?:-[a-z0-9]+)*$" 
-                            title="Requiere mínimo de 4 carácteres y máximo 40, no utilizar: espacios, mayúsculas y acentos." minlength="4" maxlength="40">
+                            <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1" onkeypress="return letrasYNumeros(event)" required>
                         </div>
                     </div>
                 </div>
