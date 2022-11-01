@@ -23,7 +23,7 @@
                     <div class="modal-body" v-if="(modal=='editPrice')">
                         <label class="input-group mb-3">Amount</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" aria-label="amount"></input>
+                            <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" aria-label="amount" onkeypress="return soloNumeros(event)"></input>
                         </div>
                     </div>
                     <div class="modal-body" v-else>
@@ -46,31 +46,31 @@
                         <div >
                             <label class="input-group mb-3">Weight in Grams</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="weight_in_grams" name="weight_in_grams" placeholder="Weight" aria-label="weight_in_grams"></input>
+                                <input type="text" class="form-control" id="weight_in_grams" name="weight_in_grams" placeholder="Weight" aria-label="weight_in_grams" onkeypress="return soloNumeros(event)"></input>
                             </div>
                         </div>
                         <div>
                             <label class="input-group mb-3">Stock</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="stock" name="stock" placeholder="Stock" aria-label="stock"></input>
+                                <input type="text" class="form-control" id="stock" name="stock" placeholder="Stock" aria-label="stock" onkeypress="return soloNumeros(event)"></input>
                             </div>
                         </div>
                         <div>
                             <label class="input-group mb-3">Minimum Stock</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="stock_min" name="stock_min" placeholder="Stock min" aria-label="stock_min"></input>
+                                <input type="text" class="form-control" id="stock_min" name="stock_min" placeholder="Stock min" aria-label="stock_min" onkeypress="return soloNumeros(event)"></input>
                             </div>
                         </div>
                         <div>
                             <label class="input-group mb-3">Maximum Stock</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="stock_max" name="stock_max" placeholder="Stock Max" aria-label="stock_max"></input>
+                                <input type="text" class="form-control" id="stock_max" name="stock_max" placeholder="Stock Max" aria-label="stock_max" onkeypress="return soloNumeros(event)"></input>
                             </div>
                         </div>
                         <div v-if="(modal=='create')">
                             <label class="input-group mb-3">Amount</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" aria-label="amount"></input>
+                                <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" aria-label="amount" onkeypress="return soloNumeros(event)"></input>
                             </div>
                         </div>
                     </div>
