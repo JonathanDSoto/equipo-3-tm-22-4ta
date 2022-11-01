@@ -7,9 +7,6 @@
     <script src="<?= BASE_PATH ?>public/js/plugins.js"></script>
     
 
-    <!-- App js -->
-    <script src="<?= BASE_PATH ?>public/js/app.js"></script>
-
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script type="text/javascript">
