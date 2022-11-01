@@ -11,7 +11,6 @@
               <label for="status-field" class="form-label">Status </label>
               <br>
               <select id="order_status_id" name="order_status_id" class="custom-select">
-                <option selected>Choose...</option>
                 <option value="1">Pendiente de pago</option>
                 <option value="2">Pagada</option>
                 <option value="3">Enviada</option>
