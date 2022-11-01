@@ -14,12 +14,12 @@
                     <label class="input-group mb-3">Folio</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="folio" name="folio" placeholder="Folio" aria-label="Folio" aria-describedby="basic-addon1"
-                        required pattern="[A-Za-z0-9\u00f1\u00d1 ]{4,40}" title="Requiere de mínimo 4 carácteres y maximo 40, no utilizar: carácteres especiales y acentos.">
+                        onkeypress="return letrasYNumeros(event)">
                     </div>
                     <label class="input-group mb-3">Total</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="total" name="total" placeholder="Total" aria-label="Total" aria-describedby="basic-addon1" 
-                        required pattern="[0-9]{1,10}" title="Requiere mínimo de un digito y un máximo de 10 digitos">
+                        onkeypress="return soloNumeros(event)">
                     </div>
                     <label class="input-group mb-3">Is Paid</label>
                     <div class="btn-group mb-3">
