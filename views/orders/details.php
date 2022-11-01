@@ -114,11 +114,11 @@
                                                                 <div class="flex-grow-1">
                                                                     <p class="text-muted mb-1">Coupon :</p>
                                                                     <div>
-                                                                        <a href="<?=BASE_PATH?>coupons/<?=$order->coupon->id?>">
-                                                                            <?php if(($order->coupon)!=null): ?>
+                                                                        <?php if(($order->coupon)!=null): ?>
+                                                                            <a href="<?=BASE_PATH?>coupons/<?=$order->coupon->id?>">
                                                                                 <h6 class="mb-0"><?=$order->coupon->name?></h6>
-                                                                            <?php endif; ?>
-                                                                        </a>
+                                                                            </a>
+                                                                        <?php endif; ?>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -149,7 +149,9 @@
                                                                         <tr>
                                                                             <th scope="row">Client</th>
                                                                             <td>
-                                                                                <a href="<?=BASE_PATH?>clients/<?=$order->client->id?>" class="text-primary d-block"><?=$order->client->name?></a>
+                                                                                <?php if(($order->client)!=null): ?>
+                                                                                    <a href="<?=BASE_PATH?>clients/<?=$order->client->id?>" class="text-primary d-block"><?=$order->client->name?></a>
+                                                                                <?php endif; ?>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
