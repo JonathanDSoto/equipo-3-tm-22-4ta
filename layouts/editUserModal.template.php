@@ -23,29 +23,26 @@
                     <div class="modal-body" v-if="(modal!='editPhoto')">
                         <label class="input-group mb-3">Name(s)</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" required pattern="[A-Za-z\u00f1\u00d1 ]{4,40}" 
-                            title="Minimo 4 carácteres y maximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" onkeypress="return soloLetras(event)">
                         </div>
                         <label class="input-group mb-3">Last Name</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" required pattern="[A-Za-z\u00f1\u00d1 ]{4,40}"
-                            title="Minimo 4 carácteres y maximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
+                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" onkeypress="return soloLetras(event)">
                         </div>
                         <label class="input-group mb-3">Email</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="email" name="email" placeholder="Email" aria-label="email" aria-describedby="basic-addon1" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-                            title="example_mail@gmail.com">
+                            <input type="text" class="form-control"  id="email" name="email" placeholder="Email" aria-label="email" aria-describedby="basic-addon1" onkeypress="return correo(event)">
                         </div>
                         <div v-if="(modal=='create')">
                             <label class="input-group mb-3">Password</label>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="basic-addon1" required minlength="4" maxlength="30">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <label class="input-group mb-3">Phone Number</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1" required pattern="[0-9]{7,14}"
-                            title="Minimo 7 digitos, maximo 14 digitos">
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1" 
+                            onkeypress="return soloNumeros(event)">
                         </div>
 
                         <div v-if="(modal=='create')">
