@@ -31,7 +31,7 @@
                         </div>
                         <label class="input-group mb-3">Slug</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1" onkeypress="return letrasYNumeros(event)" required>
+                            <input type="text" class="form-control"  id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1" required>
                         </div>
                         <div >
                             <label class="input-group mb-3">Description</label>
