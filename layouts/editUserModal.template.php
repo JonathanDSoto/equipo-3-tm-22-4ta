@@ -23,20 +23,20 @@
                     <div class="modal-body" v-if="(modal!='editPhoto')">
                         <label class="input-group mb-3">Name(s)</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" onkeypress="return soloLetras(event)">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" onkeypress="return soloLetras(event)" required>
                         </div>
                         <label class="input-group mb-3">Last Name</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" onkeypress="return soloLetras(event)">
+                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" onkeypress="return soloLetras(event)" required>
                         </div>
                         <label class="input-group mb-3">Email</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="email" name="email" placeholder="Email" aria-label="email" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control"  id="email" name="email" placeholder="Email" aria-label="email" aria-describedby="basic-addon1" required title="example@gmail.com">
                         </div>
                         <div v-if="(modal=='create')">
                             <label class="input-group mb-3">Password</label>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="basic-addon1">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="basic-addon1" required minlength="6" maxlength="30">
                             </div>
                         </div>
                         <label class="input-group mb-3">Phone Number</label>
