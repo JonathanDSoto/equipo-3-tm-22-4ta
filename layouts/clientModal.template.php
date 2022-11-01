@@ -18,13 +18,11 @@
                     <div class="modal-body">
                         <label class="input-group mb-3">Name(s)</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" required pattern="[A-Za-z\u00f1\u00d1 ]{4,40}" 
-                            title="Minimo 4 carácteres y máximo 40 carácteres, sin acentos, sin carácteres especiales y sin dígitos">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" onkeypress="return soloLetras(event)" required >
                         </div>
                         <label class="input-group mb-3">Email</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="email" name="email" placeholder="Email" aria-label="email" aria-describedby="basic-addon1" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-                            title="example_mail@gmail.com">
+                            <input type="text" class="form-control"  id="email" name="email" placeholder="Email" aria-label="email" aria-describedby="basic-addon1" required title="example_mail@gmail.com">
                         </div>
                         <div >
                             <label class="input-group mb-3">Password</label>
@@ -34,8 +32,7 @@
                         </div>
                         <label class="input-group mb-3">Phone Number</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1" required pattern="[0-9]{7,14}"
-                            title="Minimo 7 digitos, máximo 14 digitos">
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1" onkeypress="return soloNumeros(event)" required>
                         </div>
                     </div>
                     <div class="modal-footer">
