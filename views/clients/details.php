@@ -13,19 +13,9 @@
 <!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 <head>
+    <title>Clients</title>
     <?php include "../../layouts/head.template.php" ?>
-  <!-- swiper css -->
-  <link rel="stylesheet" href="<?= BASE_PATH ?>public/libs/swiper/swiper-bundle.min.css">
-  <!-- Layout config Js -->
-  <script src="<?= BASE_PATH ?>public/js/layout.js"></script>
-  <!-- Bootstrap Css -->
-  <link href="<?= BASE_PATH ?>public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <!-- Icons Css -->
-  <link href="<?= BASE_PATH ?>public/css/icons.min.css" rel="stylesheet" type="text/css" />
-  <!-- App Css-->
-  <link href="<?= BASE_PATH ?>public/css/app.min.css" rel="stylesheet" type="text/css" />
-  <!-- custom Css-->
-  <link href="<?= BASE_PATH ?>public/css/custom.min.css" rel="stylesheet" type="text/css" />
+g
 </head>
 <body>
     <!-- Begin page -->

@@ -4,10 +4,10 @@
 <!DOCTYPE html>
     <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 <head>
+    <title>Users</title>
     <?php include "../../layouts/head.template.php" ?>
   <!-- swiper css -->
   <link rel="stylesheet" href="<?= BASE_PATH ?>public/libs/swiper/swiper-bundle.min.css" />
-
 </head>
 <body>
     <!-- Begin page -->
