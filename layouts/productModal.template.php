@@ -27,11 +27,11 @@
                         </div>
                         <label class="input-group mb-3">Name</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" onkeypress="return letrasYNumeros(event)">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name(s)" aria-label="Name(s)" aria-describedby="basic-addon1" onkeypress="return letrasYNumeros(event)" required>
                         </div>
                         <label class="input-group mb-3">Slug</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1" onkeypress="return letrasYNumeros(event)">
+                            <input type="text" class="form-control"  id="slug" name="slug" placeholder="Slug" aria-label="slug" aria-describedby="basic-addon1" onkeypress="return letrasYNumeros(event)" required>
                         </div>
                         <div >
                             <label class="input-group mb-3">Description</label>

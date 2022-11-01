@@ -32,7 +32,8 @@
                         </div>
                         <label class="input-group mb-3">Phone Number</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1" onkeypress="return soloNumeros(event)" required>
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1" onkeypress="return soloNumeros(event)" 
+                            required minlength="7" maxlength="14">
                         </div>
                     </div>
                     <div class="modal-footer">

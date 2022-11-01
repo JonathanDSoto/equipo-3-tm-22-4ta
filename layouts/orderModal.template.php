@@ -14,12 +14,12 @@
                     <label class="input-group mb-3">Folio</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="folio" name="folio" placeholder="Folio" aria-label="Folio" aria-describedby="basic-addon1"
-                        onkeypress="return letrasYNumeros(event)">
+                        onkeypress="return letrasYNumeros(event)" required>
                     </div>
                     <label class="input-group mb-3">Total</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="total" name="total" placeholder="Total" aria-label="Total" aria-describedby="basic-addon1" 
-                        onkeypress="return soloNumeros(event)">
+                        onkeypress="return soloNumeros(event)" required>
                     </div>
                     <label class="input-group mb-3">Is Paid</label>
                     <div class="btn-group mb-3">

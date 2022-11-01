@@ -42,7 +42,7 @@
                         <label class="input-group mb-3">Phone Number</label>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" aria-label="phone_number" aria-describedby="basic-addon1" 
-                            onkeypress="return soloNumeros(event)">
+                            onkeypress="return soloNumeros(event)" required minlength="7" maxlength="14">
                         </div>
 
                         <div v-if="(modal=='create')">
@@ -50,7 +50,7 @@
                                 <label class="form-label">Photo User</label>
                             </div>
                             <div class="input-group mb-3">
-                                <input class="form-control form-control-sm" name="profile_photo" type="file">
+                                <input class="form-control form-control-sm" name="profile_photo" type="file" required>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             <label class="form-label">Photo User</label>
                         </div>
                         <div class="input-group mb-3">
-                            <input class="form-control form-control-sm" name="profile_photo" type="file">
+                            <input class="form-control form-control-sm" name="profile_photo" type="file" required>
                         </div>
                     </div>
                     <div class="modal-footer">

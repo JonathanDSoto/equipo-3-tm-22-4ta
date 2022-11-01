@@ -23,7 +23,7 @@
                     <div class="modal-body" v-if="(modal=='editPrice')">
                         <label class="input-group mb-3">Amount</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" aria-label="amount" onkeypress="return soloNumeros(event)"></input>
+                            <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" aria-label="amount" onkeypress="return soloNumeros(event)" required></input>
                         </div>
                     </div>
                     <div class="modal-body" v-else>
@@ -32,7 +32,7 @@
                                 <label class="form-label">Presentation IMG</label>
                             </div>
                             <div class="input-group mb-3">
-                                <input class="form-control form-control-sm" name="cover" type="file">
+                                <input class="form-control form-control-sm" name="cover" type="file" required>
                             </div>
                         </div>
                         <label class="input-group mb-3">Description</label>
@@ -41,7 +41,7 @@
                         </div>
                         <label class="input-group mb-3">Code</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="code" name="code" placeholder="Code" aria-label="code" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control"  id="code" name="code" placeholder="Code" aria-label="code" aria-describedby="basic-addon1" required>
                         </div>
                         <div >
                             <label class="input-group mb-3">Weight in Grams</label>
@@ -52,25 +52,25 @@
                         <div>
                             <label class="input-group mb-3">Stock</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="stock" name="stock" placeholder="Stock" aria-label="stock" onkeypress="return soloNumeros(event)"></input>
+                                <input type="text" class="form-control" id="stock" name="stock" placeholder="Stock" aria-label="stock" onkeypress="return soloNumeros(event)" required></input>
                             </div>
                         </div>
                         <div>
                             <label class="input-group mb-3">Minimum Stock</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="stock_min" name="stock_min" placeholder="Stock min" aria-label="stock_min" onkeypress="return soloNumeros(event)"></input>
+                                <input type="text" class="form-control" id="stock_min" name="stock_min" placeholder="Stock min" aria-label="stock_min" onkeypress="return soloNumeros(event)" required></input>
                             </div>
                         </div>
                         <div>
                             <label class="input-group mb-3">Maximum Stock</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="stock_max" name="stock_max" placeholder="Stock Max" aria-label="stock_max" onkeypress="return soloNumeros(event)"></input>
+                                <input type="text" class="form-control" id="stock_max" name="stock_max" placeholder="Stock Max" aria-label="stock_max" onkeypress="return soloNumeros(event)" required></input>
                             </div>
                         </div>
                         <div v-if="(modal=='create')">
                             <label class="input-group mb-3">Amount</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" aria-label="amount" onkeypress="return soloNumeros(event)"></input>
+                                <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" aria-label="amount" onkeypress="return soloNumeros(event)" required></input>
                             </div>
                         </div>
                     </div>
