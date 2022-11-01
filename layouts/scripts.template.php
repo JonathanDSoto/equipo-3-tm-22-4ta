@@ -946,21 +946,18 @@
         }).mount('#contenedor')
 
 
+         function soloNumeros(e){
+             return /[0-9]/i.test(e.key);
+         }
 
-        function soloNumeros(e){
-            return /[0-9]/i.test(e.key);
-        }
-
-        function soloLetras(e){
-            return /[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]/i.test(e.key);
-        }
+         function soloLetras(e){
+             return /[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]/i.test(e.key);
+         }
  
-        function letrasYNumeros(e){
-            return /[a-zA-Z0-9\s]/i.test(e.key);
-        }
+         function letrasYNumeros(e){
+             return /[a-zA-Z0-9\s]/i.test(e.key);
+         }
 
-        function correo(e){
-            return /[^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$]/i.test(e.key);
-        }
 
+        
     </script>

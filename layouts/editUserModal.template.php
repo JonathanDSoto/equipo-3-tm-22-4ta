@@ -31,7 +31,7 @@
                         </div>
                         <label class="input-group mb-3">Email</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  id="email" name="email" placeholder="Email" aria-label="email" aria-describedby="basic-addon1" onkeypress="return correo(event)">
+                            <input type="text" class="form-control"  id="email" name="email" placeholder="Email" aria-label="email" aria-describedby="basic-addon1">
                         </div>
                         <div v-if="(modal=='create')">
                             <label class="input-group mb-3">Password</label>
