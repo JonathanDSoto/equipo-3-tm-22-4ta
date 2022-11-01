@@ -116,7 +116,8 @@
                               <?php endforeach; ?>
                           </ul>  
                         </select>
-                        <input id="quantity" :name="'presentations['+index+'][quantity]'" type="number" class="form-control me-2" style="max-width: 60px;">
+                        <input id="quantity" :name="'presentations['+index+'][quantity]'" type="number" class="form-control me-2" style="max-width: 60px;" required 
+                        onkeypress="return soloNumeros(event)" minlength="1" maxlength="2">
                     </div>
                     <div class="col-sm">
                       <div class="d-flex justify-content-sm-end">
