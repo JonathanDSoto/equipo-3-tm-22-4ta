@@ -1,0 +1,49 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine on
+
+#Rutas
+RewriteRule ^auth$ app/AuthController.php
+RewriteRule ^user$ app/UserController.php
+RewriteRule ^client$ app/ClientController.php
+RewriteRule ^address$ app/AddressController.php
+RewriteRule ^product$ app/ProductController.php
+RewriteRule ^presentation$ app/PresentationController.php
+RewriteRule ^category$ app/CategoryController.php
+RewriteRule ^brand$ app/BrandController.php
+RewriteRule ^tag$ app/TagController.php
+RewriteRule ^coupon$ app/CouponController.php
+RewriteRule ^order$ app/OrderController.php
+
+#Auth
+RewriteRule ^$ views/auth/login.php
+RewriteRule ^me$ views/users/profile.php
+
+#Usuarios
+RewriteRule ^users/$ views/users/index.php
+RewriteRule ^users/(.+)$ views/users/details.php?id=$1
+
+#Clientes
+RewriteRule ^clients/$ views/clients/index.php
+RewriteRule ^clients/(.+)$ views/clients/details.php?id=$1
+
+#Productos 
+RewriteRule ^products/$ views/products/index.php
+RewriteRule ^products/(.+)$ views/products/details.php?slug=$1
+
+#Categorias
+RewriteRule ^categories/$ views/categories/index.php
+
+#Brands
+RewriteRule ^brands/$ views/brands/index.php
+#RewriteRule ^brands/(.+)$ views/brands/details.php?brand=$1
+
+#Tags
+RewriteRule ^tags/$ views/tags/index.php
+
+#Coupons
+RewriteRule ^coupons/$ views/coupons/index.php
+RewriteRule ^coupons/(.+)$ views/coupons/details.php?coupon=$1
+
+#Orders
+RewriteRule ^orders/$ views/orders/index.php
+RewriteRule ^orders/(.+)$ views/orders/details.php?order=$1
